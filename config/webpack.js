@@ -38,7 +38,7 @@ const execMiddleware = require("./middleware/exec");
 const getContext = () => {
   const key = getParam("key");
   if (!(key && entryConfig[key])) {
-    console.log(`key匹配错误`);
+    console.log(`KEY匹配错误`.red);
   }
   const env = getParam("env") || "development";
   const value = entryConfig[key];
