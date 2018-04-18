@@ -42,9 +42,5 @@
     "vue-template-compiler": "^2.5.13",
     "vue-template-es2015-compiler": "^1.6.0",
     "webpack": "^4.0.1"
-  },
-  "dependencies": {
-    "date-fns": "^1.29.0",
-    "vue": "^2.5.16"
   }
 }
