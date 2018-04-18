@@ -1,16 +1,19 @@
-const aliasConfig = require("../alias");
 /**
- * alias配置的路径转换为绝对路径
+ * alias.json 配置的路径转换为绝对路径
  */
+const path = require("path");
+const config = require("../alias");
+const getDir = url => path.join(__dirname, "../../", url);
+
 const absolutePath = config => {
   const target = {};
-  for (var key in config[key]) {
+  for (var key in config) {
     const value = config[key];
     target[key] = getDir(value);
   }
   return target;
 };
 
-if (aliasConfig) {
-  Object.assign(base.resolve.alias, absolutePath(aliasConfig));
-}
+export default option => {
+  Object.assign(option.resolve.alias, absolutePath(config));
+};
