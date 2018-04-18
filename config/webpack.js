@@ -19,8 +19,8 @@ const webpack = require("webpack");
 const colors = require("colors");
 const UglifyJSPlugin = require("uglifyjs-webpack-plugin");
 const compose = (...fn) => fn.reduce((a, b) => (...args) => a(b(...args)));
-const applyMiddleware = (api, middlewares) => {
-  const chain = (middlewareApi = middlewares.map(item => item(api)));
+const applyMiddleware = (context, middlewares) => {
+  const chain = middlewares.map(item => item(context));
   return compose(...chain);
 };
 

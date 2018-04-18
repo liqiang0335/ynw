@@ -5,7 +5,6 @@
 module.exports = {
   publicPath: "",
   envPublicPath: "",
-  //相对于根目录
   alias: {
     "@m": "public/base/module",
     "@c": "public/pages/common",
