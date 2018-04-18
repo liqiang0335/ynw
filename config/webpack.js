@@ -16,8 +16,11 @@ const path = require("path");
 const webpack = require("webpack");
 const colors = require("colors");
 const UglifyJSPlugin = require("uglifyjs-webpack-plugin");
-const { exec, getParam, writeTimestamp, colorLog } = require("./fn");
+const compose = (...fn) => fn.reduce((a, b) => (...args) => a(b(...args)));
+const { exec, getParam } = require("./fn");
 const entryConfig = require("./entry");
+const optionMiddleware = require("./middleware/option");
+const execMiddleware = require("./middleware/exec");
 
 /**
  * 环境参数
@@ -41,7 +44,7 @@ const getContext = f => {
 /**
  * 配置选项
  */
-const createOption = function(context) {
+const createOption = function(context, middlewares) {
   const getDir = url => path.join(__dirname, "../", url);
   const { value, env, valueIsObj } = context;
 
@@ -49,7 +52,7 @@ const createOption = function(context) {
   const fileName = relativePath.match(/[^\/]+$/);
   const absolutePath = getDir(relativePath);
 
-  const base = {
+  const option = {
     mode: env,
     entry: {
       [fileName]: absolutePath
@@ -60,63 +63,17 @@ const createOption = function(context) {
       publicPath: "/kdht/public/yueniu/"
     },
     resolve: {
-      extensions: [".js", ".vue", ".json"],
-      alias: {
-        vue$: "vue/dist/vue.esm"
-      }
-    },
-    module: {
-      rules: [
-        {
-          test: /\.js$/,
-          use: ["babel-loader", "uglify-template-string-loader"],
-          exclude: [getDir("node_modules")]
-        },
-        {
-          test: /\.vue$/,
-          loader: "vue-loader"
-        },
-        {
-          test: /\.css$/,
-          use: ["style-loader", "css-loader"]
-        },
-        {
-          test: /\.(png|jpg|jpeg|gif|eot|ttf|woff|woff2|svg|svgz)(\?.+)?$/,
-          use: [
-            {
-              loader: "url-loader",
-              options: {
-                limit: 10240,
-                name: "assets/[name].[hash:7].[ext]"
-              }
-            }
-          ]
-        },
-        {
-          test: /\.scss/,
-          use: ["style-loader", "css-loader", "sass-loader"]
-        }
-      ]
+      extensions: [".js", ".vue"],
+      alias: { vue$: "vue/dist/vue.esm" }
     }
   };
 
-  return;
-};
-
-const log = colorLog(0);
-const printTimestamp = f => {
-  if (valueIsObj && entryValue.html) {
-    writeTimestamp(getDir(entryValue.html));
-  }
-  log(env);
+  return compose(middlewares)(option);
 };
 
 /* MAIN */
 
 (function() {
-  const callback = function() {
-    printTimestamp();
-  };
   const package = {
     development() {
       webpack(option).watch(
@@ -124,7 +81,7 @@ const printTimestamp = f => {
           aggregateTimeout: 300,
           poll: 1000
         },
-        exec(callback)
+        exec(compose(execMiddleware))
       );
     },
     production() {
