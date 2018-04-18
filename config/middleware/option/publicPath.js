@@ -3,7 +3,7 @@
  */
 module.exports = context => option => {
   const { env, value, isPlain, config } = context;
-  const { publicPath, envPublicPath } = config;
+  const { publicPath, envPublicPath } = value;
   if (publicPath && env === "production") {
     option.output.publicPath = publicPath;
   } else {
