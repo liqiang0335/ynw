@@ -3,8 +3,6 @@
    node config/webpack key=test
 */
 module.exports = {
-  publicPath: "",
-  envPublicPath: "",
   alias: {
     "@m": "public/base/module",
     "@c": "public/pages/common",
