@@ -28,22 +28,22 @@ const applyMiddleware = (api, middlewares) => {
  * 导入设置
  */
 const { exec, getParam } = require("./utils/fn");
-const entryConfig = require("./entry");
+const config = require("./config");
 const optionMiddleware = require("./middleware/option");
-const execMiddleware = require("./middleware/exec");
+const execMiddleware = require("./middleware/output");
 
 /**
  * 环境参数
  */
 const getContext = () => {
   const key = getParam("key");
-  if (!(key && entryConfig[key])) {
+  if (!(key && config.entry[key])) {
     console.log(`KEY匹配错误`.red);
   }
   const env = getParam("env") || "development";
-  const value = entryConfig[key];
+  const value = config.entry[key];
   const isPlain = typeof value !== "string"; //参数是对象格式
-  return { env, value, isPlain };
+  return { env, value, isPlain, config: config };
 };
 
 /**
@@ -78,14 +78,14 @@ const createOption = function(context) {
   const context = getContext();
   const option = createOption(context);
   const decorateOption = applyMiddleware(context, optionMiddleware)(option);
-  const call = exec(applyMiddleware(context, execMiddleware));
+  const launch = exec(applyMiddleware(context, execMiddleware));
   const package = {
     development() {
       const watchOps = { aggregateTimeout: 300, poll: 1000 };
-      webpack(decorateOption).watch(watchOps, call);
+      webpack(decorateOption).watch(watchOps, launch);
     },
     production() {
-      webpack(decorateOption).run(call);
+      webpack(decorateOption).run(launch);
     }
   };
   package[context.env]();
