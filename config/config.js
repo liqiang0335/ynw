@@ -5,6 +5,12 @@
 module.exports = {
   publicPath: "",
   envPublicPath: "",
+  //相对于根目录
+  alias: {
+    "@m": "public/base/module",
+    "@c": "public/pages/common",
+    "@center": "public/pages/center"
+  },
   entry: {
     register: "public/manage/login/register",
     login: "public/manage/login/login",

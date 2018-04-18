@@ -3,7 +3,6 @@
  * 配置的路径转换为绝对路径
  */
 const path = require("path");
-const config = require("../../alias");
 const getDir = url => path.join(__dirname, "../../../", url);
 
 const absolutePath = config => {
@@ -16,6 +15,7 @@ const absolutePath = config => {
 };
 
 module.exports = context => option => {
-  Object.assign(option.resolve.alias, absolutePath(config));
+  const { config } = context;
+  Object.assign(option.resolve.alias, absolutePath(config.alias));
   return option;
 };
