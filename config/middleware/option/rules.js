@@ -1,8 +1,8 @@
 /**
  * rules
  */
-
-const node_modules = path.join(__dirname, "../../", node_modules);
+const path = require("path");
+const node_modules = path.join(__dirname, "../../", "node_modules");
 const rules = [
   {
     test: /\.js$/,
@@ -35,4 +35,8 @@ const rules = [
   }
 ];
 
-module.exports = option => (option.module.rules = rules);
+module.exports = context => option => {
+  option.module = option.module || {};
+  option.module.rules = rules;
+  return option;
+};

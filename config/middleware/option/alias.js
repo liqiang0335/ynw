@@ -15,6 +15,7 @@ const absolutePath = config => {
   return target;
 };
 
-module.exports = option => {
+module.exports = context => option => {
   Object.assign(option.resolve.alias, absolutePath(config));
+  return option;
 };

@@ -9,15 +9,25 @@
  * node config/webpack key=test env=production
  *
  */
-///////////////////////////////
 
+/**
+ * Module
+ */
 const fs = require("fs");
 const path = require("path");
 const webpack = require("webpack");
 const colors = require("colors");
 const UglifyJSPlugin = require("uglifyjs-webpack-plugin");
 const compose = (...fn) => fn.reduce((a, b) => (...args) => a(b(...args)));
-const { exec, getParam } = require("./fn");
+const applyMiddleware = (api, middlewares) => {
+  const chain = (middlewareApi = middlewares.map(item => item(api)));
+  return compose(...chain);
+};
+
+/**
+ * 导入设置
+ */
+const { exec, getParam } = require("./utils/fn");
 const entryConfig = require("./entry");
 const optionMiddleware = require("./middleware/option");
 const execMiddleware = require("./middleware/exec");
@@ -25,33 +35,26 @@ const execMiddleware = require("./middleware/exec");
 /**
  * 环境参数
  */
-const getContext = f => {
+const getContext = () => {
   const key = getParam("key");
   if (!(key && entryConfig[key])) {
     console.log(`key匹配错误`);
   }
   const env = getParam("env") || "development";
   const value = entryConfig[key];
-  const valueIsObj = typeof value !== "string"; //参数是对象格式
-
-  return {
-    env,
-    value,
-    valueIsObj
-  };
+  const isPlain = typeof value !== "string"; //参数是对象格式
+  return { env, value, isPlain };
 };
 
 /**
- * 配置选项
+ * 基本配置
  */
-const createOption = function(context, middlewares) {
+const createOption = function(context) {
   const getDir = url => path.join(__dirname, "../", url);
-  const { value, env, valueIsObj } = context;
-
-  const relativePath = valueIsObj ? value.entry : value;
+  const { value, env, isPlain } = context;
+  const relativePath = isPlain ? value.entry : value;
   const fileName = relativePath.match(/[^\/]+$/);
   const absolutePath = getDir(relativePath);
-
   const option = {
     mode: env,
     entry: {
@@ -59,36 +62,31 @@ const createOption = function(context, middlewares) {
     },
     output: {
       path: path.dirname(absolutePath),
-      filename: "[name].bundle.js",
-      publicPath: "/kdht/public/yueniu/"
+      filename: "[name].bundle.js"
     },
     resolve: {
       extensions: [".js", ".vue"],
       alias: { vue$: "vue/dist/vue.esm" }
     }
   };
-
-  return compose(middlewares)(option);
+  return option;
 };
 
-/* MAIN */
+/* 运行 */
 
-(function() {
+(function main() {
+  const context = getContext();
+  const option = createOption(context);
+  const decorateOption = applyMiddleware(context, optionMiddleware)(option);
+  const call = exec(applyMiddleware(context, execMiddleware));
   const package = {
     development() {
-      webpack(option).watch(
-        {
-          aggregateTimeout: 300,
-          poll: 1000
-        },
-        exec(compose(execMiddleware))
-      );
+      const watchOps = { aggregateTimeout: 300, poll: 1000 };
+      webpack(decorateOption).watch(watchOps, call);
     },
     production() {
-      webpack(option).run(exec(callback));
+      webpack(decorateOption).run(call);
     }
   };
-
-  //打包
-  package[env]();
+  package[context.env]();
 })();
