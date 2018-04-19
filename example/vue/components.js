@@ -1,6 +1,6 @@
-// dynamic import vue component
+// 动态导入组件
 import Vue from "vue";
-const comps = require.context("./vue", true, /\.vue$/);
+const comps = require.context("./comp", true, /\.vue$/);
 comps.keys().forEach(url => {
   const config = comps(url);
   const matchName = url.match(/([a-zA-Z]+)\.vue$/);

@@ -1,6 +1,6 @@
 import Vue from "vue";
 import plugins from "./plugin";
-import "./comps";
+import "./components";
 
 Vue.use(plugins);
 

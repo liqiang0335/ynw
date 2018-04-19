@@ -3,9 +3,8 @@
    node config/webpack key=test
 */
 module.exports = {
-  //相对于根目录
   alias: {},
   entry: {
-    demo: "demo/index"
+    vue: "example/vue/index"
   }
 };
