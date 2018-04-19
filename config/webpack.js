@@ -73,7 +73,8 @@ const createOption = function(context) {
     },
     output: {
       path: path.dirname(absolutePath),
-      filename: "[name].bundle.js"
+      filename: "[name].bundle.js",
+      chunkFilename: "[name].chunk.js"
     },
     resolve: {
       extensions: [".js", ".vue", ".json"],

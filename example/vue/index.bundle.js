@@ -1,6 +1,41 @@
 /******/ (function(modules) { // webpackBootstrap
+/******/ 	// install a JSONP callback for chunk loading
+/******/ 	function webpackJsonpCallback(data) {
+/******/ 		var chunkIds = data[0];
+/******/ 		var moreModules = data[1];
+/******/
+/******/ 		// add "moreModules" to the modules object,
+/******/ 		// then flag all "chunkIds" as loaded and fire callback
+/******/ 		var moduleId, chunkId, i = 0, resolves = [];
+/******/ 		for(;i < chunkIds.length; i++) {
+/******/ 			chunkId = chunkIds[i];
+/******/ 			if(installedChunks[chunkId]) {
+/******/ 				resolves.push(installedChunks[chunkId][0]);
+/******/ 			}
+/******/ 			installedChunks[chunkId] = 0;
+/******/ 		}
+/******/ 		for(moduleId in moreModules) {
+/******/ 			if(Object.prototype.hasOwnProperty.call(moreModules, moduleId)) {
+/******/ 				modules[moduleId] = moreModules[moduleId];
+/******/ 			}
+/******/ 		}
+/******/ 		if(parentJsonpFunction) parentJsonpFunction(data);
+/******/ 		while(resolves.length) {
+/******/ 			resolves.shift()();
+/******/ 		}
+/******/
+/******/ 	};
+/******/
+/******/
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
+/******/
+/******/ 	// object to store loaded and loading chunks
+/******/ 	var installedChunks = {
+/******/ 		"index": 0
+/******/ 	};
+/******/
+/******/
 /******/
 /******/ 	// The require function
 /******/ 	function __webpack_require__(moduleId) {
@@ -26,6 +61,64 @@
 /******/ 		return module.exports;
 /******/ 	}
 /******/
+/******/ 	// This file contains only the entry chunk.
+/******/ 	// The chunk loading function for additional chunks
+/******/ 	__webpack_require__.e = function requireEnsure(chunkId) {
+/******/ 		var promises = [];
+/******/
+/******/
+/******/ 		// JSONP chunk loading for javascript
+/******/
+/******/ 		var installedChunkData = installedChunks[chunkId];
+/******/ 		if(installedChunkData !== 0) { // 0 means "already installed".
+/******/
+/******/ 			// a Promise means "currently loading".
+/******/ 			if(installedChunkData) {
+/******/ 				promises.push(installedChunkData[2]);
+/******/ 			} else {
+/******/ 				// setup Promise in chunk cache
+/******/ 				var promise = new Promise(function(resolve, reject) {
+/******/ 					installedChunkData = installedChunks[chunkId] = [resolve, reject];
+/******/ 				});
+/******/ 				promises.push(installedChunkData[2] = promise);
+/******/
+/******/ 				// start chunk loading
+/******/ 				var head = document.getElementsByTagName('head')[0];
+/******/ 				var script = document.createElement('script');
+/******/
+/******/ 				script.charset = 'utf-8';
+/******/ 				script.timeout = 120;
+/******/
+/******/ 				if (__webpack_require__.nc) {
+/******/ 					script.setAttribute("nonce", __webpack_require__.nc);
+/******/ 				}
+/******/ 				script.src = __webpack_require__.p + "" + ({}[chunkId]||chunkId) + ".chunk.js";
+/******/ 				var timeout = setTimeout(function(){
+/******/ 					onScriptComplete({ type: 'timeout', target: script });
+/******/ 				}, 120000);
+/******/ 				script.onerror = script.onload = onScriptComplete;
+/******/ 				function onScriptComplete(event) {
+/******/ 					// avoid mem leaks in IE.
+/******/ 					script.onerror = script.onload = null;
+/******/ 					clearTimeout(timeout);
+/******/ 					var chunk = installedChunks[chunkId];
+/******/ 					if(chunk !== 0) {
+/******/ 						if(chunk) {
+/******/ 							var errorType = event && (event.type === 'load' ? 'missing' : event.type);
+/******/ 							var realSrc = event && event.target && event.target.src;
+/******/ 							var error = new Error('Loading chunk ' + chunkId + ' failed.\n(' + errorType + ': ' + realSrc + ')');
+/******/ 							error.type = errorType;
+/******/ 							error.request = realSrc;
+/******/ 							chunk[1](error);
+/******/ 						}
+/******/ 						installedChunks[chunkId] = undefined;
+/******/ 					}
+/******/ 				};
+/******/ 				head.appendChild(script);
+/******/ 			}
+/******/ 		}
+/******/ 		return Promise.all(promises);
+/******/ 	};
 /******/
 /******/ 	// expose the modules object (__webpack_modules__)
 /******/ 	__webpack_require__.m = modules;
@@ -64,6 +157,16 @@
 /******/ 	// __webpack_public_path__
 /******/ 	__webpack_require__.p = "";
 /******/
+/******/ 	// on error function for async loading
+/******/ 	__webpack_require__.oe = function(err) { console.error(err); throw err; };
+/******/
+/******/ 	var jsonpArray = window["webpackJsonp"] = window["webpackJsonp"] || [];
+/******/ 	var oldJsonpFunction = jsonpArray.push.bind(jsonpArray);
+/******/ 	jsonpArray.push = webpackJsonpCallback;
+/******/ 	jsonpArray = jsonpArray.slice();
+/******/ 	for(var i = 0; i < jsonpArray.length; i++) webpackJsonpCallback(jsonpArray[i]);
+/******/ 	var parentJsonpFunction = oldJsonpFunction;
+/******/
 /******/
 /******/ 	// Load entry module and return exports
 /******/ 	return __webpack_require__(__webpack_require__.s = "./example/vue/index.js");
@@ -71,14 +174,26 @@
 /************************************************************************/
 /******/ ({
 
-/***/ "./example/vue/comp sync recursive \\.vue$":
-/*!**************************************!*\
-  !*** ./example/vue/comp sync \.vue$ ***!
-  \**************************************/
+/***/ "./example/vue/codeSplit.js":
+/*!**********************************!*\
+  !*** ./example/vue/codeSplit.js ***!
+  \**********************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("var map = {\n\t\"./a.vue\": \"./example/vue/comp/a.vue\",\n\t\"./b.vue\": \"./example/vue/comp/b.vue\",\n\t\"./sub/c.vue\": \"./example/vue/comp/sub/c.vue\"\n};\n\n\nfunction webpackContext(req) {\n\tvar id = webpackContextResolve(req);\n\tvar module = __webpack_require__(id);\n\treturn module;\n}\nfunction webpackContextResolve(req) {\n\tvar id = map[req];\n\tif(!(id + 1)) { // check for number or string\n\t\tvar e = new Error('Cannot find module \"' + req + '\".');\n\t\te.code = 'MODULE_NOT_FOUND';\n\t\tthrow e;\n\t}\n\treturn id;\n}\nwebpackContext.keys = function webpackContextKeys() {\n\treturn Object.keys(map);\n};\nwebpackContext.resolve = webpackContextResolve;\nmodule.exports = webpackContext;\nwebpackContext.id = \"./example/vue/comp sync recursive \\\\.vue$\";\n\n//# sourceURL=webpack:///./example/vue/comp_sync_\\.vue$?");
+"use strict";
+eval("\n\n/**\r\n * 按需导入\r\n */\nfunction asyncImport() {\n  return __webpack_require__.e(/*! import() */ 0).then(function() { var module = __webpack_require__(/*! lodash */ \"./node_modules/_lodash@4.17.5@lodash/lodash.js\"); return typeof module === \"object\" && module && module.__esModule ? module : Object.assign({/* fake namespace object */}, typeof module === \"object\" && module, { \"default\": module }); });\n}\n\n//3秒后导入组件\nsetTimeout(function (f) {\n  asyncImport().then(function (v) {\n    console.log(_);\n  });\n}, 3000);\n\n//# sourceURL=webpack:///./example/vue/codeSplit.js?");
+
+/***/ }),
+
+/***/ "./example/vue/comp sync \\.vue$":
+/*!***************************************************!*\
+  !*** ./example/vue/comp sync nonrecursive \.vue$ ***!
+  \***************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+eval("var map = {\n\t\"./a.vue\": \"./example/vue/comp/a.vue\",\n\t\"./b.vue\": \"./example/vue/comp/b.vue\"\n};\n\n\nfunction webpackContext(req) {\n\tvar id = webpackContextResolve(req);\n\tvar module = __webpack_require__(id);\n\treturn module;\n}\nfunction webpackContextResolve(req) {\n\tvar id = map[req];\n\tif(!(id + 1)) { // check for number or string\n\t\tvar e = new Error('Cannot find module \"' + req + '\".');\n\t\te.code = 'MODULE_NOT_FOUND';\n\t\tthrow e;\n\t}\n\treturn id;\n}\nwebpackContext.keys = function webpackContextKeys() {\n\treturn Object.keys(map);\n};\nwebpackContext.resolve = webpackContextResolve;\nmodule.exports = webpackContext;\nwebpackContext.id = \"./example/vue/comp sync \\\\.vue$\";\n\n//# sourceURL=webpack:///./example/vue/comp_sync_nonrecursive_\\.vue$?");
 
 /***/ }),
 
@@ -106,27 +221,15 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _nod
 
 /***/ }),
 
-/***/ "./example/vue/comp/sub/c.vue":
-/*!************************************!*\
-  !*** ./example/vue/comp/sub/c.vue ***!
-  \************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _node_modules_vue_loader_14_2_2_vue_loader_lib_template_compiler_index_id_data_v_42c37ce0_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_14_2_2_vue_loader_lib_selector_type_template_index_0_c_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !../../../../node_modules/_vue-loader@14.2.2@vue-loader/lib/template-compiler/index?{\"id\":\"data-v-42c37ce0\",\"hasScoped\":false,\"optionsId\":\"0\",\"buble\":{\"transforms\":{}}}!../../../../node_modules/_vue-loader@14.2.2@vue-loader/lib/selector?type=template&index=0!./c.vue */ \"./node_modules/_vue-loader@14.2.2@vue-loader/lib/template-compiler/index.js?{\\\"id\\\":\\\"data-v-42c37ce0\\\",\\\"hasScoped\\\":false,\\\"optionsId\\\":\\\"0\\\",\\\"buble\\\":{\\\"transforms\\\":{}}}!./node_modules/_vue-loader@14.2.2@vue-loader/lib/selector.js?type=template&index=0!./example/vue/comp/sub/c.vue\");\n/* harmony import */ var _node_modules_vue_loader_14_2_2_vue_loader_lib_runtime_component_normalizer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../../node_modules/_vue-loader@14.2.2@vue-loader/lib/runtime/component-normalizer */ \"./node_modules/_vue-loader@14.2.2@vue-loader/lib/runtime/component-normalizer.js\");\nvar disposed = false\n/* script */\nvar __vue_script__ = null\n/* template */\n\n/* template functional */\nvar __vue_template_functional__ = false\n/* styles */\nvar __vue_styles__ = null\n/* scopeId */\nvar __vue_scopeId__ = null\n/* moduleIdentifier (server only) */\nvar __vue_module_identifier__ = null\n\nvar Component = Object(_node_modules_vue_loader_14_2_2_vue_loader_lib_runtime_component_normalizer__WEBPACK_IMPORTED_MODULE_1__[\"default\"])(\n  __vue_script__,\n  _node_modules_vue_loader_14_2_2_vue_loader_lib_template_compiler_index_id_data_v_42c37ce0_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_14_2_2_vue_loader_lib_selector_type_template_index_0_c_vue__WEBPACK_IMPORTED_MODULE_0__[\"render\"],\n  _node_modules_vue_loader_14_2_2_vue_loader_lib_template_compiler_index_id_data_v_42c37ce0_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_14_2_2_vue_loader_lib_selector_type_template_index_0_c_vue__WEBPACK_IMPORTED_MODULE_0__[\"staticRenderFns\"],\n  __vue_template_functional__,\n  __vue_styles__,\n  __vue_scopeId__,\n  __vue_module_identifier__\n)\nComponent.options.__file = \"example\\\\vue\\\\comp\\\\sub\\\\c.vue\"\n\n/* hot reload */\nif (false) {}\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (Component.exports);\n\n\n//# sourceURL=webpack:///./example/vue/comp/sub/c.vue?");
-
-/***/ }),
-
-/***/ "./example/vue/components.js":
-/*!***********************************!*\
-  !*** ./example/vue/components.js ***!
-  \***********************************/
+/***/ "./example/vue/dynamic.js":
+/*!********************************!*\
+  !*** ./example/vue/dynamic.js ***!
+  \********************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\nvar _vue = __webpack_require__(/*! vue */ \"./node_modules/_vue@2.5.16@vue/dist/vue.esm.js\");\n\nvar _vue2 = _interopRequireDefault(_vue);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nvar context = __webpack_require__(\"./example/vue/comp sync recursive \\\\.vue$\"); // 动态导入组件\n\ncontext.keys().forEach(function (url) {\n  var config = context(url);\n  var matchName = url.match(/([a-zA-Z]+)\\.vue$/);\n  var name = matchName[1].replace(/^([a-zA-Z])/, function (match) {\n    return match.toUpperCase();\n  });\n  _vue2.default.component(\"yn\" + name, config.default);\n});\n\n//# sourceURL=webpack:///./example/vue/components.js?");
+eval("\n\nvar _vue = __webpack_require__(/*! vue */ \"./node_modules/_vue@2.5.16@vue/dist/vue.esm.js\");\n\nvar _vue2 = _interopRequireDefault(_vue);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nvar context = __webpack_require__(\"./example/vue/comp sync \\\\.vue$\"); // 动态导入组件\n\ncontext.keys().forEach(function (url) {\n  var config = context(url);\n  var matchName = url.match(/([a-zA-Z]+)\\.vue$/);\n  var name = matchName[1].replace(/^([a-zA-Z])/, function (match) {\n    return match.toUpperCase();\n  });\n  _vue2.default.component(\"yn\" + name, config.default);\n});\n\n//# sourceURL=webpack:///./example/vue/dynamic.js?");
 
 /***/ }),
 
@@ -138,7 +241,7 @@ eval("\n\nvar _vue = __webpack_require__(/*! vue */ \"./node_modules/_vue@2.5.16
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\nvar _vue = __webpack_require__(/*! vue */ \"./node_modules/_vue@2.5.16@vue/dist/vue.esm.js\");\n\nvar _vue2 = _interopRequireDefault(_vue);\n\nvar _plugin = __webpack_require__(/*! ./plugin */ \"./example/vue/plugin.js\");\n\nvar _plugin2 = _interopRequireDefault(_plugin);\n\n__webpack_require__(/*! ./components */ \"./example/vue/components.js\");\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\n_vue2.default.use(_plugin2.default);\n\nnew _vue2.default({\n  el: \"#app\"\n});\n\n//# sourceURL=webpack:///./example/vue/index.js?");
+eval("\n\nvar _vue = __webpack_require__(/*! vue */ \"./node_modules/_vue@2.5.16@vue/dist/vue.esm.js\");\n\nvar _vue2 = _interopRequireDefault(_vue);\n\nvar _plugin = __webpack_require__(/*! ./plugin */ \"./example/vue/plugin.js\");\n\nvar _plugin2 = _interopRequireDefault(_plugin);\n\n__webpack_require__(/*! ./dynamic */ \"./example/vue/dynamic.js\");\n\n__webpack_require__(/*! ./codeSplit */ \"./example/vue/codeSplit.js\");\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\n//按需导入\n\n//插件\n_vue2.default.use(_plugin2.default); //动态导入\n\n\nnew _vue2.default({\n  el: \"#app\"\n});\n\n//# sourceURL=webpack:///./example/vue/index.js?");
 
 /***/ }),
 
@@ -265,18 +368,6 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) *
 
 "use strict";
 eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"render\", function() { return render; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"staticRenderFns\", function() { return staticRenderFns; });\nvar render = function() {\n  var _vm = this\n  var _h = _vm.$createElement\n  var _c = _vm._self._c || _h\n  return _vm._m(0)\n}\nvar staticRenderFns = [\n  function() {\n    var _vm = this\n    var _h = _vm.$createElement\n    var _c = _vm._self._c || _h\n    return _c(\"div\", [_c(\"h1\", [_vm._v(\"B\")])])\n  }\n]\nrender._withStripped = true\n\nif (false) {}\n\n//# sourceURL=webpack:///./example/vue/comp/b.vue?./node_modules/_vue-loader@14.2.2@vue-loader/lib/template-compiler?%7B%22id%22:%22data-v-23c6432b%22,%22hasScoped%22:true,%22optionsId%22:%220%22,%22buble%22:%7B%22transforms%22:%7B%7D%7D%7D!./node_modules/_vue-loader@14.2.2@vue-loader/lib/selector.js?type=template&index=0");
-
-/***/ }),
-
-/***/ "./node_modules/_vue-loader@14.2.2@vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-42c37ce0\",\"hasScoped\":false,\"optionsId\":\"0\",\"buble\":{\"transforms\":{}}}!./node_modules/_vue-loader@14.2.2@vue-loader/lib/selector.js?type=template&index=0!./example/vue/comp/sub/c.vue":
-/*!*******************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/_vue-loader@14.2.2@vue-loader/lib/template-compiler?{"id":"data-v-42c37ce0","hasScoped":false,"optionsId":"0","buble":{"transforms":{}}}!./node_modules/_vue-loader@14.2.2@vue-loader/lib/selector.js?type=template&index=0!./example/vue/comp/sub/c.vue ***!
-  \*******************************************************************************************************************************************************************************************************************************************************************************/
-/*! exports provided: render, staticRenderFns */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"render\", function() { return render; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"staticRenderFns\", function() { return staticRenderFns; });\nvar render = function() {\n  var _vm = this\n  var _h = _vm.$createElement\n  var _c = _vm._self._c || _h\n  return _vm._m(0)\n}\nvar staticRenderFns = [\n  function() {\n    var _vm = this\n    var _h = _vm.$createElement\n    var _c = _vm._self._c || _h\n    return _c(\"div\", [_c(\"h1\", [_vm._v(\"C\")])])\n  }\n]\nrender._withStripped = true\n\nif (false) {}\n\n//# sourceURL=webpack:///./example/vue/comp/sub/c.vue?./node_modules/_vue-loader@14.2.2@vue-loader/lib/template-compiler?%7B%22id%22:%22data-v-42c37ce0%22,%22hasScoped%22:false,%22optionsId%22:%220%22,%22buble%22:%7B%22transforms%22:%7B%7D%7D%7D!./node_modules/_vue-loader@14.2.2@vue-loader/lib/selector.js?type=template&index=0");
 
 /***/ }),
 
