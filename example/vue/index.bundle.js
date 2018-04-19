@@ -162,7 +162,7 @@ eval("\n\n/**\r\n * 插件\r\n */\nmodule.exports.install = function (Vue) {\n  
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nvar _vuex = __webpack_require__(/*! vuex */ \"./node_modules/_vuex@3.0.1@vuex/dist/vuex.esm.js\");\n\nexports.default = {\n  mounted: function mounted() {}\n}; //\n//\n//\n//\n//\n\n//# sourceURL=webpack:///./example/vue/comp/a.vue?./node_modules/_babel-loader@7.1.4@babel-loader/lib!./node_modules/_vue-loader@14.2.2@vue-loader/lib/selector.js?type=script&index=0");
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nvar _vuex = __webpack_require__(/*! vuex */ \"./node_modules/_vuex@3.0.1@vuex/dist/vuex.esm.js\");\n\nexports.default = {}; //\n//\n//\n//\n//\n\n//# sourceURL=webpack:///./example/vue/comp/a.vue?./node_modules/_babel-loader@7.1.4@babel-loader/lib!./node_modules/_vue-loader@14.2.2@vue-loader/lib/selector.js?type=script&index=0");
 
 /***/ }),
 

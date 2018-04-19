@@ -5,9 +5,7 @@
 </template>
 <script>
 import { createName } from "vuex";
-export default {
-  mounted() {}
-};
+export default {};
 </script>
 <style scoped>
 h1 {
