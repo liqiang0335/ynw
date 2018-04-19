@@ -7,5 +7,5 @@ context.keys().forEach(url => {
   const name = matchName[1].replace(/^([a-zA-Z])/, match =>
     match.toUpperCase()
   );
-  Vue.component(`yn${name}`, config.default || config);
+  Vue.component(`yn${name}`, config.default);
 });

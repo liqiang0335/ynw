@@ -1,13 +1,16 @@
+/**
+ * 插件
+ */
 module.exports.install = function(Vue) {
   //注入组件
   Vue.mixin({
     data() {
       return {
-        $msg: "Hello"
+        msg: "Hello"
       };
     },
     methods: {
-      $setState(path, reducer) {
+      setState(path, reducer) {
         this.$store.commit({
           type: "setState",
           path,

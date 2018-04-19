@@ -5,8 +5,5 @@ import "./components";
 Vue.use(plugins);
 
 new Vue({
-  el: "#app",
-  data() {
-    return {};
-  }
+  el: "#app"
 });

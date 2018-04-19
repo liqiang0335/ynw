@@ -4,10 +4,9 @@
   </div>
 </template>
 <script>
+import { createName } from "vuex";
 export default {
-  mounted() {
-    console.log(this.setState);
-  }
+  mounted() {}
 };
 </script>
 <style scoped>

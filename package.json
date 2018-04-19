@@ -42,5 +42,8 @@
     "vue-template-compiler": "^2.5.13",
     "vue-template-es2015-compiler": "^1.6.0",
     "webpack": "^4.0.1"
+  },
+  "dependencies": {
+    "vuex": "^3.0.1"
   }
 }
