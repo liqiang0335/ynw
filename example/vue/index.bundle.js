@@ -92,7 +92,7 @@
 /******/ 				if (__webpack_require__.nc) {
 /******/ 					script.setAttribute("nonce", __webpack_require__.nc);
 /******/ 				}
-/******/ 				script.src = __webpack_require__.p + "" + ({}[chunkId]||chunkId) + ".chunk.js";
+/******/ 				script.src = __webpack_require__.p + "" + ({"vendors~hello":"vendors~hello"}[chunkId]||chunkId) + ".chunk.js";
 /******/ 				var timeout = setTimeout(function(){
 /******/ 					onScriptComplete({ type: 'timeout', target: script });
 /******/ 				}, 120000);
@@ -182,7 +182,7 @@
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\n/**\r\n * 按需导入\r\n */\nfunction asyncImport() {\n  return __webpack_require__.e(/*! import() */ 0).then(function() { var module = __webpack_require__(/*! lodash */ \"./node_modules/_lodash@4.17.5@lodash/lodash.js\"); return typeof module === \"object\" && module && module.__esModule ? module : Object.assign({/* fake namespace object */}, typeof module === \"object\" && module, { \"default\": module }); });\n}\n\n//3秒后导入组件\nsetTimeout(function (f) {\n  asyncImport().then(function (v) {\n    console.log(_);\n  });\n}, 3000);\n\n//# sourceURL=webpack:///./example/vue/codeSplit.js?");
+eval("\n\n/**\r\n * 按需导入\r\n */\nfunction asyncImport() {\n  return __webpack_require__.e(/*! import() | hello */ \"vendors~hello\").then(function() { var module = __webpack_require__(/*! lodash */ \"./node_modules/_lodash@4.17.5@lodash/lodash.js\"); return typeof module === \"object\" && module && module.__esModule ? module : Object.assign({/* fake namespace object */}, typeof module === \"object\" && module, { \"default\": module }); });\n}\n\n//3秒后导入组件\nsetTimeout(function (f) {\n  asyncImport().then(function (v) {\n    console.log(_);\n  });\n}, 3000);\n\n//# sourceURL=webpack:///./example/vue/codeSplit.js?");
 
 /***/ }),
 

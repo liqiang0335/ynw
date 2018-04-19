@@ -2,7 +2,7 @@
  * 按需导入
  */
 function asyncImport() {
-  return import("lodash");
+  return import(/* webpackChunkName: "hello" */ "lodash");
 }
 
 //3秒后导入组件
