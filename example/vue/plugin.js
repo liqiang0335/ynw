@@ -3,11 +3,11 @@ module.exports.install = function(Vue) {
   Vue.mixin({
     data() {
       return {
-        msg: "Hello"
+        $msg: "Hello"
       };
     },
     methods: {
-      setState(path, reducer) {
+      $setState(path, reducer) {
         this.$store.commit({
           type: "setState",
           path,

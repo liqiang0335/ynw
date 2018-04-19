@@ -126,7 +126,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _nod
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\nvar _vue = __webpack_require__(/*! vue */ \"./node_modules/_vue@2.5.16@vue/dist/vue.esm.js\");\n\nvar _vue2 = _interopRequireDefault(_vue);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nvar comps = __webpack_require__(\"./example/vue/comp sync recursive \\\\.vue$\"); // 动态导入组件\n\ncomps.keys().forEach(function (url) {\n  var config = comps(url);\n  var matchName = url.match(/([a-zA-Z]+)\\.vue$/);\n  var name = matchName[1].replace(/^([a-zA-Z])/, function (match) {\n    return match.toUpperCase();\n  });\n  _vue2.default.component(\"yn\" + name, config.default || config);\n});\n\n//# sourceURL=webpack:///./example/vue/components.js?");
+eval("\n\nvar _vue = __webpack_require__(/*! vue */ \"./node_modules/_vue@2.5.16@vue/dist/vue.esm.js\");\n\nvar _vue2 = _interopRequireDefault(_vue);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nvar context = __webpack_require__(\"./example/vue/comp sync recursive \\\\.vue$\"); // 动态导入组件\n\ncontext.keys().forEach(function (url) {\n  var config = context(url);\n  var matchName = url.match(/([a-zA-Z]+)\\.vue$/);\n  var name = matchName[1].replace(/^([a-zA-Z])/, function (match) {\n    return match.toUpperCase();\n  });\n  _vue2.default.component(\"yn\" + name, config.default || config);\n});\n\n//# sourceURL=webpack:///./example/vue/components.js?");
 
 /***/ }),
 
@@ -150,7 +150,7 @@ eval("\n\nvar _vue = __webpack_require__(/*! vue */ \"./node_modules/_vue@2.5.16
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\nmodule.exports.install = function (Vue) {\n  //注入组件\n  Vue.mixin({\n    data: function data() {\n      return {\n        msg: \"Hello\"\n      };\n    },\n\n    methods: {\n      setState: function setState(path, reducer) {\n        this.$store.commit({\n          type: \"setState\",\n          path: path,\n          reducer: reducer\n        });\n      }\n    }\n  });\n};\n\n//# sourceURL=webpack:///./example/vue/plugin.js?");
+eval("\n\nmodule.exports.install = function (Vue) {\n  //注入组件\n  Vue.mixin({\n    data: function data() {\n      return {\n        $msg: \"Hello\"\n      };\n    },\n\n    methods: {\n      $setState: function $setState(path, reducer) {\n        this.$store.commit({\n          type: \"setState\",\n          path: path,\n          reducer: reducer\n        });\n      }\n    }\n  });\n};\n\n//# sourceURL=webpack:///./example/vue/plugin.js?");
 
 /***/ }),
 
