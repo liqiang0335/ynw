@@ -1,5 +1,6 @@
 const path = require("path");
 const { format } = require("date-fns");
+const colors = require("colors");
 
 const getDir = url => path.join(__dirname, "../../../", url);
 
@@ -23,8 +24,9 @@ const colorLog = (counter = 0) => content => {
   counter++;
 };
 
+const log = colorLog(0);
+
 module.exports = context => flag => {
-  const log = colorLog(0);
   const { env, value, isPlain } = context;
   const { html } = value;
   if (isPlain && html) {
