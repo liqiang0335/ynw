@@ -1,8 +1,8 @@
 import Vue from "vue";
-import plugins from "./plugin";
+import plugin from "./plugin";
 import "./components";
 
-Vue.use(plugins);
+Vue.use(plugin);
 
 new Vue({
   el: "#app"
