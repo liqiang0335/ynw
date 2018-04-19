@@ -19,18 +19,29 @@ const webpack = require("webpack");
 const colors = require("colors");
 const UglifyJSPlugin = require("uglifyjs-webpack-plugin");
 const compose = (...fn) => fn.reduce((a, b) => (...args) => a(b(...args)));
-const applyMiddleware = (context, middlewares) => {
-  const chain = middlewares.map(item => item(context));
+const applyMiddleware = (api, middlewares) => {
+  const chain = (middlewareApi = middlewares.map(item => item(api)));
   return compose(...chain);
 };
 
 /**
  * 导入设置
  */
-const { exec, getParam } = require("./utils/fn");
 const config = require("./config");
 const optionMiddleware = require("./middleware/option");
 const execMiddleware = require("./middleware/output");
+
+/**
+ * 从命令行提取参数
+ * @param {String} key
+ */
+function getParam(key) {
+  const argv = process.argv.join("@");
+  const re = `${key}=([^@]+)`;
+  const reg = new RegExp(re);
+  const match = argv.match(reg);
+  return match ? match[1] : "";
+}
 
 /**
  * 环境参数
@@ -65,11 +76,35 @@ const createOption = function(context) {
       filename: "[name].bundle.js"
     },
     resolve: {
-      extensions: [".js", ".vue"],
+      extensions: [".js", ".vue", ".json"],
       alias: { vue$: "vue/dist/vue.esm" }
     }
   };
   return option;
+};
+
+/**
+ * Webpack 打包回调
+ * @param {Function} callback
+ */
+const exec = callback => (err, stats) => {
+  if (err) {
+    console.error(err.stack || err);
+    if (err.details) {
+      console.error(err.details);
+    }
+    callback(false);
+    return;
+  }
+  const info = stats.toJson();
+  if (stats.hasErrors()) {
+    console.error(info.errors);
+  }
+  if (stats.hasWarnings()) {
+    console.warn(info.warnings);
+  }
+  console.log(stats.toString({ chunks: false, colors: true }));
+  callback(true);
 };
 
 /* 运行 */

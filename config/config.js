@@ -3,6 +3,7 @@
    node config/webpack key=test
 */
 module.exports = {
+  //相对于根目录
   alias: {
     "@m": "public/base/module",
     "@c": "public/pages/common",
