@@ -2,7 +2,7 @@
  * rules
  */
 const path = require("path");
-const node_modules = path.join(__dirname, "../../", "node_modules");
+const node_modules = path.join(__dirname, "../../../", "node_modules");
 const rules = [
   {
     test: /\.js$/,
