@@ -1,9 +1,10 @@
 import Vue from "vue";
-import plugin from "./src/plugin"; //插件
-import "./src/dynamic"; //动态导入
-import "./src/codeSplit"; //按需导入
+import _ from "lodash";
 
-Vue.use(plugin);
+alert(1);
+
+console.log(Vue);
+console.log(123456);
 
 new Vue({
   el: "#app"

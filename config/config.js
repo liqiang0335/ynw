@@ -4,7 +4,10 @@
 */
 module.exports = {
   alias: {},
-  entry: {
-    vue: "example/vue/index"
+  keys: {
+    vue: {
+      entry: "example/vue/index",
+      publicPath: "/dist/"
+    }
   }
 };

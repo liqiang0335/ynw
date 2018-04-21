@@ -1,7 +1,4 @@
-/**
- * @param key
- * @param env
- *
+/*
  * 开发环境打包
  * node public/config/webpack key=test
  *
@@ -48,13 +45,13 @@ function getParam(key) {
  */
 const getContext = () => {
   const key = getParam("key");
-  if (!(key && config.entry[key])) {
+  if (!(key && config.keys[key])) {
     console.log(`KEY匹配错误`.red);
   }
   const env = getParam("env") || "development";
-  const value = config.entry[key];
+  const value = config.keys[key];
   const isPlain = typeof value !== "string"; //参数是对象格式
-  return { env, value, isPlain, config: config };
+  return { env, value, isPlain, config };
 };
 
 /**
@@ -79,7 +76,9 @@ const createOption = function(context) {
     resolve: {
       extensions: [".js", ".vue", ".json"],
       alias: { vue$: "vue/dist/vue.esm" }
-    }
+    },
+    module: {},
+    plugins: []
   };
   return option;
 };
@@ -114,6 +113,9 @@ const exec = callback => (err, stats) => {
   const context = getContext();
   const option = createOption(context);
   const decorateOption = applyMiddleware(context, optionMiddleware)(option);
+  console.log(">>>> webpack.config".green);
+  console.log(JSON.stringify(decorateOption));
+  console.log("<<<< webpack.config".green);
   const launch = exec(applyMiddleware(context, execMiddleware));
   const package = {
     development() {
