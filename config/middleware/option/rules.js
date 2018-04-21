@@ -6,18 +6,8 @@ const node_modules = path.join(__dirname, "../../../node_modules");
 const rules = [
   {
     test: /\.js$/,
-    exclude: [node_modules],
-    use: [
-      {
-        loader: "babel-loader",
-        options: {
-          presets: ["es2015", "stage-0"]
-        }
-      },
-      {
-        loader: "uglify-template-string-loader"
-      }
-    ]
+    use: ["babel-loader", "uglify-template-string-loader"],
+    exclude: [node_modules]
   },
   {
     test: /\.vue$/,

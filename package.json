@@ -27,6 +27,7 @@
     "browser-sync": "^2.23.6",
     "colors": "^1.1.2",
     "css-loader": "^0.28.10",
+    "date-fns": "^1.29.0",
     "extract-text-webpack-plugin": "^3.0.2",
     "file-loader": "^1.1.11",
     "gulp": "^3.9.1",
@@ -38,10 +39,11 @@
     "uglify-template-string-loader": "^1.0.0",
     "uglifyjs-webpack-plugin": "^1.2.2",
     "url-loader": "^1.0.1",
+    "vue": "^2.5.16",
     "vue-loader": "^14.2.1",
+    "vue-router": "^3.0.1",
     "vue-template-compiler": "^2.5.13",
     "vue-template-es2015-compiler": "^1.6.0",
-    "date-fns": "^1.29.0",
     "vuex": "^3.0.1",
     "webpack": "^4.0.1"
   }
