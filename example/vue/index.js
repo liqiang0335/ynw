@@ -1,11 +1,7 @@
 import Vue from "vue";
-import _ from "lodash";
+import "./src/dynamic";
+import "./src/codeSplit";
 
-alert(1);
-
-console.log(Vue);
-console.log(123456);
-
-new Vue({
+const vm = new Vue({
   el: "#app"
 });

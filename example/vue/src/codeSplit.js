@@ -1,21 +1,20 @@
-//3秒后导入组件
-setTimeout(f => {
-  require.ensure(
-    [],
-    require => {
-      require("./comp/chunk-a");
-    },
-    "lib"
-  );
-}, 3000);
+import Vue from "vue";
 
-//3秒后导入组件
-setTimeout(f => {
-  require.ensure(
-    [],
-    require => {
-      require("./comp/chunk-b");
-    },
-    "lib"
-  );
-}, 3000);
+/**
+ * 代码分隔
+ */
+Vue.component("async-comp-b", resolve => {
+  setTimeout(() => {
+    import(/* webpackChunkName:"footer" */ "./comp/b").then(comp => {
+      resolve(comp.default);
+    });
+  }, 1000);
+});
+
+Vue.component("async-comp-a", resolve => {
+  setTimeout(() => {
+    import(/* webpackChunkName:"footer" */ "./comp/a").then(comp => {
+      resolve(comp.default);
+    });
+  }, 1000);
+});

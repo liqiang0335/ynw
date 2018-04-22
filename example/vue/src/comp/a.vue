@@ -1,11 +1,13 @@
 <template>
   <div>
-    <h1>A-{{msg}}</h1>
+    <h1>Comp-A</h1>
   </div>
 </template>
 <script>
 import { createName } from "vuex";
-export default {};
+export default {
+  name: "myAsyncA"
+};
 </script>
 <style scoped>
 h1 {

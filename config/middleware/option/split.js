@@ -6,7 +6,7 @@ const plugin = new webpack.optimize.SplitChunksPlugin({
   minChunks: 1,
   maxAsyncRequests: 5,
   maxInitialRequests: 3,
-  name: true,
+  name: "modules",
   cacheGroups: {
     default: {
       minChunks: 2,

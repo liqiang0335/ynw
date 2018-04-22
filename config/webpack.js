@@ -113,9 +113,9 @@ const exec = callback => (err, stats) => {
   const context = getContext();
   const option = createOption(context);
   const decorateOption = applyMiddleware(context, optionMiddleware)(option);
-  console.log(">>>> webpack.config".green);
+  console.log(">>>> webpack.config begin".green);
   console.log(JSON.stringify(decorateOption));
-  console.log("<<<< webpack.config".green);
+  console.log("<<<< webpack.config end".green);
   const launch = exec(applyMiddleware(context, execMiddleware));
   const package = {
     development() {
