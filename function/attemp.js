@@ -11,12 +11,3 @@ const attemp = (fn, ...args) => {
 };
 
 module.exports = attemp;
-
-/* EXAMPLE
-
-  var elements = attempt(function(selector) {
-  return document.querySelectorAll(selector);
-}, ">_>");
-if (elements instanceof Error) elements = []; // elements = []
-
-*/
