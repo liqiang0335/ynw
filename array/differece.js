@@ -1,0 +1,9 @@
+/**
+ * 非两个数组的交集
+ */
+const difference = (a, b) => {
+  const s = new Set(b);
+  return a.filter(x => !s.has(x));
+};
+
+module.exports = difference;
