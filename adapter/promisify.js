@@ -6,4 +6,4 @@ const promisify = func => (...args) =>
     func(...args, (err, result) => (err ? reject(err) : resolve(result)))
   );
 
-export default promisify;
+module.exports = promisify;
