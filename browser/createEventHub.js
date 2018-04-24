@@ -1,3 +1,6 @@
+/**
+ * 订阅/发布系统
+ */
 const createEventHub = () => ({
   hub: Object.create(null),
   emit(event, data) {
@@ -13,12 +16,4 @@ const createEventHub = () => ({
   }
 });
 
-//订阅事件
-hub.on("message", handler);
-hub.on("message", () => console.log("Message event fired"));
-hub.on("increment", () => increment++);
-
-//广播事件
-hub.emit("message", "hello world");
-hub.emit("message", { hello: "world" });
-hub.emit("increment");
+module.exports = createEventHub;
