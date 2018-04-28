@@ -7,7 +7,7 @@ module.exports = {
   devServer: {},
   keys: {
     index: {
-      entry: "example/index",
+      entry: "index",
       publicPath: "/dist/"
     }
   }
