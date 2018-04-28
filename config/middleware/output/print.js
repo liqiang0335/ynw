@@ -26,11 +26,8 @@ const colorLog = (counter = 0) => content => {
 
 const log = colorLog(0);
 
-module.exports = context => flag => {
-  const { env, value, isPlain } = context;
-  const { html } = value;
-  if (isPlain && html) {
-    writeTimestamp(getDir(html));
-  }
-  log(env);
+module.exports = ({ params, values }) => flag => {
+  const html = values.html;
+  if (html) writeTimestamp(getDir(html));
+  log(params.env);
 };

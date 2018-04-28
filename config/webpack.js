@@ -1,81 +1,94 @@
 /*
  * 开发环境打包
- * node public/config/webpack key=test
+ * node public/config/webpack key=test hot=true
  *
  * 生产环境打包
  * node config/webpack key=test env=production
  *
  */
 
-/**
- * Module
- */
 const fs = require("fs");
 const path = require("path");
 const webpack = require("webpack");
 const colors = require("colors");
 const UglifyJSPlugin = require("uglifyjs-webpack-plugin");
-const compose = (...fn) => fn.reduce((a, b) => (...args) => a(b(...args)));
+const WebpackDevServer = require("webpack-dev-server");
+const config = require("./config");
+const getDir = url => path.join(__dirname, "../", url);
+
+/**
+ * Middleware
+ */
+const optionMiddleware = require("./middleware/option");
+const execMiddleware = require("./middleware/output");
 const applyMiddleware = (api, middlewares) => {
-  const chain = (middlewareApi = middlewares.map(item => item(api)));
+  const compose = (...fn) => fn.reduce((a, b) => (...args) => a(b(...args)));
+  const chain = middlewares.map(item => item(api));
   return compose(...chain);
 };
 
 /**
- * 导入设置
+ * 获取等号分隔的参数
  */
-const config = require("./config");
-const optionMiddleware = require("./middleware/option");
-const execMiddleware = require("./middleware/output");
-
-/**
- * 从命令行提取参数
- * @param {String} key
- */
-function getParam(key) {
-  const argv = process.argv.join("@");
-  const re = `${key}=([^@]+)`;
-  const reg = new RegExp(re);
-  const match = argv.match(reg);
-  return match ? match[1] : "";
+function getParams(arr) {
+  return arr.filter(it => it.indexOf("=") > 0).reduce((acc, cur) => {
+    const [key, value] = cur.split("=");
+    acc[key] = value;
+    return acc;
+  }, {});
 }
 
 /**
  * 环境参数
  */
 const getContext = () => {
-  const key = getParam("key");
-  if (!(key && config.keys[key])) {
-    console.log(`KEY匹配错误`.red);
+  const argv = getParams(process.argv);
+
+  const params = Object.assign(
+    {
+      htmlName: "index.html", //启动文件
+      public: "/dist/", //发布目录
+      key: "index",
+      env: "development"
+    },
+    argv
+  );
+  const values = config.keys[params.key];
+  if (!values) {
+    throw new Error("KEY Not Found");
   }
-  const env = getParam("env") || "development";
-  const value = config.keys[key];
-  const isPlain = typeof value !== "string"; //参数是对象格式
-  return { env, value, isPlain, config };
+
+  params.node_modules = getDir("node_modules");
+  params.absolutePath = getDir(values.entry);
+  params.projectPath = path.dirname(params.absolutePath);
+  params.fileName = values.entry.match(/[^\/]+$/)[0];
+  if (params.hot) {
+    params.hot = 9999; //固定端口号
+  }
+
+  return { values, params, config };
 };
 
 /**
- * 基本配置
+ * 配置文件结构
  */
-const createOption = function(context) {
-  const getDir = url => path.join(__dirname, "../", url);
-  const { value, env, isPlain } = context;
-  const relativePath = isPlain ? value.entry : value;
-  const fileName = relativePath.match(/[^\/]+$/);
-  const absolutePath = getDir(relativePath);
+const createOption = function({ values, params }) {
+  const { projectPath, absolutePath, public, env, fileName } = params;
   const option = {
     mode: env,
     entry: {
       [fileName]: absolutePath
     },
     output: {
-      path: path.dirname(absolutePath) + "/dist/",
+      path: projectPath + public,
       filename: "[name].bundle.js",
       chunkFilename: "chunk.[name].js"
     },
     resolve: {
       extensions: [".js", ".vue", ".json"],
-      alias: { vue$: "vue/dist/vue.esm" }
+      alias: {
+        vue$: "vue/dist/vue.esm"
+      }
     },
     module: {},
     plugins: []
@@ -103,7 +116,12 @@ const exec = callback => (err, stats) => {
   if (stats.hasWarnings()) {
     console.warn(info.warnings);
   }
-  console.log(stats.toString({ chunks: false, colors: true }));
+  console.log(
+    stats.toString({
+      chunks: false,
+      colors: true
+    })
+  );
   callback(true);
 };
 
@@ -111,20 +129,35 @@ const exec = callback => (err, stats) => {
 
 (function main() {
   const context = getContext();
-  const option = createOption(context);
-  const decorateOption = applyMiddleware(context, optionMiddleware)(option);
-  console.log(">>>> webpack.config begin".green);
-  console.log(JSON.stringify(decorateOption));
-  console.log("<<<< webpack.config end".green);
+  const base = createOption(context);
+  const option = applyMiddleware(context, optionMiddleware)(base);
   const launch = exec(applyMiddleware(context, execMiddleware));
+  const compiler = webpack(option);
+
+  console.log("=================================");
+  console.log(`${JSON.stringify(option)}`.yellow);
+  console.log("=================================");
+  console.log(`${JSON.stringify(context)}`.green);
+  console.log("=================================");
+
+  const { params, values } = context;
+  const { hot, env } = params;
+  const watchOps = { aggregateTimeout: 300, poll: 1000 };
+
   const package = {
-    development() {
-      const watchOps = { aggregateTimeout: 300, poll: 1000 };
-      webpack(decorateOption).watch(watchOps, launch);
-    },
-    production() {
-      webpack(decorateOption).run(launch);
+    production: f => compiler.run(launch),
+    development: f => {
+      if (hot) {
+        WebpackDevServer.addDevServerEntrypoints(option, option.devServer);
+        new WebpackDevServer(compiler, option.devServer).listen(
+          hot,
+          "localhost",
+          f => console.log(`listening on port ${hot}`.green)
+        );
+        return;
+      }
+      compiler.watch(watchOps, launch);
     }
   };
-  package[context.env]();
+  package[env]();
 })();
