@@ -11,10 +11,6 @@ const createRule = ({ params }) => {
       exclude: [node_modules]
     },
     {
-      test: /yueniu/,
-      loader: "babel-loader"
-    },
-    {
       test: /\.vue$/,
       loader: "vue-loader"
     },
