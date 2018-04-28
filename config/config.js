@@ -4,14 +4,10 @@
 */
 module.exports = {
   alias: {},
-  devServer: {
-    proxy: {
-      "/api": "http://localhost:3000"
-    }
-  },
+  devServer: {},
   keys: {
-    vue: {
-      entry: "example/vue/index",
+    index: {
+      entry: "example/index",
       publicPath: "/dist/"
     }
   }

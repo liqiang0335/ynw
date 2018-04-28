@@ -58,3 +58,33 @@ deepFlatten([1, [2], [[3], 4], 5]); // [1,2,3,4,5]
 ```js
 difference([1, 2, 3], [1, 2, 4]); // [3]
 ```
+
+# Browser
+
+### runInRaf
+
+> 每帧执行回调函数
+
+```js
+//启动一个帧回调函数
+const recorder = runInRaf(f => {
+  console.log("Animation frame fired");
+});
+recorder.stop(); //停止
+recorder.start(); //启动
+
+//手动启动
+const recorder2 = runInRaf(cb, false);
+```
+
+### scrollToTop
+
+> 滚动到页面的顶部
+
+### uuid
+
+> 生成唯一的标识符
+
+### getScrollPosition
+
+> 获取滚动条滚动位置
