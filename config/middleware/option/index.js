@@ -5,4 +5,4 @@ const split = require("./split");
 const devServer = require("./devServer");
 const html = require("./html");
 
-module.exports = [devServer, alias, rules, publicPath, split, html];
+module.exports = [devServer, alias, rules, publicPath];
