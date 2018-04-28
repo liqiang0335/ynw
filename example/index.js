@@ -1,2 +1,7 @@
-const elementIsVisbile = require("../browser/elementIsVisible");
-const runInRaf = require("../browser/runInRaf");
+import Vue from "vue";
+import App from "./App";
+
+new Vue({
+  el: "#app",
+  render: h => h(App)
+});

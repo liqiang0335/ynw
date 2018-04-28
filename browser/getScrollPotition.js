@@ -6,4 +6,4 @@ const getScrollPosition = (el = window) => ({
   y: el.pageYOffset !== undefined ? el.pageYOffset : el.scrollTop
 });
 
-modules.exports = getScrollPosition;
+module.exports = getScrollPosition;

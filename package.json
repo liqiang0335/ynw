@@ -1,6 +1,6 @@
 {
-  "name": "ynw",
-  "version": "0.0.6",
+  "name": "ynwfns",
+  "version": "0.0.1",
   "description": "",
   "main": "main.js",
   "scripts": {},
@@ -15,10 +15,44 @@
     "url": "https://github.com/liqiang0335/ynw/issues"
   },
   "homepage": "https://github.com/liqiang0335/ynw#readme",
-  "devDependencies": {},
   "dependencies": {
     "axios": "^0.18.0",
     "lodash": "^4.17.10",
-    "querystring": "^0.2.0"
+    "querystring": "^0.2.0",
+    "vue": "^2.5.16"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-plugin-component": "^0.10.1",
+    "babel-plugin-import": "^1.6.7",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-es2016": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "babel-runtime": "^6.26.0",
+    "browser-sync": "^2.23.6",
+    "colors": "^1.1.2",
+    "cropperjs": "^1.3.4",
+    "css-loader": "^0.28.10",
+    "date-fns": "^1.29.0",
+    "extract-text-webpack-plugin": "^3.0.2",
+    "file-loader": "^1.1.5",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^4.0.0",
+    "gulp-sass": "^3.1.0",
+    "gulp.spritesmith": "^6.9.0",
+    "sass-loader": "^6.0.6",
+    "style-loader": "^0.20.2",
+    "uglify-template-string-loader": "^1.0.0",
+    "uglifyjs-webpack-plugin": "^1.2.2",
+    "url-loader": "^0.6.2",
+    "vue-loader": "^14.1.1",
+    "vue-style-loader": "^4.0.2",
+    "vue-template-compiler": "^2.5.13",
+    "webpack": "^4.0.1",
+    "webpack-dev-server": "^3.1.3"
   }
 }

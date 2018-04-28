@@ -25,4 +25,4 @@ const runInRaf = (callback, autoStart = true) => {
   return { start, stop };
 };
 
-modules.exports = runInRaf;
+module.exports = runInRaf;
