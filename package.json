@@ -15,13 +15,12 @@
     "url": "https://github.com/liqiang0335/ynw/issues"
   },
   "homepage": "https://github.com/liqiang0335/ynw#readme",
-  "dependencies": {
+  "dependencies": {},
+  "devDependencies": {
     "axios": "^0.18.0",
     "lodash": "^4.17.10",
     "querystring": "^0.2.0",
-    "vue": "^2.5.16"
-  },
-  "devDependencies": {
+    "vue": "^2.5.16",
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.2",
     "babel-plugin-component": "^0.10.1",
