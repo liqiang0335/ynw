@@ -1,12 +1,13 @@
+const path = require("path");
 const webpack = require("webpack");
+const node_modules = path.join(__dirname, "./node_modules");
+const root = path.join(__dirname);
 
 module.exports = {
   mode: "production",
-  entry: {
-    main: "./entry"
-  },
+  entry: "./ynw",
   output: {
-    path: "./",
+    path: root,
     filename: "index.js"
   },
   resolve: {
@@ -20,7 +21,7 @@ module.exports = {
       {
         test: /\.js$/,
         loader: "babel-loader",
-        exclude: "/node_modules/"
+        exclude: [node_modules]
       },
       {
         test: /\.vue$/,
@@ -29,10 +30,6 @@ module.exports = {
       {
         test: /\.css$/,
         use: ["style-loader", "css-loader"]
-      },
-      {
-        test: /\.scss/,
-        use: ["style-loader", "css-loader", "sass-loader"]
       }
     ]
   }

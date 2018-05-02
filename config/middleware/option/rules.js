@@ -6,6 +6,10 @@ const createRule = ({ params }) => {
   const { node_modules } = params;
   return [
     {
+      test: /ynw/,
+      loader: "babel-loader"
+    },
+    {
       test: /\.js$/,
       loader: "babel-loader",
       exclude: [node_modules]

@@ -61,7 +61,9 @@ const getContext = () => {
   params.node_modules = getDir("node_modules");
   params.absolutePath = getDir(values.entry);
   params.projectPath = path.dirname(params.absolutePath);
+  params.projectName = path.basename(params.projectPath);
   params.fileName = values.entry.match(/[^\/]+$/)[0];
+
   if (params.hot) {
     params.hot = 9999; //固定端口号
   }
@@ -134,11 +136,11 @@ const exec = callback => (err, stats) => {
   const launch = exec(applyMiddleware(context, execMiddleware));
   const compiler = webpack(option);
 
-  console.log("=================================");
+  console.log("================[option]=================");
   console.log(`${JSON.stringify(option)}`.yellow);
-  console.log("=================================");
+  console.log("==============[context]===================");
   console.log(`${JSON.stringify(context)}`.green);
-  console.log("=================================");
+  console.log("==========================================");
 
   const { params, values } = context;
   const { hot, env } = params;

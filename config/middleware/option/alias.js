@@ -14,7 +14,8 @@ const absolutePath = config => {
   return target;
 };
 
-module.exports = ({ config }) => option => {
-  Object.assign(option.resolve.alias, absolutePath(config.alias));
+module.exports = ({ params, config }) => option => {
+  const folderAlias = { ["@" + params.projectName]: params.projectPath };
+  Object.assign(option.resolve.alias, absolutePath(config.alias), folderAlias);
   return option;
 };
