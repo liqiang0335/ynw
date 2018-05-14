@@ -2,7 +2,7 @@
 
 const path = require("path");
 const cwd = process.cwd();
-const fns = require("./fns");
+const fns = require("../fns");
 const context = {
   fns,
   commands: fns.getParams(process.argv),

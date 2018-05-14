@@ -1,40 +1,29 @@
 const fs = require("fs");
 const path = require("path");
+const cwd = process.cwd();
 const webpack = require("webpack");
 const colors = require("colors");
 const WebpackDevServer = require("webpack-dev-server");
-const config = require("./config");
-const getDir = url => path.join(__dirname, "../", url);
+const getPath = url => path.resolve(cwd, url);
+const fns = require("../fns");
+const configPath = getPath("ynw.config");
 
-/**
- * Middleware
- */
+const config = require(configPath);
 const optionMiddleware = require("./middleware/option");
 const execMiddleware = require("./middleware/output");
 const applyMiddleware = (api, middlewares) => {
-  const compose = (...fn) => fn.reduce((a, b) => (...args) => a(b(...args)));
+  const compose = (...fn) => fn.reduce((a, b) => (...args) => b(a(...args)));
   const chain = middlewares.map(item => item(api));
   return compose(...chain);
 };
 
 /**
- * 获取等号分隔的参数
- */
-function getParams(arr) {
-  return arr.filter(it => it.indexOf("=") > 0).reduce((acc, cur) => {
-    const [key, value] = cur.split("=");
-    acc[key] = value;
-    return acc;
-  }, {});
-}
-
-/**
  * 环境参数
  */
 const getContext = () => {
-  const argv = getParams(process.argv);
+  const argv = fns.getParams(process.argv);
 
-  const params = Object.assign(
+  const params = fns.merge(
     {
       htmlName: "index.html", //启动文件
       public: "/dist/", //发布目录
@@ -48,8 +37,7 @@ const getContext = () => {
     throw new Error("KEY Not Found");
   }
 
-  params.node_modules = getDir("node_modules");
-  params.absolutePath = getDir(values.entry);
+  params.absolutePath = getPath(values.entry);
   params.projectPath = path.dirname(params.absolutePath);
   params.projectName = path.basename(params.projectPath);
   params.fileName = values.entry.match(/[^\/]+$/)[0];
