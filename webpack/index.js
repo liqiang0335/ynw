@@ -1,17 +1,7 @@
-/*
- * 开发环境打包
- * node public/config/webpack key=test hot=true
- *
- * 生产环境打包
- * node config/webpack key=test env=production
- *
- */
-
 const fs = require("fs");
 const path = require("path");
 const webpack = require("webpack");
 const colors = require("colors");
-const UglifyJSPlugin = require("uglifyjs-webpack-plugin");
 const WebpackDevServer = require("webpack-dev-server");
 const config = require("./config");
 const getDir = url => path.join(__dirname, "../", url);
