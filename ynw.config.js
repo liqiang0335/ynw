@@ -3,9 +3,11 @@
  * 配置文件
  */
 const config = {
-  alias: {},
-  devServer: {},
-  keys: {
+  webpack: {
+    alias: {},
+    devServer: {}
+  },
+  ynw: {
     index: {
       entry: "./example/index",
       publicPath: "/dist/"
@@ -16,5 +18,3 @@ const config = {
 ////////////////////////////////////
 const build = require("./webpack");
 build(config);
-////////////////////////////////////
-////////////////////////////////////
