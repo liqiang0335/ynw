@@ -1,37 +1,18 @@
-{
-  "name": "ynw",
-  "version": "0.0.9",
-  "description": "",
-  "main": "index.js",
-  "scripts": {},
-  "keywords": [],
-  "author": "",
-  "bin": {
-    "ynw": "./bin/index.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/liqiang0335/ynw.git"
-  },
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/liqiang0335/ynw/issues"
-  },
-  "homepage": "https://github.com/liqiang0335/ynw#readme",
-  "dependencies": {
-    "axios": "latest",
+module.exports = {
+  dependencies: {
+    axios: "latest",
     "date-fns": "latest",
     "element-ui": "latest",
     "es6-promise": "latest",
-    "lodash": "latest",
-    "querystring": "latest",
-    "vant": "latest",
-    "vue": "latest",
+    lodash: "latest",
+    querystring: "latest",
+    vant: "latest",
+    vue: "latest",
     "vue-router": "latest",
-    "vuex": "latest"
+    vuex: "latest"
   },
-  "devDependencies": {
-    "autoprefixer": "latest",
+  devDependencies: {
+    autoprefixer: "latest",
     "babel-core": "latest",
     "babel-polyfill": "latest",
     "babel-plugin-import": "latest",
@@ -48,15 +29,15 @@
     "babel-preset-es2016": "latest",
     "babel-preset-stage-0": "latest",
     "babel-runtime": "latest",
-    "colors": "latest",
+    colors: "latest",
     "css-loader": "latest",
     "file-loader": "latest",
-    "gulp": "latest",
+    gulp: "latest",
     "html-webpack-plugin": "latest",
     "mini-css-extract-plugin": "latest",
     "optimize-css-assets-webpack-plugin": "latest",
     "postcss-loader": "latest",
-    "precss": "latest",
+    precss: "latest",
     "sass-loader": "latest",
     "style-loader": "latest",
     "uglifyjs-webpack-plugin": "latest",
@@ -64,7 +45,7 @@
     "vue-loader": "latest",
     "vue-style-loader": "latest",
     "vue-template-compiler": "latest",
-    "webpack": "latest",
+    webpack: "latest",
     "webpack-dev-server": "latest"
   }
-}
+};
