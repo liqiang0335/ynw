@@ -18,19 +18,8 @@
     "url": "https://github.com/liqiang0335/ynw/issues"
   },
   "homepage": "https://github.com/liqiang0335/ynw#readme",
-  "dependencies": {
-    "axios": "latest",
-    "date-fns": "latest",
-    "element-ui": "latest",
-    "es6-promise": "latest",
-    "lodash": "latest",
-    "querystring": "latest",
-    "vant": "latest",
-    "vue": "latest",
-    "vue-router": "latest",
-    "vuex": "latest"
-  },
   "devDependencies": {
+    "colors": "latest",
     "autoprefixer": "latest",
     "babel-core": "latest",
     "babel-polyfill": "latest",
@@ -48,7 +37,6 @@
     "babel-preset-es2016": "latest",
     "babel-preset-stage-0": "latest",
     "babel-runtime": "latest",
-    "colors": "latest",
     "css-loader": "latest",
     "file-loader": "latest",
     "gulp": "latest",
@@ -66,5 +54,17 @@
     "vue-template-compiler": "latest",
     "webpack": "latest",
     "webpack-dev-server": "latest"
+  },
+  "dependencies": {
+    "axios": "latest",
+    "date-fns": "latest",
+    "element-ui": "latest",
+    "es6-promise": "latest",
+    "lodash": "latest",
+    "querystring": "latest",
+    "vant": "latest",
+    "vue": "latest",
+    "vue-router": "latest",
+    "vuex": "latest"
   }
 }
