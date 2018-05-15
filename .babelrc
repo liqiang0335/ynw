@@ -1,15 +1,16 @@
 {
   presets: ["es2015", "stage-0"],
   plugins: [
-    "transform-runtime",
-    [
-      "component",
-      [
-        {
+    "webpack-async-module-name",
+    "transform-runtime", [
+      "component", [{
           "libraryName": "element-ui",
           "styleLibraryName": "theme-chalk"
         },
-        { "libraryName": "mint-ui", "style": true }
+        {
+          "libraryName": "mint-ui",
+          "style": true
+        }
       ]
     ]
   ]
