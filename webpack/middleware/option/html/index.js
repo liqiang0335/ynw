@@ -6,13 +6,13 @@ const util = require("util");
 const getInjection = params => {
   const host = "http://localhost:9999/";
   return `<script src="${host}webpack-dev-server.js"></script>
-  <script src="${host}dist/chunk.modules.js"></script>
+  <script src="${host}dist/${params.fileName}.libs.js"></script>
   <script src="${host}dist/${params.fileName}.bundle.js"></script>`;
 };
 
 const getTemplate = params =>
   new Promise(resolve => {
-    const defaultValue = path.join(__dirname, "../output/template.html");
+    const defaultValue = path.join(__dirname, "./template.html");
     const detectPath = params.projectPath + "/index.html";
     fs.exists(detectPath, result => {
       const template = result ? detectPath : defaultValue;
