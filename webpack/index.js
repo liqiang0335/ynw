@@ -5,7 +5,7 @@ const webpack = require("webpack");
 const colors = require("colors");
 const WebpackDevServer = require("webpack-dev-server");
 const getPath = url => path.resolve(cwd, url);
-const fns = require("../fns");
+const fns = require("../util/fns");
 const configPath = getPath("ynw.config");
 
 const config = require(configPath);

@@ -1,5 +1,5 @@
 module.exports = {
-  webpack: {},
+  alias: "",
   ynw: {
     index: {
       entry: "",
