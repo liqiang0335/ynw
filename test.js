@@ -1,2 +1,2 @@
-const init = require("./bin/plugins/init");
-init();
+const build = require("./bin");
+build();

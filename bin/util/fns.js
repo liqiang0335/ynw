@@ -1,3 +1,6 @@
+const fs = require("fs");
+const util = require("util");
+
 /**
  * 获取命令行等号分隔的参数
  * --dep 等价于 dep=true
@@ -12,6 +15,9 @@ function getParams(arr) {
   }, {});
 }
 
+/**
+ * 合并属性
+ */
 function merge(source, target) {
   if (source === undefined) {
     source = {};
@@ -24,4 +30,14 @@ function merge(source, target) {
   return source;
 }
 
-module.exports = { getParams, merge };
+const exists = util.promisify(fs.exists);
+const readFile = util.promisify(fs.readFile);
+const writeFile = util.promisify(fs.writeFile);
+
+module.exports = {
+  getParams,
+  merge,
+  exists,
+  readFile,
+  writeFile
+};

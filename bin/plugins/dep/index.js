@@ -7,8 +7,10 @@ const path = require("path");
 const colors = require("colors");
 
 module.exports = context => {
-  const { paths, fns } = context;
-  const config = require(paths.package);
+  const cwd = process.cwd();
+  const { fns } = context;
+  const package = path.join(cwd, "package.json");
+  const config = require(package);
   const source = require("./depandence");
   config.dependencies = fns.merge(config.dependencies, source.dependencies);
   config.devDependencies = fns.merge(
@@ -16,7 +18,7 @@ module.exports = context => {
     source.devDependencies
   );
   const data = JSON.stringify(config);
-  fs.writeFile(paths.package, data, "utf-8", err => {
+  fs.writeFile(package, data, "utf-8", err => {
     if (err) {
       console.log(`>> write dep err: ${err}`.red);
       return;

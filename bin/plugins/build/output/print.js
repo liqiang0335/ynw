@@ -1,8 +1,8 @@
 const path = require("path");
 const { format } = require("date-fns");
 const colors = require("colors");
-
-const getDir = url => path.join(__dirname, "../../../", url);
+const cwd = process.cwd();
+const getDir = url => path.join(cwd, url);
 
 const writeTimestamp = function(filePath) {
   return new Promise(resolve => {
