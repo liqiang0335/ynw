@@ -36,6 +36,7 @@
      "gulp": "latest",
      "html-webpack-plugin": "latest",
      "mini-css-extract-plugin": "latest",
+     "node-sass": "latest",
      "optimize-css-assets-webpack-plugin": "latest",
      "postcss-loader": "latest",
      "precss": "latest",
