@@ -1,5 +1,7 @@
 # 命令行参数
 
+* ynw --version 版本号
+* ynw --help 命令行帮助
 * ynw --dep : 添加依赖
 * ynw --init : 添加 ["ynw.cofnig", ".babelrc","postcss.config"]文件
 * ynw key=index env=dev : 开发环境编译

@@ -1,18 +1,15 @@
-/**
- * 添加服务器选项
- */
 const webpack = require("webpack");
 const path = require("path");
 
-module.exports = ({ params, values, config }) => option => {
-  const { key, hot, fileName } = params;
+module.exports = context => option => {
+  const { hot, port, fileName, absolutePath, projectPath, extra } = context;
   if (!hot) return option;
 
   option.entry = {
     [fileName]: [
-      `webpack-dev-server/client?http://localhost:${hot}/`,
+      `webpack-dev-server/client?http://localhost:${port}/`,
       "webpack/hot/dev-server",
-      params.absolutePath
+      absolutePath
     ]
   };
 
@@ -20,11 +17,11 @@ module.exports = ({ params, values, config }) => option => {
     {
       hot: true,
       inline: true,
-      contentBase: params.projectPath,
-      publicPath: params.public,
+      contentBase: projectPath,
+      publicPath: "/dist/",
       open: true
     },
-    config.devServer
+    extra.devServer
   );
   option.plugins.push(new webpack.HotModuleReplacementPlugin());
   option.plugins.push(new webpack.NamedModulesPlugin());

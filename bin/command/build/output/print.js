@@ -1,8 +1,6 @@
 const path = require("path");
 const { format } = require("date-fns");
 const colors = require("colors");
-const cwd = process.cwd();
-const getDir = url => path.join(cwd, url);
 
 const writeTimestamp = function(filePath) {
   return new Promise(resolve => {
@@ -26,8 +24,6 @@ const colorLog = (counter = 0) => content => {
 
 const log = colorLog(0);
 
-module.exports = ({ params, values }) => flag => {
-  const html = values.html;
-  if (html) writeTimestamp(getDir(html));
-  log(params.env);
+module.exports = context => flag => {
+  log(context.env);
 };

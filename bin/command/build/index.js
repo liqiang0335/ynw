@@ -1,3 +1,6 @@
+/**
+ * package
+ */
 const fs = require("fs");
 const path = require("path");
 const webpack = require("webpack");
@@ -12,17 +15,34 @@ const applyMiddleware = (api, middlewares) => {
   return compose(...chain);
 };
 
+/**
+ * enable log
+ */
+const showLogs = ctx => logs => {
+  if (!ctx.debug) return;
+  if (!Array.isArray(logs)) {
+    logs = [logs];
+  }
+  logs.forEach(item => {
+    console.log("================[===]=================>");
+    console.log(`${JSON.stringify(item)}`.yellow);
+    console.log("================[===]=================>");
+  });
+};
+
 module.exports = context => {
   if (!context.env) {
     console.log(`>> The "env" param is required`.red);
     return;
   }
+  context.logs = showLogs(context);
   main(context);
 };
 
 const parseInput = context => {
+  const { cwd, key, env } = context;
   const config = require(path.join(cwd, "ynw.config.js"));
-  const values = config.ynw[key];
+  const values = config["keys"][key];
   const { entry, publicPath, envPublicPath } = values;
 
   const hot = context.env === "hot" ? true : false;
@@ -33,9 +53,9 @@ const parseInput = context => {
   const projectPath = path.dirname(absolutePath);
   const projectName = path.basename(projectPath);
   const port = 9999;
-  const alias = config.alias;
+  const extra = config.extra;
 
-  const ctx = {
+  return {
     ...context,
     hot,
     isDev,
@@ -45,7 +65,7 @@ const parseInput = context => {
     projectName,
     projectPath,
     port,
-    alias
+    extra
   };
 };
 
@@ -76,33 +96,30 @@ const exec = callback => (err, stats) => {
 
 const createOption = ctx => {
   return {
+    module: {},
+    plugins: [],
     mode: ctx.mode,
     entry: { [ctx.fileName]: ctx.absolutePath },
     output: {
       path: ctx.projectPath + "/dist/",
       filename: "[name].bundle.js",
-      chunkFilename: "chunk.[name].js"
+      chunkFilename: `${ctx.fileName}.libs.js`
     },
     resolve: {
       extensions: [".js", ".vue", ".json"],
       alias: { vue$: "vue/dist/vue.esm" }
-    },
-    module: {},
-    plugins: []
+    }
   };
 };
 
 const main = context => {
   const ctx = parseInput(context);
-  console.log("================[ctx]=================");
-  console.log(`${JSON.stringify(ctx)}`.yellow);
-
-  const baseOps = createOption(ctx);
-  const option = applyMiddleware(ctx, optionMiddleware)(baseOps);
-  const launch = exec(applyMiddleware(context, execMiddleware));
-
+  const base = createOption(ctx);
+  const option = applyMiddleware(ctx, optionMiddleware)(base);
+  const launch = exec(applyMiddleware(ctx, execMiddleware));
   const watchOps = { aggregateTimeout: 300, poll: 1000 };
   const compiler = webpack(option);
+  ctx.logs([ctx, option]);
 
   const package = {
     production: f => compiler.run(launch),

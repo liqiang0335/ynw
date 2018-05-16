@@ -6,3 +6,5 @@ const groupBy = (arr, fn) =>
     acc[cur] = (acc[cur] || []).concat(arr[i]);
     return acc;
   }, {});
+
+module.exports = groupBy;

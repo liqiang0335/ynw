@@ -1,33 +1,25 @@
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const colors = require("colors");
 
-const createRule = ({ params }) => {
-  const styleLoader = params.isDev
-    ? "vue-style-loader"
-    : MiniCssExtractPlugin.loader;
+const createRule = context => {
+  const { isDev, hot } = context;
+  const exclude = hot
+    ? /node_modules/
+    : file => {
+        if (/ynw/.test(file)) return false;
+        return /node_modules/.test(file);
+      };
+
+  const styleLoader = isDev ? "vue-style-loader" : MiniCssExtractPlugin.loader;
   return [
-    {
-      test: /\.css$/,
-      use: [styleLoader, "css-loader"]
-    },
-    {
-      test: /\.scss$/,
-      use: [styleLoader, "css-loader", "sass-loader"]
-    },
+    { test: /\.css$/, use: [styleLoader, "css-loader"] },
+    { test: /\.scss$/, use: [styleLoader, "css-loader", "sass-loader"] },
     {
       test: /\.js$/,
       loader: "babel-loader",
-      exclude: file => {
-        if (/ynw/.test(file)) {
-          return false;
-        }
-        return /node_modules/.test(file);
-      }
+      exclude
     },
-    {
-      test: /\.vue$/,
-      loader: "vue-loader"
-    },
-
+    { test: /\.vue$/, loader: "vue-loader" },
     {
       test: /\.(png|jpg|jpeg|gif|eot|ttf|woff|woff2|svg)(\?.+)?$/,
       use: [

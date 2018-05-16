@@ -6,11 +6,12 @@
  * babelrc
  * ..................
  */
-
+///////////////////////////////////////////////////////////////
+const files = [".babelrc", "postcss.config.js", "ynw.config.js"];
+///////////////////////////////////////////////////////////////
 const fs = require("fs");
 const path = require("path");
 const colors = require("colors");
-
 const write = async ({ fns, cwd }, name) => {
   const source = path.join(__dirname, "./source", name);
   const target = path.join(cwd, name);
@@ -24,7 +25,5 @@ const write = async ({ fns, cwd }, name) => {
 };
 
 module.exports = context => {
-  write(context, ".babelrc");
-  write(context, "postcss.config.js");
-  write(context, "ynw.config.js");
+  files.forEach(file => write(context, file));
 };

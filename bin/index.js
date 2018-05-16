@@ -3,15 +3,12 @@
 const fns = require("./util/fns");
 const commands = fns.getParams(process.argv);
 const cwd = process.cwd();
-const context = {
-  fns,
-  cwd,
-  ...commands
-};
+const context = { fns, cwd, ...commands };
 const handlers = {
-  dep: require("./plugins/dep"),
-  init: require("./plugins/init"),
-  key: require("./plugins/build")
+  dep: require("./command/dep"),
+  init: require("./command/init"),
+  version: require("./command/version"),
+  key: require("./command/build")
 };
 Object.keys(commands).forEach(key => {
   if (handlers[key]) {

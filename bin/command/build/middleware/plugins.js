@@ -12,7 +12,7 @@ const SplitPlugin = new webpack.optimize.SplitChunksPlugin({
   minChunks: 1,
   maxAsyncRequests: 5,
   maxInitialRequests: 3,
-  name: "modules",
+  name: "libs",
   cacheGroups: {
     default: {
       minChunks: 2,
@@ -27,7 +27,7 @@ const SplitPlugin = new webpack.optimize.SplitChunksPlugin({
 });
 
 /**
- * 压缩 CSS
+ * CSS Mini
  */
 
 const cssMin = new OptimizeCssAssetsPlugin({
@@ -38,7 +38,7 @@ const cssMin = new OptimizeCssAssetsPlugin({
 });
 
 /**
- * 提取 CSS
+ * CSS Extract
  */
 
 const cssExtract = new MiniCssExtractPlugin({

@@ -8,8 +8,9 @@ module.exports = {
   },
   keys: {
     index: {
-      entry: "./example/index",
-      publicPath: "/dist/"
+      entry: "",
+      publicPath: "/dist/",
+      envPublicPath: "/dist/"
     }
   }
 };

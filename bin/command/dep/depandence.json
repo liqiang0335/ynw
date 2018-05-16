@@ -30,6 +30,7 @@
      "babel-preset-stage-0": "latest",
      "babel-runtime": "latest",
      "colors": "latest",
+     "cssnano": "latest",
      "css-loader": "latest",
      "file-loader": "latest",
      "gulp": "latest",
