@@ -18,9 +18,9 @@ module.exports = context => {
   const data = JSON.stringify(config);
   fs.writeFile(paths.package, data, "utf-8", err => {
     if (err) {
-      console.log(`${err}`.red);
+      console.log(`>> write dep err: ${err}`.red);
       return;
     }
-    console.log(`>>> add dependencies done`.green);
+    console.log(`>> add dependencies done`.green);
   });
 };

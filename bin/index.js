@@ -11,7 +11,8 @@ const context = {
   paths: { cwd, package }
 };
 const handlers = {
-  dep: require("./plugins/dep")
+  dep: require("./plugins/dep"),
+  init: require("./plugins/init")
 };
 Object.keys(commands).forEach(key => {
   if (handlers[key]) {
