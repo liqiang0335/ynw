@@ -97,8 +97,6 @@ const main = context => {
   console.log("================[ctx]=================");
   console.log(`${JSON.stringify(ctx)}`.yellow);
 
-  return;
-
   const baseOps = createOption(ctx);
   const option = applyMiddleware(ctx, optionMiddleware)(baseOps);
   const launch = exec(applyMiddleware(context, execMiddleware));

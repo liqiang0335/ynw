@@ -1,8 +1,4 @@
-/**
- * rules
- */
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const VueLoaderPlugin = require("vue-loader/lib/plugin");
 
 const createRule = ({ params }) => {
   const styleLoader = params.isDev
@@ -44,9 +40,6 @@ const createRule = ({ params }) => {
   ];
 };
 
-/**
- * 生产环境添加 postcss-loader
- */
 const postcssPipe = rules => {
   rules.forEach(item => {
     item.use.push("postcss-loader");
@@ -57,14 +50,7 @@ module.exports = context => option => {
   const rules = createRule(context);
   if (!context.isDev) {
     postcssPipe([rules[0], rules[1]]);
-    option.plugins.push(
-      new MiniCssExtractPlugin({
-        filename: "style.bundle.css",
-        chunkFilename: "style.libs.css"
-      })
-    );
   }
-  option.plugins.push(new VueLoaderPlugin());
   option.module.rules = rules;
   return option;
 };

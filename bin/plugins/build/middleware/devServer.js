@@ -1,6 +1,3 @@
-/**
- * 添加服务器选项
- */
 const webpack = require("webpack");
 const path = require("path");
 

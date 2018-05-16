@@ -1,6 +1,3 @@
-/**
- *处理 publicPath
- */
 module.exports = context => option => {
   const { publicPath, envPublicPath, isDev } = context;
   if (isDev) {
