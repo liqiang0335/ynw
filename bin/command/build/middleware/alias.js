@@ -1,3 +1,4 @@
+const path = require("path");
 const absolutePath = alias => {
   const cwd = process.cwd();
   const target = {};
