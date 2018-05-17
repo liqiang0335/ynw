@@ -1,10 +1,10 @@
 {
   "name": "ynw",
-  "version": "2.1.10",
+  "version": "2.1.11",
   "description": "",
   "main": "index.js",
   "scripts": {},
-  "keywords": [],
+  "keywords": ["ynw", "yueniu"],
   "author": "",
   "bin": {
     "ynw": "./bin/index.js"
@@ -39,7 +39,6 @@
     "cssnano": "^3.10.0",
     "date-fns": "^1.29.0",
     "file-loader": "^1.1.11",
-    "gulp": "^3.9.1",
     "mini-css-extract-plugin": "^0.4.0",
     "node-sass": "^4.9.0",
     "optimize-css-assets-webpack-plugin": "^4.0.1",
