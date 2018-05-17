@@ -33,7 +33,7 @@ const SplitPlugin = new webpack.optimize.SplitChunksPlugin({
 
 const cssMin = new OptimizeCssAssetsPlugin({
   assetNameRegExp: /\.css$/g,
-  cssProcessor: require("cssnano"),
+  cssProcessor: load("cssnano"),
   cssProcessorOptions: { discardComments: { removeAll: true } },
   canPrint: true
 });

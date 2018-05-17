@@ -1,7 +1,7 @@
 {
   "name": "ynw",
-  "version": "2.1.13",
-  "description": "",
+  "version": "2.2.0",
+  "description": "collection useful functions",
   "main": "index.js",
   "scripts": {},
   "keywords": ["ynw", "yueniu"],
