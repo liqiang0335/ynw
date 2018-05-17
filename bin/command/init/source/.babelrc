@@ -5,7 +5,7 @@
         "browsers": ["> 2%", "ie >= 9"]
       },
       modules: "commonjs",
-      "debug": true,
+      "debug": false,
       "include": [],
       "exclude": [],
       "useBuiltIns": true
