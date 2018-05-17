@@ -1,8 +1,7 @@
-const load = require("./load");
-const webpack = load("webpack");
-const OptimizeCssAssetsPlugin = load("optimize-css-assets-webpack-plugin");
-const VueLoaderPlugin = load("vue-loader/lib/plugin");
-const MiniCssExtractPlugin = load("mini-css-extract-plugin");
+const webpack = require("webpack");
+const OptimizeCssAssetsPlugin = require("optimize-css-assets-webpack-plugin");
+const VueLoaderPlugin = require("vue-loader/lib/plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 /**
  * Splite

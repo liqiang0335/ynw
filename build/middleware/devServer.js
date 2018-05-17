@@ -1,10 +1,9 @@
+const webpack = require("webpack");
 const path = require("path");
-const load = require("./load");
-const webpack = load("webpack");
 
 module.exports = context => option => {
   const { hot, port, fileName, absolutePath, projectPath, extra } = context;
-  if (!context.hot) return option;
+  if (!hot) return option;
 
   option.entry = {
     [fileName]: [

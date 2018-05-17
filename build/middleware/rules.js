@@ -1,6 +1,5 @@
-const load = require("./load");
-const MiniCssExtractPlugin = load("mini-css-extract-plugin");
-const colors = load("colors");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const colors = require("colors");
 
 const createRule = context => {
   const { isDev, hot } = context;

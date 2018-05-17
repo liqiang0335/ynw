@@ -4,7 +4,8 @@
 
 const fs = require("fs");
 const path = require("path");
-const colors = require("colors");
+const load = require("../build/middleware/load");
+const colors = load("colors");
 
 module.exports = context => {
   const cwd = process.cwd();

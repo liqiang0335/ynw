@@ -1,7 +1,6 @@
-const load = require("../load");
-const colors = load("colors");
 const fs = require("fs");
 const path = require("path");
+const colors = require("colors");
 const util = require("util");
 
 const getInjection = context => {

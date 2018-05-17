@@ -1,5 +1,6 @@
+const path = require("path");
+const cwd = process.cwd();
 const absolutePath = alias => {
-  const cwd = process.cwd();
   const target = {};
   for (var key in alias) {
     target[key] = path.join(cwd, alias[key]);

@@ -5,4 +5,4 @@ const devServer = require("./devServer");
 const html = require("./html");
 const plugins = require("./plugins");
 
-module.exports = [devServer, alias, rules, publicPath, html, plugins];
+module.exports = [plugins, devServer, alias, rules, publicPath, html];

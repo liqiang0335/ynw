@@ -1,5 +1,7 @@
 const fs = require("fs");
 const util = require("util");
+const cwd = process.cwd();
+const load = name => require(cwd, name);
 
 /**
  * 获取命令行等号分隔的参数

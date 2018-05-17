@@ -3,10 +3,9 @@
  */
 const fs = require("fs");
 const path = require("path");
-const load = require("./middleware/load");
-const webpack = load("webpack");
-const colors = load("colors");
-const WebpackDevServer = load("webpack-dev-server");
+const webpack = require("webpack");
+const colors = require("colors");
+const WebpackDevServer = require("webpack-dev-server");
 
 const execMiddleware = require("./output");
 const optionMiddleware = require("./middleware");
@@ -97,6 +96,8 @@ const exec = callback => (err, stats) => {
 
 const createOption = ctx => {
   return {
+    module: {},
+    plugins: [],
     mode: ctx.mode,
     entry: { [ctx.fileName]: ctx.absolutePath },
     output: {
@@ -107,9 +108,7 @@ const createOption = ctx => {
     resolve: {
       extensions: [".js", ".vue", ".json"],
       alias: { vue$: "vue/dist/vue.esm" }
-    },
-    module: {},
-    plugins: []
+    }
   };
 };
 
@@ -120,6 +119,7 @@ const main = context => {
   const launch = exec(applyMiddleware(ctx, execMiddleware));
   const watchOps = { aggregateTimeout: 300, poll: 1000 };
   const compiler = webpack(option);
+  ctx.logs([ctx, option]);
 
   const package = {
     production: f => compiler.run(launch),

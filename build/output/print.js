@@ -1,7 +1,6 @@
 const path = require("path");
-const load = require("../middleware/load");
-const { format } = load("date-fns");
-const colors = load("colors");
+const { format } = require("date-fns");
+const colors = require("colors");
 
 const writeTimestamp = function(filePath) {
   return new Promise(resolve => {

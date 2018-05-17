@@ -7,7 +7,8 @@
  * ..................
  */
 const path = require("path");
-const colors = require("colors");
+const load = require("../build/middleware/load");
+const colors = load("colors");
 const folder = "./source";
 
 const write = async ({ fns, cwd }, name) => {
