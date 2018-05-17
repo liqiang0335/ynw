@@ -8,7 +8,7 @@ const handlers = {
   dep: require("./command/dep"),
   init: require("./command/init"),
   version: require("./command/version"),
-  key: require("./command/build")
+  build: require("./command/build")
 };
 Object.keys(commands).forEach(key => {
   if (handlers[key]) {

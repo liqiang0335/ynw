@@ -41,9 +41,9 @@ module.exports = context => {
 };
 
 const parseInput = context => {
-  const { cwd, key, env } = context;
+  const { cwd, build, env } = context;
   const config = require(path.join(cwd, "ynw.config.js"));
-  const values = config["keys"][key];
+  const values = config["keys"][build];
   const { entry, publicPath, envPublicPath } = values;
 
   const hot = context.env === "hot" ? true : false;
