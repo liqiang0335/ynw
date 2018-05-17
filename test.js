@@ -1,2 +1,1 @@
-const build = require("./bin");
-build();
+autoprefixer babel-core babel-polyfill babel-loader babel-plugin-import babel-plugin-component babel-plugin-syntax-dynamic-import babel-plugin-syntax-jsx babel-plugin-transform-runtime babel-plugin-transform-vue-jsx babel-helper-vue-jsx-merge-props babel-plugin-webpack-async-module-name babel-preset-env babel-preset-stage-0 babel-runtime colors cssnano css-loader file-loader gulp node-sass postcss-loader precss sass-loader style-loader url-loader vue-loader vue-style-loader vue-template-compiler webpack webpack-dev-server uglifyjs-webpack-plugin mini-css-extract-plugin optimize-css-assets-webpack-plugin

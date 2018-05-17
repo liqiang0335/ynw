@@ -1,5 +1,17 @@
 {
-  presets: ["es2015", "stage-0"],
+  presets: [
+    ["env", {
+      "targets": {
+        "browsers": ["> 2%", "ie >= 9"]
+      },
+      modules: "commonjs",
+      "debug": true,
+      "include": [],
+      "exclude": [],
+      "useBuiltIns": true
+    }],
+    "stage-0"
+  ],
   plugins: [
     "webpack-async-module-name",
     "transform-runtime", [

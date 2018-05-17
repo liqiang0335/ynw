@@ -33,11 +33,13 @@ function merge(source, target) {
 const exists = util.promisify(fs.exists);
 const readFile = util.promisify(fs.readFile);
 const writeFile = util.promisify(fs.writeFile);
+const readdir = util.promisify(fs.readdir);
 
 module.exports = {
   getParams,
   merge,
   exists,
   readFile,
-  writeFile
+  writeFile,
+  readdir
 };

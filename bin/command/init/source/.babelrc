@@ -1,17 +1,33 @@
 {
-  presets: ["es2015", "stage-0"],
+  presets: [
+    ["env", {
+      "targets": {
+        "browsers": ["> 2%", "ie >= 9"]
+      },
+      modules: "commonjs",
+      "debug": true,
+      "include": [],
+      "exclude": [],
+      "useBuiltIns": true
+    }],
+    "stage-0"
+  ],
   plugins: [
+    ["component", [{
+        "libraryName": "element-ui",
+        "styleLibraryName": "theme-chalk"
+      },
+      {
+        "libraryName": "mint-ui",
+        "style": true
+      }
+    ]],
+    ["import", {
+      "libraryName": "vant",
+      "libraryDirectory": "es",
+      "style": true
+    }],
     "webpack-async-module-name",
-    "transform-runtime", [
-      "component", [{
-          "libraryName": "element-ui",
-          "styleLibraryName": "theme-chalk"
-        },
-        {
-          "libraryName": "mint-ui",
-          "style": true
-        }
-      ]
-    ]
+    "transform-runtime"
   ]
 }
