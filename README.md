@@ -129,6 +129,9 @@ registeComp("./components", ({ name, option }) => {
 * setState : 使用通用的方法设置 store 中的 state 的值, 减少 mutations 中方法的定义
 * logger : 自定义控制台的输出值(打印出通过 setState 设置的值)
 
+<detail>
+  <summary>使用方法</summary>
+
 ```js
 import { setState, logger } from "ynw/vue/vuexHelper";
 
@@ -142,8 +145,28 @@ new Vuex.Store({
     setState
   }
 });
+```
 
+使用方式
+
+```js
 // 设置state的方式
 store.commit("setState", { key: "a", value: "world" }); //直接设置
 store.commit("setState", { key: "b", value: val => val++ }); //函数方式
+
+// 推荐使用插件注册, 任意组件中都可使用
+// plugins.js
+export default {
+  install(Vue, options) {
+    Vue.mixin({
+      methods: {
+        setState(key, value) {
+          this.$store.commit("setState", { key, value });
+        }
+      }
+    });
+  }
+};
 ```
+
+</detail>
