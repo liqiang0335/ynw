@@ -63,12 +63,11 @@ ynw build=index env=dev
 
 ### registerComp
 
-> 注册 VUE 组件
-
 ```js
-import registeComp from "ynw/util/registeComp";
-
-//注册components文件夹下的所有.vue文件为组件
+// 注册 VUE 组件
+// 注册components文件夹下的所有.vue文件为组件
 // header.vue 注册为 "yn-header"
+
+import registeComp from "ynw/util/registeComp";
 registeComp(Vue, "./components");
 ```
