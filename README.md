@@ -7,6 +7,22 @@
 * `ynw build=index env=hot` : 开发环境构建 + 热替换
 * `ynw build=index env=pro` : 生产环境构建
 
+### 使用方法
+
+```shell
+#首先添加配置文件
+ynw --init
+
+#装依赖包
+cnpm i
+
+#配置路径
+yn.config.js
+
+#构建打包
+ynw build=index env=dev
+```
+
 # 工作中常用的函数
 
 > 以下函数多来自于 [30-seconds-of-cod](https://github.com/Chalarangelo/30-seconds-of-code)
