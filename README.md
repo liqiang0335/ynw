@@ -25,7 +25,7 @@ ynw build=index env=dev
 
 # 工作中常用的函数
 
-> 很多函数来自于 [30-seconds-of-cod](https://github.com/Chalarangelo/30-seconds-of-code)
+> 很多函数来自于 [30-seconds-of-code](https://github.com/Chalarangelo/30-seconds-of-code)
 
 ### Function
 
@@ -141,7 +141,7 @@ new Vuex.Store({
   }
 });
 
-// vue组件中设置state的值
-this.$store.commit("setState", { key: "a", value: "world" }); //直接设置
-this.$store.commit("setState", { key: "b", value: val => val++ }); //函数方式
+// 设置state的方式
+store.commit("setState", { key: "a", value: "world" }); //直接设置
+store.commit("setState", { key: "b", value: val => val++ }); //函数方式
 ```

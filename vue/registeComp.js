@@ -1,7 +1,7 @@
 /**
  * 注册组件
  */
-module.exports = (Vue, url) => {
+module.exports = (url, callback) => {
   const hash = {};
   const context = require.context(url, true, /\.vue$/);
   context.keys().forEach(path => {
@@ -10,7 +10,7 @@ module.exports = (Vue, url) => {
     if (hash[name]) {
       throw new Error(`${name} duplicate...`);
     }
-    Vue.component(`yn-${name}`, option);
+    callback({ name, option });
     hash[name] = 1;
   });
 };
