@@ -10,16 +10,16 @@
 ### 使用方法
 
 ```shell
-#首先添加配置文件
+#添加配置文件
 ynw --init
 
-#装依赖包
+#安装依赖包
 cnpm i
 
-#配置路径
+#配置打包路径
 yn.config.js
 
-#构建打包
+#构建
 ynw build=index env=dev
 ```
 
@@ -27,57 +27,48 @@ ynw build=index env=dev
 
 > 以下函数多来自于 [30-seconds-of-cod](https://github.com/Chalarangelo/30-seconds-of-code)
 
-### 🔌 Adapter
+### Function
 
-### 📚 Array
+### Array
 
 <details>
-<summary>View contents</summary>
+<summary>查看详情</summary>
 
 * [`differenceBy`](#differenceby)
 
 </details>
 
-### 🌐 Browser
+### Browser
 
 <details>
-<summary>View contents</summary>
+<summary>查看详情</summary>
 
-* [`UUIDGeneratorBrowser`](#uuidgeneratorbrowser)
+* [`uuid`](#uuid)
+* [`createEventHub`](#createEventHub)
+* [`element`](#element)
+* [`runInRaf`](#runInRaf)
+* [`runInWorker`](#runInWorker)
 
 </details>
 
-### ⏱️ Date
+### Util
 
 <details>
-<summary>View contents</summary>
+<summary>查看详情</summary>
 
-* [`formatDuration`](#formatduration)
-* [`getColonTimeFromDate`](#getcolontimefromdate)
-* [`getDaysDiffBetweenDates`](#getdaysdiffbetweendates)
-* [`getMeridiemSuffixOfInteger`](#getmeridiemsuffixofinteger)
-* [`tomorrow`](#tomorrow)
-
-</details>
-
-### 🎛️ Function
-
-### ➗ Math
-
-### 📦 Node
-
-### 🗃️ Object
-
-### 📜 String
-
-### 📃 Type
-
-### 🔧 Utility
-
-<details>
-<summary>View contents</summary>
-
-* [`httpGet`](#httpget)
+* [`registeComp`](#registeComp)
 * [`httpPost`](#httppost)
 
 </details>
+
+### registerComp
+
+> 注册 VUE 组件
+
+```js
+import registeComp from "ynw/util/registeComp";
+
+//注册components文件夹下的所有.vue文件为组件
+// header.vue 注册为 "yn-header"
+registeComp(Vue, "./components");
+```
