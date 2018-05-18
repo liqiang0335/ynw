@@ -1,6 +1,5 @@
 const path = require("path");
 const load = require("./build/middleware/load");
-const colors = load("colors");
 
 module.exports = context => {
   const pack = path.join(__dirname, "../../package.json");
