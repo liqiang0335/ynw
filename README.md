@@ -1,5 +1,3 @@
-* [`registeComp`](#registeComp)
-
 # 命令行参数
 
 * `ynw --version` 版本号
@@ -12,16 +10,16 @@
 ### 使用方法
 
 ```shell
-#添加配置文件
+# 添加配置文件
 ynw --init
 
-#安装依赖包
+# 安装依赖包
 cnpm i
 
-#配置打包路径
+# 配置打包路径
 yn.config.js
 
-#构建
+# 构建
 ynw build=index env=dev
 ```
 
@@ -30,6 +28,17 @@ ynw build=index env=dev
 > 以下函数多来自于 [30-seconds-of-cod](https://github.com/Chalarangelo/30-seconds-of-code)
 
 ### Function
+
+<details>
+<summary>查看详情</summary>
+
+* [`chainAsync`](#chainAsync)
+* [`compose`](#compose)
+* [`composeRight`](#composeRight)
+* [`koa-compose`](#koa-compose)
+* [`pipeAsync`](#pipeAsync)
+
+</details>
 
 ### Array
 
@@ -63,12 +72,36 @@ ynw build=index env=dev
 
 </details>
 
-### registeComp
+### style
+
+<details>
+<summary>查看详情</summary>
+
+* `reset.css`
+
+</details>
+
+---
+
+### chainAsync
+
+> 依次执行队列中的同步或异步函数;
+> 上一个函数控制下一个函数的执行时机;
 
 ```js
-// 注册 VUE 组件
+// a控制b的执行时机
+const a = next => setTimeout(next, 1000);
+const b = next => console.log("b");
+chainAsync([a, b]);
+```
+
+### registeComp
+
+> 注册 VUE 组件
+
+```js
 // 注册components文件夹下的所有.vue文件为组件
-// header.vue 注册为 "yn-header"s
+// header.vue 注册为 "yn-header"
 
 import registeComp from "ynw/util/registeComp";
 registeComp(Vue, "./components");
