@@ -6,3 +6,62 @@
 * `ynw build=index env=dev` : 开发环境构建
 * `ynw build=index env=hot` : 开发环境构建 + 热替换
 * `ynw build=index env=pro` : 生产环境构建
+
+# 工作中常用的函数
+
+> 以下函数多来自于 [30-seconds-of-cod](https://github.com/Chalarangelo/30-seconds-of-code)
+
+### 🔌 Adapter
+
+### 📚 Array
+
+<details>
+<summary>View contents</summary>
+
+* [`differenceBy`](#differenceby)
+
+</details>
+
+### 🌐 Browser
+
+<details>
+<summary>View contents</summary>
+
+* [`UUIDGeneratorBrowser`](#uuidgeneratorbrowser)
+
+</details>
+
+### ⏱️ Date
+
+<details>
+<summary>View contents</summary>
+
+* [`formatDuration`](#formatduration)
+* [`getColonTimeFromDate`](#getcolontimefromdate)
+* [`getDaysDiffBetweenDates`](#getdaysdiffbetweendates)
+* [`getMeridiemSuffixOfInteger`](#getmeridiemsuffixofinteger)
+* [`tomorrow`](#tomorrow)
+
+</details>
+
+### 🎛️ Function
+
+### ➗ Math
+
+### 📦 Node
+
+### 🗃️ Object
+
+### 📜 String
+
+### 📃 Type
+
+### 🔧 Utility
+
+<details>
+<summary>View contents</summary>
+
+* [`httpGet`](#httpget)
+* [`httpPost`](#httppost)
+
+</details>
