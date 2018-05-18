@@ -129,7 +129,7 @@ registeComp("./components", ({ name, option }) => {
 * setState : 使用通用的方法设置 store 中的 state 的值, 减少 mutations 中方法的定义
 * logger : 自定义控制台的输出值(打印出通过 setState 设置的值)
 
-<detail>
+<details>
   <summary>使用方法</summary>
 
 ```js
@@ -167,6 +167,9 @@ export default {
     });
   }
 };
+
+//调用
+this.setState(key, value);
 ```
 
-</detail>
+</details>
