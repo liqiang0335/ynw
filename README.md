@@ -1,3 +1,5 @@
+* [`registeComp`](#registeComp)
+
 # 命令行参数
 
 * `ynw --version` 版本号
@@ -61,12 +63,12 @@ ynw build=index env=dev
 
 </details>
 
-### registerComp
+### registeComp
 
 ```js
 // 注册 VUE 组件
 // 注册components文件夹下的所有.vue文件为组件
-// header.vue 注册为 "yn-header"
+// header.vue 注册为 "yn-header"s
 
 import registeComp from "ynw/util/registeComp";
 registeComp(Vue, "./components");
