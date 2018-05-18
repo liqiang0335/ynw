@@ -25,7 +25,7 @@ ynw build=index env=dev
 
 # 工作中常用的函数
 
-> 以下函数多来自于 [30-seconds-of-cod](https://github.com/Chalarangelo/30-seconds-of-code)
+> 很多函数来自于 [30-seconds-of-cod](https://github.com/Chalarangelo/30-seconds-of-code)
 
 ### Function
 
@@ -124,15 +124,24 @@ registeComp(Vue, "./components");
 
 ### vuexHelper
 
-* setState : 使用通用的方法设置 store 中的 state 的值
-* logger : 自定义控制台的输出值
+* setState : 使用通用的方法设置 store 中的 state 的值, 减少 mutations 中方法的定义
+* logger : 自定义控制台的输出值(打印出通过 setState 设置的值)
 
 ```js
 import { setState, logger } from "ynw/vue/vuexHelper";
+
 new Vuex.Store({
   plugins: [logger],
+  state: {
+    a: "hello",
+    b: 2
+  },
   mutaions: {
     setState
   }
 });
+
+// vue组件中设置state的值
+this.$store.commit("setState", { key: "a", value: "world" }); //直接设置
+this.$store.commit("setState", { key: "b", value: val => val++ }); //函数方式
 ```
