@@ -10,7 +10,9 @@ module.exports = (url, callback) => {
     if (hash[name]) {
       throw new Error(`${name} duplicate...`);
     }
-    callback({ name, option });
+    if (typeof callback == "function") {
+      callback({ name, option });
+    }
     hash[name] = 1;
   });
 };

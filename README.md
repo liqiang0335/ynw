@@ -119,7 +119,9 @@ chainAsync([a, b]);
 // header.vue 注册为 "yn-header"
 
 import registeComp from "ynw/vue/registeComp";
-registeComp(Vue, "./components");
+registeComp("./components", ({ name, option }) => {
+  Vue.component(`yn-${name}`, option);
+});
 ```
 
 ### vuexHelper
