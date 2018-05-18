@@ -13,29 +13,29 @@ export const logger = function(store) {
           payload
         );
       }
-      var { reducer, name, path } = payload;
+      var { value, name, key } = payload;
       if (!name) name = "----";
-      if (reducer === "") reducer = "null character";
-      if (/^data:/.test(reducer)) reducer = "base64...";
+      if (value === "") value = "null character";
+      if (/^data:/.test(value)) value = "base64...";
       console.log(
-        `%c ${name}@set ----> ${path} ---->`,
+        `%c ${name}@set ----> ${key} ---->`,
         "font-weight:bold;color:green;",
-        reducer
+        value
       );
     });
   }
 };
 
-export const setter = function(state, { path, reducer }) {
-  const old = get(state, path);
+export const setter = function(state, { key, value }) {
+  const old = get(state, key);
   if (old === undefined) {
     if (process.env.NODE_ENV !== "production") {
       console.log(
-        `%c The Path << ${path} >> Not Found And Create New Property`,
+        `%c The key << ${key} >> Not Found And Create New Property`,
         "font-weight:bold;font-size:16px;background:green;color:white;"
       );
     }
   }
-  const target = isFunction(reducer) ? reducer(old) : reducer;
-  set(state, path, target);
+  const target = isFunction(value) ? value(old) : value;
+  set(state, key, target);
 };

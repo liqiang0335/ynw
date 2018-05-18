@@ -67,7 +67,7 @@ ynw build=index env=dev
 <details>
 <summary>查看详情</summary>
 
-* [`registeComp`](#registeComp)
+* [`registe`](#registe)
 * [`httpPost`](#httppost)
 
 </details>
@@ -81,12 +81,23 @@ ynw build=index env=dev
 
 </details>
 
+### Vue
+
+<details>
+<summary>查看详情</summary>
+
+* [`registeComp`](#registeComp)
+* [`vuexHelper`](#vuexHelper)
+
+</details>
+
 ---
+
+# Function
 
 ### chainAsync
 
-> 依次执行队列中的同步或异步函数;
-> 上一个函数控制下一个函数的执行时机;
+> 依次执行队列中的同步或异步函数。上一个函数可以控制下一个函数的执行时机。
 
 ```js
 // a控制b的执行时机
@@ -94,6 +105,10 @@ const a = next => setTimeout(next, 1000);
 const b = next => console.log("b");
 chainAsync([a, b]);
 ```
+
+---
+
+# Vue
 
 ### registeComp
 
@@ -103,6 +118,21 @@ chainAsync([a, b]);
 // 注册components文件夹下的所有.vue文件为组件
 // header.vue 注册为 "yn-header"
 
-import registeComp from "ynw/util/registeComp";
+import registeComp from "ynw/vue/registeComp";
 registeComp(Vue, "./components");
+```
+
+### vuexHelper
+
+* setState : 使用通用的方法设置 store 中的 state 的值
+* logger : 自定义控制台的输出值
+
+```js
+import { setState, logger } from "ynw/vue/vuexHelper";
+new Vuex.Store({
+  plugins: [logger],
+  mutaions: {
+    setState
+  }
+});
 ```
