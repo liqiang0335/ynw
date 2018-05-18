@@ -5,7 +5,6 @@
 const fs = require("fs");
 const path = require("path");
 const load = require("../build/middleware/load");
-const colors = load("colors");
 
 module.exports = context => {
   const cwd = process.cwd();
@@ -21,9 +20,9 @@ module.exports = context => {
   const data = JSON.stringify(config);
   fs.writeFile(package, data, "utf-8", err => {
     if (err) {
-      console.log(`>> write dep err: ${err}`.red);
+      console.log(`>> write dep err: ${err}`);
       return;
     }
-    console.log(`>> add dependencies done`.green);
+    console.log(`>> add dependencies done`);
   });
 };

@@ -8,19 +8,18 @@
  */
 const path = require("path");
 const load = require("../build/middleware/load");
-const colors = load("colors");
 const folder = "./source";
 
 const write = async ({ fns, cwd }, name) => {
   const source = path.join(__dirname, folder, name);
   const target = path.join(cwd, name);
   if (await fns.exists(target)) {
-    console.log(`>> ${name} exists`.yellow);
+    console.log(`>> ${name} exists`);
     return;
   }
   const content = await fns.readFile(source, "utf-8");
   await fns.writeFile(target, content, "utf-8");
-  console.log(`>> write ${name} done`.green);
+  console.log(`>> write ${name} done`);
 };
 
 module.exports = async context => {
