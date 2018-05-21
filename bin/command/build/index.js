@@ -58,6 +58,8 @@ const parseInput = context => {
 
   return {
     ...context,
+    publicPath,
+    envPublicPath,
     hot,
     isDev,
     mode,
