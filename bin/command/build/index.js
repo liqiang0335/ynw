@@ -7,6 +7,7 @@ const load = require("./middleware/load");
 const webpack = load("webpack");
 const colors = load("colors");
 const WebpackDevServer = load("webpack-dev-server");
+const VueLoaderPlugin = load("vue-loader/lib/plugin");
 
 const execMiddleware = require("./output");
 const optionMiddleware = require("./middleware");
@@ -16,27 +17,11 @@ const applyMiddleware = (api, middlewares) => {
   return compose(...chain);
 };
 
-/**
- * enable log
- */
-const showLogs = ctx => logs => {
-  if (!ctx.debug) return;
-  if (!Array.isArray(logs)) {
-    logs = [logs];
-  }
-  logs.forEach(item => {
-    console.log("================[===]=================>");
-    console.log(`${JSON.stringify(item)}`.yellow);
-    console.log("================[===]=================>");
-  });
-};
-
 module.exports = context => {
   if (!context.env) {
     console.log(`>> The "env" param is required`.red);
     return;
   }
-  context.logs = showLogs(context);
   main(context);
 };
 
@@ -44,7 +29,8 @@ const parseInput = context => {
   const { cwd, build, env } = context;
   const config = require(path.join(cwd, "ynw.config.js"));
   const values = config["keys"][build];
-  const { entry, publicPath, envPublicPath } = values;
+  const extra = config.extra;
+  const { entry } = values;
 
   const hot = context.env === "hot" ? true : false;
   const isDev = env !== "pro" ? true : false;
@@ -54,12 +40,11 @@ const parseInput = context => {
   const projectPath = path.dirname(absolutePath);
   const projectName = path.basename(projectPath);
   const port = 9999;
-  const extra = config.extra;
 
   return {
     ...context,
-    publicPath,
-    envPublicPath,
+    ...values,
+    ...extra,
     hot,
     isDev,
     mode,
@@ -67,8 +52,7 @@ const parseInput = context => {
     absolutePath,
     projectName,
     projectPath,
-    port,
-    extra
+    port
   };
 };
 
@@ -122,6 +106,15 @@ const main = context => {
   const launch = exec(applyMiddleware(ctx, execMiddleware));
   const watchOps = { aggregateTimeout: 300, poll: 1000 };
   const compiler = webpack(option);
+
+  if (ctx.debug) {
+    console.log(">>>>>>>>>>>>>>>>[ output ]>>>>>>>>>>>>>>>>>>>>>>>>");
+    console.log(option.output);
+    console.log(">>>>>>>>>>>>>>>>>[ alias ]>>>>>>>>>>>>>>>>>>>>>>>>");
+    console.log(option.resolve.alias);
+    console.log(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
+    console.log(option.module.rule);
+  }
 
   const package = {
     production: f => compiler.run(launch),

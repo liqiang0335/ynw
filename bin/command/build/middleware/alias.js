@@ -10,10 +10,6 @@ const absolutePath = alias => {
 
 module.exports = context => option => {
   const folderAlias = { "@": context.projectPath };
-  Object.assign(
-    option.resolve.alias,
-    absolutePath(context.extra.alias),
-    folderAlias
-  );
+  Object.assign(option.resolve.alias, absolutePath(context.alias), folderAlias);
   return option;
 };

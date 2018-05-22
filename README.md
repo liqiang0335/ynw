@@ -86,7 +86,6 @@ ynw build=index env=dev
 <details>
 <summary>查看详情</summary>
 
-* [`registeComp`](#registeComp)
 * [`vuexHelper`](#vuexHelper)
 
 </details>
@@ -109,20 +108,6 @@ chainAsync([a, b]);
 ---
 
 # Vue
-
-### registeComp
-
-> 注册 VUE 组件
-
-```js
-// 注册components文件夹下的所有.vue文件为组件
-// header.vue 注册为 "yn-header"
-
-import registeComp from "ynw/vue/registeComp";
-registeComp("./components", ({ name, option }) => {
-  Vue.component(`yn-${name}`, option);
-});
-```
 
 ### vuexHelper
 

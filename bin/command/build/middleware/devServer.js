@@ -3,7 +3,7 @@ const load = require("./load");
 const webpack = load("webpack");
 
 module.exports = context => option => {
-  const { hot, port, fileName, absolutePath, projectPath, extra } = context;
+  const { hot, port, fileName, absolutePath, projectPath, devServer } = context;
   if (!context.hot) return option;
 
   option.entry = {
@@ -22,7 +22,7 @@ module.exports = context => option => {
       publicPath: "/dist/",
       open: true
     },
-    extra.devServer
+    devServer
   );
   option.plugins.push(new webpack.HotModuleReplacementPlugin());
   option.plugins.push(new webpack.NamedModulesPlugin());

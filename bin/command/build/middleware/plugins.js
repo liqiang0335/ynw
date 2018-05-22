@@ -4,9 +4,6 @@ const OptimizeCssAssetsPlugin = load("optimize-css-assets-webpack-plugin");
 const VueLoaderPlugin = load("vue-loader/lib/plugin");
 const MiniCssExtractPlugin = load("mini-css-extract-plugin");
 
-/**
- * Splite
- */
 const SplitPlugin = new webpack.optimize.SplitChunksPlugin({
   chunks: "all",
   minSize: 30000,
@@ -27,10 +24,6 @@ const SplitPlugin = new webpack.optimize.SplitChunksPlugin({
   }
 });
 
-/**
- * CSS Mini
- */
-
 const cssMin = new OptimizeCssAssetsPlugin({
   assetNameRegExp: /\.css$/g,
   cssProcessor: load("cssnano"),
@@ -38,21 +31,18 @@ const cssMin = new OptimizeCssAssetsPlugin({
   canPrint: true
 });
 
-/**
- * CSS Extract
- */
-
 const cssExtract = new MiniCssExtractPlugin({
   filename: "style.bundle.css",
   chunkFilename: "style.libs.css"
 });
 
 module.exports = context => option => {
-  option.plugins.push(SplitPlugin);
+  const { extractCSS, splitModules } = context;
   option.plugins.push(new VueLoaderPlugin());
   if (!context.isDev) {
-    option.plugins.push(cssMin);
-    option.plugins.push(cssExtract);
+    extractCSS && option.plugins.push(cssMin);
+    extractCSS && option.plugins.push(cssExtract);
+    splitModules && option.plugins.push(SplitPlugin);
   }
   return option;
 };
