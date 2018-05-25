@@ -5,7 +5,7 @@ const path = require("path");
 const fns = require("./util/fns");
 const commands = fns.getParams(process.argv);
 const cwd = process.cwd();
-const context = { fns, cwd, ...commands };
+const context = { fns, cwd, env: "dev", ...commands };
 
 (async function() {
   const folder = path.join(__dirname, "./command");

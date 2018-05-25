@@ -18,10 +18,6 @@ const applyMiddleware = (api, middlewares) => {
 };
 
 module.exports = context => {
-  if (!context.env) {
-    console.log(`>> The "env" param is required`.red);
-    return;
-  }
   main(context);
 };
 
