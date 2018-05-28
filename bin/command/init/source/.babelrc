@@ -1,5 +1,5 @@
 {
-  presets: [
+  "presets": [
     ["env", {
       "targets": {
         "browsers": ["> 2%", "ie >= 9"]
@@ -12,8 +12,8 @@
     }],
     "stage-0"
   ],
-  plugins: [
-    ["component", [{
+  "plugins": [
+    "transform-runtime", ["component", [{
         "libraryName": "element-ui",
         "styleLibraryName": "theme-chalk"
       },
@@ -28,7 +28,6 @@
       "style": true
     }],
     "webpack-async-module-name",
-    "transform-runtime",
     "ynw",
   ]
 }
