@@ -28,6 +28,7 @@
       "style": true
     }],
     "webpack-async-module-name",
-    "transform-runtime"
+    "transform-runtime",
+    "ynw",
   ]
 }
