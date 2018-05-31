@@ -1,19 +1,19 @@
 {
-  "presets": [
+  presets: [
     ["env", {
       "targets": {
         "browsers": ["> 2%", "ie >= 9"]
       },
       modules: "commonjs",
-      "debug": true,
+      "debug": false,
       "include": [],
       "exclude": [],
       "useBuiltIns": true
     }],
     "stage-0"
   ],
-  "plugins": [
-    "transform-runtime", ["component", [{
+  plugins: [
+    ["component", [{
         "libraryName": "element-ui",
         "styleLibraryName": "theme-chalk"
       },
@@ -28,6 +28,6 @@
       "style": true
     }],
     "webpack-async-module-name",
-    "ynw",
+    "transform-runtime"
   ]
 }

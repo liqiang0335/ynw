@@ -10,6 +10,7 @@
  */
 module.exports = {
   extra: {
+    browsersDefault: ["> 2%", "ie >= 9"], //设置默认打包的版本
     alias: {}, //全局的别名(自动指定"@"为入口文件夹的别名)
     devServer: {} //webpack服务器选项
   },
@@ -19,7 +20,8 @@ module.exports = {
       publicPath: "/dist/", //生产环境的 publicPath选项
       envPublicPath: "/dist/", //开发环境的 publicPath选项
       extractCSS: false, //提取CSS到单独文件(生产环境)
-      splitModules: false //分离第三方模块到单独文件(生产环境)
+      splitModules: false, //分离第三方模块到单独文件(生产环境)
+      browsers: [] //设置打包目标的版本
     }
   }
 };
