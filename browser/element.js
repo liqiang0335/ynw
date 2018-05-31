@@ -11,7 +11,7 @@ export const addClass = (el, name) => {
 
 export const removeClass = (el, name) => {
   if (el.classList) {
-    el.classList.remove(className);
+    el.classList.remove(name);
   } else {
     el.className = el.className.replace(
       new RegExp("(^|\\b)" + name.split(" ").join("|") + "(\\b|$)", "gi"),
