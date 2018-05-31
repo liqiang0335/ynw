@@ -6,7 +6,8 @@ module.exports = context => option => {
   const defaultValue = browsersDefault
     ? JSON.stringify(browsersDefault)
     : `["> 2%", "ie >= 9"]`;
-  const value = browsers.length > 0 ? JSON.stringify(browsers) : defaultValue;
+  const has = Array.isArray(browsers) && browsers.length > 0;
+  const value = has ? JSON.stringify(browsers) : defaultValue;
   const cwd = process.cwd();
   const file = path.join(cwd, ".babelrc");
   const doc = fs.readFileSync(file, "utf-8");
