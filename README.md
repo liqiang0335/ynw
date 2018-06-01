@@ -56,6 +56,7 @@ ynw build=index env=dev
 
 * [`uuid`](#uuid)
 * [`createEventHub`](#createEventHub)
+* [`copy`](#copy)
 * [`element`](#element)
 * [`runInRaf`](#runInRaf)
 * [`runInWorker`](#runInWorker)
@@ -107,6 +108,12 @@ chainAsync([a, b]);
 
 ---
 
+# Browser
+
+### copy
+
+> 复制文字到剪贴板
+
 # Vue
 
 ### vuexHelper
@@ -139,6 +146,7 @@ new Vuex.Store({
 store.commit("setState", { key: "a", value: "world" }); //直接设置
 store.commit("setState", { key: "b", value: val => val++ }); //函数方式
 
+// 定义全局的插件
 // 推荐使用插件注册, 任意组件中都可使用
 // plugins.js
 export default {
@@ -153,7 +161,7 @@ export default {
   }
 };
 
-//调用
+//在组件中调用
 this.setState(key, value);
 ```
 
