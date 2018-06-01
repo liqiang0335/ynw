@@ -37,9 +37,9 @@ const cssExtract = new MiniCssExtractPlugin({
 });
 
 module.exports = context => option => {
-  const { extractCSS, splitModules } = context;
+  const { extractCSS, splitModules, hot } = context;
   option.plugins.push(new VueLoaderPlugin());
-  if (!context.isDev) {
+  if (!hot) {
     extractCSS && option.plugins.push(cssMin);
     extractCSS && option.plugins.push(cssExtract);
     splitModules && option.plugins.push(SplitPlugin);
