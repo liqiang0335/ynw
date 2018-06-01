@@ -2,8 +2,19 @@ const load = require("./load");
 const MiniCssExtractPlugin = load("mini-css-extract-plugin");
 const colors = load("colors");
 
+const getStyleLoader = context => {
+  const { env, extractCSS } = context;
+  const loader = extractCSS ? MiniCssExtractPlugin.loader : "vue-style-loader";
+  const handler = {
+    dev: loader,
+    pro: loader,
+    hot: "vue-style-loader"
+  };
+  return handler[env];
+};
+
 const createRule = context => {
-  const { isDev, hot, extractCSS } = context;
+  const { isDev, hot } = context;
   const exclude = hot
     ? /node_modules/
     : file => {
@@ -11,11 +22,7 @@ const createRule = context => {
         return /node_modules/.test(file);
       };
 
-  var styleLoader = "vue-style-loader";
-  if (!isDev && extractCSS) {
-    styleLoader = MiniCssExtractPlugin.loader;
-  }
-
+  const styleLoader = getStyleLoader(context);
   return [
     { test: /\.css$/, use: [styleLoader, "css-loader"] },
     { test: /\.scss$/, use: [styleLoader, "css-loader", "sass-loader"] },
