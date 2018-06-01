@@ -27,7 +27,9 @@
       "libraryDirectory": "es",
       "style": true
     }],
+    "transform-runtime",
     "webpack-async-module-name",
-    "transform-runtime"
+    "syntax-dynamic-import",
+    "ynw"
   ]
 }
