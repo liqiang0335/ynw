@@ -1,6 +1,6 @@
 {
   "name": "ynw",
-  "version": "2.2.11",
+  "version": "2.2.12",
   "description": "collection useful functions",
   "main": "index.js",
   "scripts": {},

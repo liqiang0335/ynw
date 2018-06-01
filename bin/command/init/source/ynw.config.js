@@ -17,8 +17,8 @@ module.exports = {
   keys: {
     test: {
       entry: "test/demo", //入口(不写后缀名)
-      publicPath: "/dist/", //生产环境的 publicPath选项
-      envPublicPath: "/dist/", //开发环境的 publicPath选项
+      publicPath: "", //生产环境的 publicPath选项
+      envPublicPath: "", //开发环境的 publicPath选项
       extractCSS: false, //提取CSS到单独文件(生产环境)
       splitModules: false, //分离第三方模块到单独文件(生产环境)
       browsers: [] //设置打包目标的版本

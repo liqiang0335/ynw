@@ -34,6 +34,8 @@ const parseInput = context => {
   const fileName = path.basename(entry);
   const absolutePath = path.join(cwd, entry);
   const projectPath = path.dirname(absolutePath);
+  const distPath = projectPath + path.sep + "dist" + path.sep;
+
   const projectName = path.basename(projectPath);
   const port = 9999;
 
@@ -48,6 +50,7 @@ const parseInput = context => {
     absolutePath,
     projectName,
     projectPath,
+    distPath,
     port
   };
 };
