@@ -4,25 +4,29 @@ const OptimizeCssAssetsPlugin = load("optimize-css-assets-webpack-plugin");
 const VueLoaderPlugin = load("vue-loader/lib/plugin");
 const MiniCssExtractPlugin = load("mini-css-extract-plugin");
 
-const SplitPlugin = new webpack.optimize.SplitChunksPlugin({
-  chunks: "all",
-  minSize: 30000,
-  minChunks: 1,
-  maxAsyncRequests: 5,
-  maxInitialRequests: 3,
-  name: "libs",
-  cacheGroups: {
-    default: {
-      minChunks: 2,
-      priority: -20,
-      reuseExistingChunk: true
-    },
-    vendors: {
-      test: /[\\/]node_modules[\\/]/,
-      priority: -10
+const SplitPlugin = context => {
+  const { fileName } = context;
+  return new webpack.optimize.SplitChunksPlugin({
+    chunks: "all",
+    minSize: 30000, //形成一个新代码块最小的体积
+    minChunks: 1, //最小应该被引用的次数
+    maxAsyncRequests: 5,
+    maxInitialRequests: 3,
+    automaticNameDelimiter: "~",
+    name: `libs`,
+    cacheGroups: {
+      default: {
+        minChunks: 2,
+        priority: -20,
+        reuseExistingChunk: true
+      },
+      vendors: {
+        test: /[\\/]node_modules[\\/]/,
+        priority: -10
+      }
     }
-  }
-});
+  });
+};
 
 const cssMin = new OptimizeCssAssetsPlugin({
   assetNameRegExp: /\.css$/g,
@@ -42,7 +46,7 @@ module.exports = context => option => {
   if (!hot) {
     extractCSS && option.plugins.push(cssMin);
     extractCSS && option.plugins.push(cssExtract);
-    splitModules && option.plugins.push(SplitPlugin);
+    splitModules && option.plugins.push(SplitPlugin(context));
   }
   return option;
 };
