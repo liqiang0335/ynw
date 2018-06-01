@@ -34,8 +34,8 @@ const parseInput = context => {
   const fileName = path.basename(entry);
   const absolutePath = path.join(cwd, entry);
   const projectPath = path.dirname(absolutePath);
-  const distPath = projectPath + path.sep + "dist" + path.sep;
-
+  const distPath =
+    "/" + entry.replace(/^\.[/\\]?/, "").replace(/\w+$/, "") + "/dist/";
   const projectName = path.basename(projectPath);
   const port = 9999;
 

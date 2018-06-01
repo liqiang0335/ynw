@@ -37,7 +37,7 @@ const createRule = context => {
       use: [
         {
           loader: "url-loader",
-          options: { limit: 10240, name: "assets/[name].[hash:6].[ext]" }
+          options: { limit: 5000, name: "assets/[name].[hash:6].[ext]" }
         }
       ]
     }
