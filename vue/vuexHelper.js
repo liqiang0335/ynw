@@ -1,9 +1,10 @@
 import get from "lodash/get";
 import set from "lodash/set";
 import isFunction from "lodash/isFunction";
+window.__logger__ = true;
 
 export const logger = function(store) {
-  if (process.env.NODE_ENV !== "production") {
+  if (process.env.NODE_ENV !== "production" && window.__logger__) {
     store.subscribe((mutation, state) => {
       const { type, payload } = mutation;
       if (type !== "setState") {
@@ -32,7 +33,7 @@ export const setter = function(state, { key, value }) {
     if (process.env.NODE_ENV !== "production") {
       console.log(
         `%c The key << ${key} >> Not Found And Create New Property`,
-        "font-weight:bold;font-size:16px;background:green;color:white;"
+        "font-weight:bold;background:green;color:white;"
       );
     }
   }
