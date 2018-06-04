@@ -125,6 +125,8 @@ const main = context => {
           "localhost",
           f => console.log(`listening on port ${ctx.port}`.green)
         );
+        const open = require(path.join(__dirname, "./output/open"));
+        setTimeout(f => open(ctx), 2000);
         return;
       }
       compiler.watch(watchOps, launch);
