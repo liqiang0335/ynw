@@ -27,6 +27,7 @@
     "babel-loader": "latest",
     "babel-plugin-component": "latest",
     "babel-plugin-import": "latest",
+    "babel-plugin-ynw": "latest",
     "babel-plugin-transform-runtime": "latest",
     "babel-polyfill": "latest",
     "babel-preset-env": "latest",
