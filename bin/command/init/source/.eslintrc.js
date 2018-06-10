@@ -1,11 +1,13 @@
 module.exports = {
-  extends: "eslint:recommended",
+  extends: ["eslint:recommended", "plugin:vue/essential"],
   env: {
     browser: true,
     commonjs: true,
     es6: true
   },
-  globals: {},
+  globals: {
+    ynRegisteVueComps: false
+  },
   parserOptions: {
     ecmaVersion: 2017,
     sourceType: "module",
