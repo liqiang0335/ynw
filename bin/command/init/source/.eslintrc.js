@@ -18,8 +18,6 @@ module.exports = {
   rules: {
     semi: 2,
     "no-console": "off",
-    camelcase: "on",
-    "no-eval": "error",
-    "no-duplicate-imports": "error"
+    camelcase: "on"
   }
 };
