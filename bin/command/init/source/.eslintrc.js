@@ -17,7 +17,6 @@ module.exports = {
   },
   rules: {
     semi: 2,
-    "no-console": "off",
-    camelcase: "on"
+    "no-console": "off"
   }
 };
