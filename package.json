@@ -1,10 +1,13 @@
 {
   "name": "ynw",
-  "version": "2.2.20",
+  "version": "2.2.21",
   "description": "collection useful functions",
   "main": "index.js",
   "scripts": {},
-  "keywords": ["ynw", "yueniu"],
+  "keywords": [
+    "ynw",
+    "yueniu"
+  ],
   "author": "",
   "bin": {
     "ynw": "./bin/index.js"
