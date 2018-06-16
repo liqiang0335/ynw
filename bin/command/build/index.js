@@ -95,7 +95,8 @@ const createOption = ctx => {
       alias: { vue$: "vue/dist/vue.esm" }
     },
     module: {},
-    plugins: []
+    plugins: [],
+    externals: { ...ctx.externals }
   };
 };
 
