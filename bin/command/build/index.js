@@ -25,7 +25,7 @@ const parseInput = context => {
   const { cwd, build, env } = context;
   const config = require(path.join(cwd, "ynw.config.js"));
   const values = config["keys"][build];
-  const extra = config.extra;
+  const { extra } = config;
   const { entry } = values;
 
   const hot = context.env === "hot" ? true : false;
@@ -34,15 +34,15 @@ const parseInput = context => {
   const fileName = path.basename(entry);
   const absolutePath = path.join(cwd, entry);
   const projectPath = path.dirname(absolutePath);
+  const projectName = path.basename(projectPath);
   const distPath =
     "/" + entry.replace(/^\.[/\\]?/, "").replace(/\w+$/, "") + "/dist/";
-  const projectName = path.basename(projectPath);
   const port = 9999;
 
   return {
     ...context,
-    ...values,
     ...extra,
+    ...values,
     hot,
     isDev,
     mode,
@@ -84,6 +84,7 @@ const createOption = ctx => {
   return {
     mode: ctx.mode,
     entry: { [ctx.fileName]: ctx.absolutePath },
+    target: ctx.target || "web",
     output: {
       path: ctx.projectPath + "/dist/",
       filename: "[name].bundle.js",
@@ -107,12 +108,9 @@ const main = context => {
   const compiler = webpack(option);
 
   if (ctx.debug) {
-    console.log(">>>>>>>>>>>>>>>>[ output ]>>>>>>>>>>>>>>>>>>>>>>>>");
-    console.log(option.output);
-    console.log(">>>>>>>>>>>>>>>>>[ alias ]>>>>>>>>>>>>>>>>>>>>>>>>");
-    console.log(option.resolve.alias);
-    console.log(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
-    console.log(option.module.rule);
+    console.log("-----------------------------------------------");
+    console.log(JSON.stringify(option));
+    console.log("-----------------------------------------------");
   }
 
   const package = {

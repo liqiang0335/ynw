@@ -5,7 +5,7 @@ module.exports = context => option => {
   const { browsers, browsersDefault } = context;
   const defaultValue = browsersDefault
     ? JSON.stringify(browsersDefault)
-    : `[ "ie >= 9"]`;
+    : `["> 2%", "ie >= 9"]`;
   const has = Array.isArray(browsers) && browsers.length > 0;
   const value = has ? JSON.stringify(browsers) : defaultValue;
   const cwd = process.cwd();

@@ -10,7 +10,7 @@
  */
 module.exports = {
   extra: {
-    browsersDefault: ["ie >= 9"], //设置默认打包的版本
+    browsersDefault: ["> 2%", "ie >= 9"], //设置默认打包的版本
     alias: {}, //全局的别名(自动指定"@"为入口文件夹的别名)
     devServer: {} //webpack服务器选项
   },

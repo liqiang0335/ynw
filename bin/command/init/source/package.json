@@ -19,6 +19,7 @@
     "vue": "latest",
     "vue-router": "latest",
     "vuex": "latest",
+    "rxjs": "latest",
     "ynw": "latest"
   },
   "devDependencies": {

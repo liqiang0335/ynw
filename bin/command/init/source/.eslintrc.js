@@ -6,8 +6,7 @@ module.exports = {
     es6: true
   },
   globals: {
-    ynRegisteVueComps: false,
-    process: true
+    ynRegisteVueComps: false
   },
   parserOptions: {
     ecmaVersion: 2017,
