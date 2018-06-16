@@ -88,7 +88,7 @@ const createOption = ctx => {
     output: {
       path: ctx.projectPath + "/dist/",
       filename: "[name].bundle.js",
-      chunkFilename: `chunk.[name].js`
+      chunkFilename: `${ctx.fileName}.chunk.[name].js`
     },
     resolve: {
       extensions: [".js", ".vue", ".json"],
