@@ -2,8 +2,7 @@ const { exec } = require("child_process");
 let opened = false;
 
 /**
- * open chrome
- *
+ * Open Google Chrome
  */
 module.exports = context => {
   const { hot, port } = context;
@@ -12,7 +11,7 @@ module.exports = context => {
   const cmd =
     process.platform == "win32"
       ? `start chrome ${path}`
-      : `open chrome ${path}`;
+      : `open -a "Google Chrome" ${path}`;
 
   exec(cmd, err => {
     if (err) console.log(err);
