@@ -2,7 +2,8 @@ const { exec } = require("child_process");
 let opened = false;
 
 /**
- * 打开chrome
+ * open chrome
+ *
  */
 module.exports = context => {
   const { hot, port } = context;
