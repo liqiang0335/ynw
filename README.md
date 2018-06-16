@@ -1,11 +1,11 @@
 # 命令行参数
 
-* `ynw --version` 版本号
-* `ynw --init` : 添加配置文件
-* `ynw --dep`: 追加 NPM 依赖
-* `ynw build=index env=dev` : 开发环境构建
-* `ynw build=index env=hot` : 开发环境构建 + 热替换
-* `ynw build=index env=pro` : 生产环境构建
+- `ynw --version` 版本号
+- `ynw --init` : 添加配置文件
+- `ynw --dep`: 追加 NPM 依赖
+- `ynw build=index env=dev` : 开发环境构建
+- `ynw build=index env=hot` : 开发环境构建 + 热替换
+- `ynw build=index env=pro` : 生产环境构建
 
 ### 使用方法
 
@@ -32,11 +32,11 @@ ynw build=index env=dev
 <details>
 <summary>查看详情</summary>
 
-* [`chainAsync`](#chainAsync)
-* [`compose`](#compose)
-* [`composeRight`](#composeRight)
-* [`koa-compose`](#koa-compose)
-* [`pipeAsync`](#pipeAsync)
+- [`chainAsync`](#chainAsync)
+- [`compose`](#compose)
+- [`composeRight`](#composeRight)
+- [`koa-compose`](#koa-compose)
+- [`pipeAsync`](#pipeAsync)
 
 </details>
 
@@ -45,7 +45,7 @@ ynw build=index env=dev
 <details>
 <summary>查看详情</summary>
 
-* [`differenceBy`](#differenceby)
+- [`differenceBy`](#differenceby)
 
 </details>
 
@@ -54,12 +54,12 @@ ynw build=index env=dev
 <details>
 <summary>查看详情</summary>
 
-* [`uuid`](#uuid)
-* [`createEventHub`](#createEventHub)
-* [`copy`](#copy)
-* [`element`](#element)
-* [`runInRaf`](#runInRaf)
-* [`runInWorker`](#runInWorker)
+- [`uuid`](#uuid)
+- [`createEventHub`](#createEventHub)
+- [`copy`](#copy)
+- [`element`](#element)
+- [`runInRaf`](#runInRaf)
+- [`runInWorker`](#runInWorker)
 
 </details>
 
@@ -68,8 +68,8 @@ ynw build=index env=dev
 <details>
 <summary>查看详情</summary>
 
-* [`registe`](#registe)
-* [`httpPost`](#httppost)
+- [`registe`](#registe)
+- [`httpPost`](#httppost)
 
 </details>
 
@@ -78,7 +78,7 @@ ynw build=index env=dev
 <details>
 <summary>查看详情</summary>
 
-* `reset.css`
+- `reset.css`
 
 </details>
 
@@ -87,7 +87,7 @@ ynw build=index env=dev
 <details>
 <summary>查看详情</summary>
 
-* [`vuexHelper`](#vuexHelper)
+- [`vuexHelper`](#vuexHelper)
 
 </details>
 
@@ -118,8 +118,8 @@ chainAsync([a, b]);
 
 ### vuexHelper
 
-* setState : 使用通用的方法设置 store 中的 state 的值, 减少 mutations 中方法的定义
-* logger : 自定义控制台的输出值(打印出通过 setState 设置的值)
+- setState : 使用通用的方法设置 store 中的 state 的值, 减少 mutations 中方法的定义
+- logger : 自定义控制台的输出值(打印出通过 setState 设置的值)
 
 <details>
   <summary>使用方法</summary>
