@@ -1,5 +1,5 @@
 {
-  "name": "",
+  "name": "demo",
   "version": "1.0.0",
   "description": "",
   "main": "",
@@ -8,17 +8,15 @@
   "license": "ISC",
   "dependencies": {
     "axios": "latest",
-    "cropperjs": "latest",
     "date-fns": "latest",
     "element-ui": "latest",
     "es6-promise": "latest",
-    "jquery": "latest",
     "lodash": "latest",
     "querystring": "latest",
-    "vant": "latest",
     "vue": "latest",
-    "vue-router": "latest",
     "vuex": "latest",
+    "vue-router": "latest",
+    "vue-rx": "latest",
     "rxjs": "latest",
     "ynw": "latest"
   },
