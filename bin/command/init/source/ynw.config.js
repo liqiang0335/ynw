@@ -1,5 +1,6 @@
 /**
  * 路径均为相对根目录
+ * `ynw --version` : 产看版本号
  * `ynw --init` : 添加配置文件
  * `ynw build=app env=dev` : 开发环境构建
  * `ynw build=app env=hot` : 开发环境构建 + 热替换
