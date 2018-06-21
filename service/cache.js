@@ -23,19 +23,3 @@ export default {
   removeAll,
   update
 };
-
-///////////////////////////////////////////////////
-/**
- * 配合RXJS的使用方法
- * 统一本地与服务端
- */
-export const getData = key => {
-  const fromLocal$ = of(Cache.get(key));
-  const fromServer$ = fromPromise(
-    API.getData().then(data => {
-      Cache.set(key, data.list);
-      return Cache.get(key);
-    })
-  );
-  Cache.has(key) ? fromLocal$ : fromServer$;
-};
