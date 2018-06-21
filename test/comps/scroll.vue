@@ -8,9 +8,8 @@ import ScrollPosition from "@ynw/browser/scrollPosition";
 import { fromEvent } from "rxjs";
 import { scan, debounceTime, filter } from "rxjs/operators";
 const scrollPosition = new ScrollPosition();
-
 /**
- * trigger on window scroll bottom
+ * emmit on window scroll to bottom
  */
 export default {
   mounted() {
