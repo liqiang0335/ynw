@@ -8,7 +8,7 @@
     "ynw",
     "yueniu"
   ],
-  "author": "",
+  "author": "liqiang0335@qq.com",
   "bin": {
     "ynw": "./bin/index.js"
   },
