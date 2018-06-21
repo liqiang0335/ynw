@@ -12,6 +12,7 @@ module.exports = {
     devServer: {},
     alias: {
       /* 自动指定了 "@" 作为 entry 文件夹的别名 */
+      "@ynw": "./"
     }
   },
   keys: {
