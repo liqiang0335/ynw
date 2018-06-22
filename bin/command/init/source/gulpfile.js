@@ -1,4 +1,5 @@
 const gulp = require("gulp");
+const path = require("path");
 const spritesmith = require("gulp.spritesmith");
 const browserSync = require("browser-sync").create();
 const reload = browserSync.reload;
@@ -8,10 +9,10 @@ const reload = browserSync.reload;
  */
 gulp.task("serve", function() {
   browserSync.init({
-    server: "./demo" //设置服务器根目录
+    server: "./src" //设置服务器根目录
   });
   //设置监控文件类型
-  gulp.watch("./demo/*").on("change", reload);
+  gulp.watch("/src/**/*.js").on("change", reload);
 });
 
 //////////////////////////////////////////////////////////////////////
