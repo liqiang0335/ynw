@@ -36,18 +36,21 @@ const cssMin = new OptimizeCssAssetsPlugin({
 });
 
 module.exports = context => option => {
-  const { extractCSS, splitModules, hot, fileName } = context;
+  const { extractCSS, splitModules, fileName } = context;
   option.plugins.push(new VueLoaderPlugin());
-  if (!hot) {
-    extractCSS && option.plugins.push(cssMin);
-    extractCSS &&
-      option.plugins.push(
-        new MiniCssExtractPlugin({
-          filename: `${fileName}.bundle.css`,
-          chunkFilename: `${fileName}.libs.css`
-        })
-      );
-    splitModules && option.plugins.push(SplitPlugin(context));
+
+  if (extractCSS) {
+    option.plugins.push(cssMin);
+    option.plugins.push(
+      new MiniCssExtractPlugin({
+        filename: `${fileName}.bundle.css`,
+        chunkFilename: `${fileName}.libs.css`
+      })
+    );
+  }
+
+  if (splitModules) {
+    option.plugins.push(SplitPlugin(context));
   }
   return option;
 };
