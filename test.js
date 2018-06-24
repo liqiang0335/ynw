@@ -1,17 +1,12 @@
+const onset = require("./proxy/onSet");
+
 const o = {
   a: 1
 };
 
-const trap_o = trap(o);
+onset(o, next => {
+  console.log("---");
+  next();
+});
 
-trap_o.b = 2;
-console.log(yntrap_o);
-
-function trap(obj) {
-  return new Proxy(obj, {
-    set(target, key, value) {
-      console.log("----");
-      return Reflect.set(target, key, value);
-    }
-  });
-}
+o.b = 2;
