@@ -1,9 +1,9 @@
 /**
  * Geetest drag detection
  *
- * @param gt
- * @param challenge
- * @param success
+ * @param data.gt
+ * @param data.challenge
+ * @param data.success
  * @return { geetest_challenge, geetest_validate, geetest_seccode }
  */
 
@@ -42,6 +42,7 @@ export const showGeetest = function(data) {
 
 /**
  * Create form for submit
+ * @param data: Object
  */
 export const createForm = function(data) {
   return new Promise(resolve => {
