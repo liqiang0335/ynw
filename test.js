@@ -11,20 +11,28 @@ const config = {
   remotePath: "/soft/tomcat7v1.0/webapps/ROOT/"
 };
 
-const fileName = "ftp-test.js";
-const file = path.resolve(__dirname, fileName);
+const sftp = new Client();
+const connect = () => {
+  return sftp
+    .connect(config)
+    .then(() => sftp.list(config.remotePath))
+    .then(() => log(chalk.green(">>> 服务器连接成功")))
+    .catch(err => log(chalk.red(">>> 服务器连接失败", err)));
+};
 
-let sftp = new Client();
-sftp
-  .connect(config)
-  .then(() => sftp.list(config.remotePath))
-  .then(() => log(chalk.green("服务器连接成功")))
-  .catch(err => log(chalk.red("服务器连接失败", err)))
-  .then(() => {
-    sftp
-      .put(file, config.remotePath + fileName)
-      .then(() => {
-        log(chalk.blue("upload done..."));
-      })
-      .catch(err => log(chalk.red(err)));
-  });
+/**
+ * 上传文件
+ */
+const upload = file => {
+  const { localPath, remotePath, fileName } = file;
+  sftp
+    .put(localPath, remotePath)
+    .then(() => {
+      log(chalk.blue(`>>> ${fileName} 上传完成`));
+    })
+    .catch(err => {
+      console.log("---------------------------");
+      log(chalk.red(`>>> ${fileName} 上传出错`));
+      log(chalk.red(err));
+    });
+};
