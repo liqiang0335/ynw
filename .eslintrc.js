@@ -8,7 +8,8 @@ module.exports = {
   globals: {
     importVueComps: true,
     process: true,
-    path: true
+    path: true,
+    __dirname: true
   },
   parserOptions: {
     ecmaVersion: 2017,

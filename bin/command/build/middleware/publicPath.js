@@ -1,4 +1,3 @@
-const path = require("path");
 module.exports = context => option => {
   const { publicPath, envPublicPath, distPath, env } = context;
   const handler = {
