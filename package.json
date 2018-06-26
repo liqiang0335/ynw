@@ -1,7 +1,7 @@
 {
   "name": "ynw",
   "version": "2.2.30",
-  "description": "collection useful functions",
+  "description": "tool for ynw",
   "main": "index.js",
   "scripts": {},
   "keywords": [
