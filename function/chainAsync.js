@@ -7,4 +7,4 @@ const chainAsync = fns => {
   next();
 };
 
-module.extends = chainAsync;
+module.exports = chainAsync;

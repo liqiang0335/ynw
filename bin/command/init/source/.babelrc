@@ -2,7 +2,7 @@
   presets: [
     ["env", {
       "targets": {
-        "browsers": ["> 2%", "ie >= 9"]
+        "browsers": ["ie >= 9"]
       },
       modules: "commonjs",
       "debug": false,

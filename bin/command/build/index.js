@@ -55,7 +55,7 @@ const parseInput = context => {
   };
 };
 
-const exec = callback => (err, stats) => {
+const exec = (callback, context) => (err, stats) => {
   if (err) {
     console.error(err.stack || err);
     if (err.details) {
@@ -64,20 +64,28 @@ const exec = callback => (err, stats) => {
     callback(false);
     return;
   }
-  const info = stats.toJson();
+  const info = stats.toJson("minimal");
   if (stats.hasErrors()) {
     console.error(info.errors);
   }
   if (stats.hasWarnings()) {
     console.warn(info.warnings);
   }
-  console.log(
-    stats.toString({
-      chunks: false,
-      colors: true
-    })
-  );
-  callback(true);
+  const result = stats.toString({
+    chunks: false,
+    colors: true,
+    assets: true,
+    maxModules: 1
+  });
+  console.log(result);
+
+  // find out compile file names
+  const { fileName } = context;
+  const re = new RegExp(`${fileName}\.(bundle|chunk|lib)[^\\s]+?(js|css)`, "g");
+  const match = result.match(re);
+  const set = new Set(match);
+  const list = [...set];
+  callback(list);
 };
 
 const createOption = ctx => {
@@ -104,7 +112,7 @@ const main = context => {
   const ctx = parseInput(context);
   const base = createOption(ctx);
   const option = applyMiddleware(ctx, optionMiddleware)(base);
-  const launch = exec(applyMiddleware(ctx, execMiddleware));
+  const launch = exec(applyMiddleware(ctx, execMiddleware), ctx);
   const watchOps = { aggregateTimeout: 300, poll: 1000 };
   const compiler = webpack(option);
 
@@ -114,22 +122,22 @@ const main = context => {
     console.log("-----------------------------------------------");
   }
 
+  // hot
+  if (ctx.hot) {
+    WebpackDevServer.addDevServerEntrypoints(option, option.devServer);
+    new WebpackDevServer(compiler, option.devServer).listen(
+      ctx.port,
+      "localhost",
+      f => console.log(`listening on port ${ctx.port}`.green)
+    );
+    const open = require(path.join(__dirname, "./output/open"));
+    setTimeout(f => open(ctx), 2000);
+    return;
+  }
+
   const package = {
     production: f => compiler.run(launch),
-    development: f => {
-      if (ctx.hot) {
-        WebpackDevServer.addDevServerEntrypoints(option, option.devServer);
-        new WebpackDevServer(compiler, option.devServer).listen(
-          ctx.port,
-          "localhost",
-          f => console.log(`listening on port ${ctx.port}`.green)
-        );
-        const open = require(path.join(__dirname, "./output/open"));
-        setTimeout(f => open(ctx), 2000);
-        return;
-      }
-      compiler.watch(watchOps, launch);
-    }
+    development: f => compiler.watch(watchOps, launch)
   };
   package[ctx.mode]();
 };

@@ -19,6 +19,7 @@ module.exports = {
   },
   rules: {
     semi: 2,
-    "no-console": "off"
+    "no-console": "off",
+    "no-useless-escape": "off"
   }
 };

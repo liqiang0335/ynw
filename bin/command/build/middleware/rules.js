@@ -35,16 +35,11 @@ const createRule = context => {
   ];
 };
 
-const postcssPipe = rules => {
-  rules.forEach(item => {
-    item.use.push("postcss-loader");
-  });
-};
-
 module.exports = context => option => {
   const rules = createRule(context);
   if (!context.isDev) {
-    postcssPipe([rules[0], rules[1]]);
+    rules[0].use.push("postcss-loader");
+    rules[1].use.push("postcss-loader");
   }
   option.module.rules = rules;
   return option;

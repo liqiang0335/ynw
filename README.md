@@ -22,3 +22,7 @@ yn.config.js
 # 构建
 ynw build=index env=dev
 ```
+
+# 文档
+
+[点击这里](https://github.com/liqiang0335/ynw/tree/master/api)
