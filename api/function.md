@@ -88,3 +88,18 @@ const recorder2 = runInRaf(cb, false);
 ### getScrollPosition
 
 > 获取滚动条滚动位置
+
+### debounce
+
+> 节流阀带回调
+
+```js
+import debounce from "ynw/function/debounce";
+import { Message } from "element-ui";
+
+const callback = () => Message({ type: "error", message: "操作频繁" });
+const exec = function() {
+  setTimeout(() => console.log("ok"), 1000);
+};
+debounce(1000)(exec, callback);
+```
