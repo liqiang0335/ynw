@@ -22,3 +22,5 @@ yn.config.js
 # 构建
 ynw build=index env=dev
 ```
+
+# 文档
