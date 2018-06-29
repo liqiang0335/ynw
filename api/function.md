@@ -71,5 +71,5 @@ const callback = () => Message({ type: "error", message: "操作频繁" });
 const exec = function() {
   setTimeout(() => console.log("ok"), 1000);
 };
-debounce(1000)(exec, callback);
+document.querySelector(".btn").onclick = debounce(1000)(exec, callback);
 ```
