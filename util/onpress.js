@@ -1,23 +1,24 @@
 /**
- * @param handlers: Object 处理函数
+ * @param option: Object 处理函数
  *
  * 使用方法
  * import onPress from 'ynw/util/onPress
  *  onPress({
+ *    isDev:true, //默认为false
  *    KeyA:()=>console.log("you press A"),
  *    Num2:()=>console.log("you press 2")
  * })
  */
-export default handlers => {
-  const isDev = process.env.NODE_ENV !== "production";
+export default option => {
+  if (option.isDev && process.env.NODE_ENV === "production") return;
   document.addEventListener(
     "keyup",
     e => {
       const { altKey, ctrlKey, keyCode } = e;
       if (!(ctrlKey && altKey)) return;
       const key = CodeToKey[keyCode];
-      if (handlers[key]) {
-        handlers[key]();
+      if (option[key]) {
+        option[key]();
       }
     },
     false
