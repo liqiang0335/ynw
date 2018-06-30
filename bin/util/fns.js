@@ -18,6 +18,19 @@ function getParams(arr) {
 }
 
 /**
+ * 复制属性
+ */
+function extend(source, target) {
+  if (!target) return source;
+  for (var key in source) {
+    if (target[key] !== undefined) {
+      source[key] = target[key];
+    }
+  }
+  return source;
+}
+
+/**
  * 合并属性
  */
 function merge(source, target) {
@@ -40,6 +53,7 @@ const readdir = util.promisify(fs.readdir);
 module.exports = {
   getParams,
   merge,
+  extend,
   exists,
   readFile,
   writeFile,
