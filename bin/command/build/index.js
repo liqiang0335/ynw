@@ -25,7 +25,7 @@ const parseInput = context => {
   const { cwd, build, env } = context;
   const config = require(path.join(cwd, "ynw.config.js"));
   const values = config["keys"][build];
-  const { extra } = config;
+  const { extra, common } = config;
   const { entry } = values;
 
   const hot = context.env === "hot" ? true : false;
@@ -42,6 +42,7 @@ const parseInput = context => {
   return {
     ...context,
     ...extra,
+    ...common,
     ...values,
     hot,
     isDev,

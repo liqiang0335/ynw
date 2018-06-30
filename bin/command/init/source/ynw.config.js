@@ -7,8 +7,8 @@
  * `ynw build=app env=pro` : 生产环境构建
  */
 module.exports = {
-  extra: {
-    browsersDefault: ["ie >= 9"],
+  common: {
+    browsers: ["ie >= 9"],
     devServer: {},
     alias: {
       /* 自动指定了 "@" 作为 entry 文件夹的别名 */
@@ -18,8 +18,7 @@ module.exports = {
     app: {
       entry: "./app/index", //入口(不写后缀名)
       extractCSS: false, //提取CSS到单独文件(生产环境)
-      splitModules: false, //分离第三方模块到单独文件(生产环境)
-      browsers: [] //设置打包目标的版本
+      splitModules: false //分离第三方模块到单独文件(生产环境)
     }
   }
 };

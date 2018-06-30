@@ -23,7 +23,7 @@ const SFTP = context => {
     connect
       .then(() => {
         const upload = sftp
-          .put("", "/ftp/test.js")
+          .put("/Users/liqiang/Desktop/test/test.js", "/ftp/test.js")
           .then(result => {
             console.log("上传成功");
           })
