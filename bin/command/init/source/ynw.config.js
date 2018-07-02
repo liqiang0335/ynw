@@ -5,6 +5,7 @@
  * `ynw build=app env=dev` : 开发环境构建
  * `ynw build=app env=hot` : 开发环境构建 + 热替换
  * `ynw build=app env=pro` : 生产环境构建
+ * `ynw build=app env=dev ftp=116` : 自动上传 dist 编译的文件
  */
 module.exports = {
   common: {
