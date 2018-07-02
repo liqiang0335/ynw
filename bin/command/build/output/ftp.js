@@ -6,7 +6,7 @@ const SFTP = context => {
   let ready = false;
   const { ftpConfig, fns, ftp, distPath, cwd } = context;
   if (!(ftp && ftpConfig)) {
-    return;
+    return f => f;
   }
 
   const {
