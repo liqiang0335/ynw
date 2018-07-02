@@ -75,7 +75,7 @@ const exec = (callback, context) => (err, stats) => {
   const result = stats.toString({
     chunks: false,
     colors: true,
-    assets: true,
+    assets: false,
     maxModules: 1
   });
   console.log(result);
