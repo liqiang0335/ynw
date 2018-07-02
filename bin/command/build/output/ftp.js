@@ -1,37 +1,61 @@
-const Client = load("ssh2-sftp-client");
 const load = require("../middleware/load");
+const path = require("path");
 load("colors");
 
-const sftp = new Client();
-
 const SFTP = context => {
-  const { ftpConfig, fns, ftp } = context;
-  const option = ftpConfig[ftp];
-  const { remotePath } = option;
-  const uploadOption = fns.extend(
-    { host: "", port: "", username: "", password: "" },
-    option
-  );
+  let ready = false;
+  const { ftpConfig, fns, ftp, distPath, cwd } = context;
+  if (!(ftp && ftpConfig)) {
+    return;
+  }
+
+  const {
+    remotePath,
+    host,
+    port,
+    username,
+    password,
+    debounceTime
+  } = ftpConfig[ftp];
+
+  const remoteDistPath = remotePath + distPath;
+
+  const Client = load("ssh2-sftp-client");
+  const sftp = new Client();
 
   const connect = sftp
-    .connect(uploadOption)
-    .then(() => console.log(`>>> ${ftp}服务器连接成功`.bgGreen))
-    .catch(err => console.log(`出现错误: ${err}`.bgRed));
+    .connect({ host, port, username, password })
+    .then(() => {
+      console.log(`>>> ${ftp} connect success`.bgGreen);
+      ready = true;
+      sftp.mkdir(remoteDistPath, true);
+    })
+    .catch(err => console.log(`error: ${err}`.bgRed));
+
+  const upload = file => {
+    console.log(`upload...`);
+    const local = path.join(cwd, distPath, file).replace(/\\+/g, "\\\\");
+    const remote = path.join(remoteDistPath, file).replace(/[\\\/]+/g, "/");
+    return sftp
+      .fastPut(local, remote)
+      .then(() => console.log(`${file}  -->  success`.green))
+      .catch(err => console.log(`${file}  --> error`.red, err));
+  };
+
+  let lock = false; //锁
+  const interval = Math.max(3000, debounceTime); //最小间隔
 
   return files => {
-    // upload
-    connect
-      .then(() => {
-        const upload = sftp
-          .put("/Users/liqiang/Desktop/test/test.js", "/ftp/test.js")
-          .then(result => {
-            console.log("上传成功");
-          })
-          .catch(err => console.log(err));
-      })
-      .catch(err => console.log("not upload"));
-
-    // next pipe
+    if (ready && !lock) {
+      lock = true;
+      setTimeout(async () => {
+        for (var i = 0; i < files.length; i++) {
+          const item = files[i];
+          await upload(item);
+        }
+        lock = false;
+      }, interval);
+    }
     return files;
   };
 };

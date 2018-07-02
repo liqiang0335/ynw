@@ -55,6 +55,7 @@
     "optimize-css-assets-webpack-plugin": "latest",
     "precss": "latest",
     "sass-loader": "latest",
+    "ssh2-sftp-client": "latest",
     "style-loader": "latest",
     "uglifyjs-webpack-plugin": "latest",
     "url-loader": "latest",

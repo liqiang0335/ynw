@@ -12,6 +12,16 @@ module.exports = {
     devServer: {},
     alias: {
       /* 自动指定了 "@" 作为 entry 文件夹的别名 */
+    },
+    ftpConfig: {
+      116: {
+        debounceTime: 3000, //上传频率（最小间隔3秒）
+        username: "",
+        port: 22,
+        host: "",
+        password: "",
+        remotePath: ""
+      }
     }
   },
   keys: {

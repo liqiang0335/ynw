@@ -59,34 +59,37 @@ const parseInput = context => {
 const exec = (callback, context) => (err, stats) => {
   if (err) {
     console.error(err.stack || err);
-    if (err.details) {
-      console.error(err.details);
-    }
-    callback(false);
+    if (err.details) console.error(err.details);
     return;
   }
   const info = stats.toJson("minimal");
-  if (stats.hasErrors()) {
-    console.error(info.errors);
-  }
-  if (stats.hasWarnings()) {
-    console.warn(info.warnings);
-  }
+  const hasError = stats.hasErrors();
+  if (hasError) console.error(info.errors);
+  if (stats.hasWarnings()) console.warn(info.warnings);
   const result = stats.toString({
     chunks: false,
     colors: true,
     assets: false,
+    chunkModules: false,
+    chunks: false,
+    children: false,
     maxModules: 1
   });
   console.log(result);
 
-  // find out compile file names
-  const { fileName } = context;
-  const re = new RegExp(`${fileName}\.(bundle|chunk|lib)[^\\s]+?(js|css)`, "g");
-  const match = result.match(re);
-  const set = new Set(match);
-  const list = [...set];
-  callback(list);
+  // output
+  if (!hasError) {
+    const { fileName } = context;
+    //匹配编译的文件列表
+    const re = new RegExp(
+      `${fileName}\.(bundle|chunk|lib)[^\\s]+?(js|css)`,
+      "g"
+    );
+    const match = result.match(re);
+    const set = new Set(match);
+    const list = [...set];
+    callback(list);
+  }
 };
 
 const createOption = ctx => {
