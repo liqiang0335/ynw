@@ -16,7 +16,7 @@ module.exports = {
     },
     ftpConfig: {
       116: {
-        debounceTime: 3000, //上传频率（最小间隔3秒）
+        debounceTime: 2000, //上传频率（最小间隔2秒）
         username: "",
         port: 22,
         host: "",

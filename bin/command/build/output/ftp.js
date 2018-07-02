@@ -43,7 +43,7 @@ const SFTP = context => {
   };
 
   let lock = false; //锁
-  const interval = Math.max(3000, debounceTime); //最小间隔
+  const interval = Math.max(2000, debounceTime); //最小间隔
 
   return files => {
     if (ready && !lock) {
