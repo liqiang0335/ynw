@@ -9,6 +9,10 @@ const SFTP = context => {
     return f => f;
   }
 
+  if (!(ftp && ftpConfig)) {
+    return f => f;
+  }
+
   const {
     remotePath,
     host,
@@ -17,6 +21,11 @@ const SFTP = context => {
     password,
     debounceTime
   } = ftpConfig[ftp];
+
+  if (!(remotePath && host && username && password && port)) {
+    console.log(`FTP:请填写正确的参数`.red);
+    return f => f;
+  }
 
   const remoteDistPath = remotePath + distPath;
 
