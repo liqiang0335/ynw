@@ -9,19 +9,21 @@
  */
 module.exports = {
   common: {
+    // 指定babel转译的的版本
     browsers: ["ie >= 9"],
     devServer: {},
-    alias: {
-      /* 自动指定了 "@" 作为 entry 文件夹的别名 */
-    },
+    // 自动指定了 "@" 为入口文件夹的别名
+    alias: {},
+    // webpack构建后自动上传dist文件夹下面的 *.bundle.js, *.bundle.css 文件
+    // 注意：仅在开发或者测试环境使用
     ftpConfig: {
       116: {
-        debounceTime: 2000, //上传频率（最小间隔2秒）
+        debounceTime: 2000, //上传频率（毫秒）
         username: "",
         port: 22,
         host: "",
         password: "",
-        remotePath: ""
+        remotePath: "" //重要（确保路径填写正确）
       }
     }
   },
