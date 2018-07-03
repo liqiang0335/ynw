@@ -22,7 +22,6 @@ export const showGeetest = function(data) {
         container.id = "popup-captcha";
         document.body.appendChild(container);
       }
-      container.style.display = "block";
       captchaObj.appendTo("#popup-captcha");
       captchaObj.onReady(captchaObj.show);
 
