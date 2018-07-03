@@ -1,10 +1,5 @@
 /**
  * Add config file
- * ..................
- * ynw.config.js
- * postcss.config.js
- * babelrc
- * ..................
  */
 const path = require("path");
 const load = require("../build/middleware/load");

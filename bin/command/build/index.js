@@ -103,7 +103,7 @@ const createOption = ctx => {
       chunkFilename: `${ctx.fileName}.chunk.[name].js`
     },
     resolve: {
-      extensions: [".js", ".vue", ".json"],
+      extensions: [".js", ".vue", ".json", ".jsx"],
       alias: { vue$: "vue/dist/vue.esm" }
     },
     module: {},

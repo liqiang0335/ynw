@@ -1,0 +1,18 @@
+{
+  presets: [
+    ["env", {
+      "targets": {
+        "browsers": ["ie >= 9"]
+      },
+      modules: "commonjs",
+      "debug": false,
+      "useBuiltIns": true
+    }],
+    "react"
+  ],
+  plugins: [
+    "webpack-async-module-name",
+    "transform-runtime",
+    "ynw"
+  ]
+}
