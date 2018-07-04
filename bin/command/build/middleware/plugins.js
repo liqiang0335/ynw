@@ -44,7 +44,7 @@ module.exports = context => option => {
     option.plugins.push(
       new MiniCssExtractPlugin({
         filename: `${fileName}.bundle.css`,
-        chunkFilename: `${fileName}.libs.css`
+        chunkFilename: `${fileName}.[id].css`
       })
     );
   }
