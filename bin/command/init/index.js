@@ -1,25 +1,61 @@
-/**
- * Add config file
- */
 const path = require("path");
 const load = require("../build/middleware/load");
-const folder = "./source";
+load("colors");
 
-const write = async ({ fns, cwd }, name) => {
-  const source = path.join(__dirname, folder, name);
-  const target = path.join(cwd, name);
+const getDir = name => path.join(__dirname, name);
+
+const folders = {
+  common: getDir("common"),
+  vue: getDir("vue"),
+  react: getDir("react")
+};
+
+const write = async ({ fns, cwd }, { filePath, fileName }) => {
+  const target = path.join(cwd, fileName);
   if (await fns.exists(target)) {
-    console.log(`>> ${name} exists`);
+    console.log(`>> [ ${fileName} ] exists`.yellow);
     return;
   }
-  const content = await fns.readFile(source, "utf-8");
+  const content = await fns.readFile(filePath, "utf-8");
   await fns.writeFile(target, content, "utf-8");
-  console.log(`>> write ${name} done`);
+  console.log(`>> write [ ${fileName} ] done`.green);
+};
+
+const extraHandler = async context => {
+  const { fns } = context;
+  const folder = getDir("extra");
+  const files = await fns.readdir(folder, "utf-8");
+  files.forEach(fileName => {
+    const command = fileName.replace(/\.[a-z]+$/, "");
+    if (context[command]) {
+      const filePath = path.join(folder, fileName);
+      write(context, { filePath, fileName });
+    }
+  });
+};
+
+const commandHandler = context => {
+  const { fns, init } = context;
+  if (!folders[init]) {
+    return;
+  }
+  createAllFiles(folders.common);
+  createAllFiles(folders[init]);
+
+  async function createAllFiles(folder) {
+    const files = await fns.readdir(folder, "utf-8");
+    files.forEach(fileName => {
+      const filePath = path.join(folder, fileName);
+      write(context, { filePath, fileName });
+    });
+  }
 };
 
 module.exports = async context => {
-  const { fns } = context;
-  const dir = path.join(__dirname, folder);
-  const files = await fns.readdir(dir, "utf-8");
-  files.forEach(file => write(context, file));
+  const { fns, init } = context;
+  if (!init) {
+    return;
+  }
+  const pipes = [extraHandler, commandHandler];
+  pipes.forEach(fn => fn(context));
 };
