@@ -24,9 +24,11 @@ export const showGeetest = function(data) {
       }
       captchaObj.appendTo("#popup-captcha");
       captchaObj.onReady(captchaObj.show);
+      if (container.style.display === "none") {
+        container.style.display = "block";
+      }
 
       captchaObj.onSuccess(function() {
-        container.style.display = "none";
         var validate = captchaObj.getValidate();
         const geetOption = {
           geetest_challenge: validate.geetest_challenge,
