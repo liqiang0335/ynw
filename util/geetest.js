@@ -30,6 +30,8 @@ export const showGeetest = function(data) {
 
       captchaObj.onSuccess(function() {
         container.style.display = "none";
+        container.querySelector(".geetest_ghost_success").style.display =
+          "none";
         var validate = captchaObj.getValidate();
         const geetOption = {
           geetest_challenge: validate.geetest_challenge,
