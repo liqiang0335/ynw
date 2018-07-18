@@ -1,19 +1,6 @@
 const path = require("path");
 const fs = require("fs");
 
-const detectReact = context => {
-  const { absolutePath, cwd } = context;
-  const filePath = absolutePath + ".js";
-  const entry = fs.readFileSync(filePath, "utf-8");
-  const isReact = !!entry.match(/import.+from\s+"react"/);
-  const babel = path.join(cwd, ".babelrc");
-  const bcContent = fs.readFileSync(babel, "utf-8");
-  const valid = !!bcContent.match(/react/);
-  if (isReact) {
-    if (valid) return;
-  }
-};
-
 module.exports = context => option => {
   const { browsers, cwd } = context;
   const has = Array.isArray(browsers) && browsers.length > 0;
