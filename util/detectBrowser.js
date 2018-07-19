@@ -1,6 +1,10 @@
 /**
  * 检测浏览器类型和版本
- * Chrome-67
+ * 输出格式如下：
+ *
+ * "Chrome-67"
+ * "IE 11"
+ * "MSIE-9"
  */
 const detectBrowser = function(ua) {
   var tem;
@@ -25,9 +29,3 @@ const detectBrowser = function(ua) {
 };
 
 module.exports = detectBrowser;
-
-var r = detectBrowser(
-  "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 10.0; WOW64; Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729)"
-);
-
-console.log(r);
