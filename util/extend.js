@@ -10,6 +10,4 @@ const extend = function(source, target) {
   return source;
 };
 
-const a = { x: 1, y: 2 };
-const b = { x: 1, m: 4, y: 7 };
-console.log(extend(a, b));
+module.exports = extend;
