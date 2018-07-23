@@ -1,4 +1,4 @@
-export const getURLParams = url => {
+const getURLParams = url => {
   const res = (url.match(/([^?=&]+)(=([^&]*))/g) || []).reduce(
     (a, v) => (
       (a[v.slice(0, v.indexOf("="))] = v.slice(v.indexOf("=") + 1)), a
