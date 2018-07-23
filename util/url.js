@@ -1,10 +1,15 @@
-const getURLParams = url =>
-  (url.match(/([^?=&]+)(=([^&]*))/g) || []).reduce(
+export const getURLParams = url => {
+  const res = (url.match(/([^?=&]+)(=([^&]*))/g) || []).reduce(
     (a, v) => (
       (a[v.slice(0, v.indexOf("="))] = v.slice(v.indexOf("=") + 1)), a
     ),
     {}
   );
+  for (var key in res) {
+    res[key] = res[key].replace(/#.+$/, "");
+  }
+  return res;
+};
 
 const isAbsoluteURL = str => /^[a-z][a-z0-9+.-]*:/.test(str);
 
