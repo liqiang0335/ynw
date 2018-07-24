@@ -15,9 +15,6 @@ export default {
   methods: {
     close() {
       this.$emit("update:visible", false);
-    },
-    fill(data) {
-      this.$extend(this.info, data);
     }
   }
 };
