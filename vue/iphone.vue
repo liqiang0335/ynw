@@ -29,7 +29,8 @@ export default {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(136, 136, 136, 0.85);
+  background: rgba(49, 49, 49, 0.678);
+  z-index: 10000;
   .box {
     justify-content: center;
     position: absolute;
