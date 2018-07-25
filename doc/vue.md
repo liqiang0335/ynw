@@ -31,7 +31,7 @@ Vue.use(plugin);
 
 ## 倒计时
 
-- getCode : 裁切完成携带 base64 参数
+- getCode : 点击获取验证码时
 
 ```html
 <counter-down @getCode="getCodeEvent" />  
