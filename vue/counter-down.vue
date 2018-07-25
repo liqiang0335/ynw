@@ -1,7 +1,6 @@
 <template>
   <button class="counter-down" :class={counting} @click="getCode">{{text}}</button>
 </template>
-
 <script>
 export default {
   data() {
