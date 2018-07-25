@@ -1,4 +1,4 @@
-const getURLParams = url => {
+export const getURLParams = url => {
   const res = (url.match(/([^?=&]+)(=([^&]*))/g) || []).reduce(
     (a, v) => (
       (a[v.slice(0, v.indexOf("="))] = v.slice(v.indexOf("=") + 1)), a
@@ -11,9 +11,9 @@ const getURLParams = url => {
   return res;
 };
 
-const isAbsoluteURL = str => /^[a-z][a-z0-9+.-]*:/.test(str);
+export const isAbsoluteURL = str => /^[a-z][a-z0-9+.-]*:/.test(str);
 
-const URLJoin = (...args) =>
+export const URLJoin = (...args) =>
   args
     .join("/")
     .replace(/[\/]+/g, "/")
@@ -22,5 +22,3 @@ const URLJoin = (...args) =>
     .replace(/\/(\?|&|#[^!])/g, "$1")
     .replace(/\?/g, "&")
     .replace("&", "?");
-
-module.exports = { getURLParams, isAbsoluteURL, URLJoin };
