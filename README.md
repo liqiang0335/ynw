@@ -11,7 +11,7 @@
 
 ```shell
 # 添加配置文件
-ynw --init
+ynw init=vue
 
 # 安装依赖包
 cnpm i
