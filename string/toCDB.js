@@ -1,7 +1,7 @@
 /**
  * 全角转半角字符
  */
-export function ToCDB(str) {
+function ToCDB(str) {
   var tmp = "";
   for (var i = 0; i < str.length; i++) {
     if (str.charCodeAt(i) > 65248 && str.charCodeAt(i) < 65375) {
@@ -12,3 +12,5 @@ export function ToCDB(str) {
   }
   return tmp;
 }
+
+module.exports = ToCDB;
