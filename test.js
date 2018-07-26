@@ -1,4 +1,4 @@
-const serializeCookie = (name, val) =>
-  `${encodeURIComponent(name)}=${encodeURIComponent(val)}`;
+const a = { x: 1, y: 2, z: 3 };
+const { x, y, ...res } = a;
 
-console.log(serializeCookie("a", 1));
+console.log({ x, y });
