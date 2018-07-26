@@ -43,7 +43,6 @@ function compose(middleware) {
       if (!fn) return Promise.resolve();
       try {
         return Promise.resolve(
-          //同步函数也返回promise
           fn(context, function next() {
             return dispatch(i + 1);
           })
