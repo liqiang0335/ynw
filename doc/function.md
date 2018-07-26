@@ -1,6 +1,4 @@
-> 30 Seconds of Code
-
-# Array
+# Function
 
 ## applyMiddleware
 
