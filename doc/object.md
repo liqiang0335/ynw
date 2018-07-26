@@ -63,11 +63,11 @@ invertKeyValues({ a: 1, b: 2, c: 1 }); // { 1: [ 'a', 'c' ], 2: [ 'b' ] }
 invertKeyValues({ a: 1, b: 2, c: 1 }, value => "group" + value); // { group1: [ 'a', 'c' ], group2: [ 'b' ] }
 ```
 
-## next
+## nest
 
 ```js
 //链表结构转换为树形结构
-import next from "ynw/object/next";
+import nest from "ynw/object/nest";
 
 const comments = [
   { id: 1, pid: null },
