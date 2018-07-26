@@ -14,4 +14,4 @@ const prettyBytes = (num, precision = 3, addSpace = true) => {
   return (num < 0 ? "-" : "") + n + (addSpace ? " " : "") + UNITS[exponent];
 };
 
-module.export = prettyBytes;
+module.exports = prettyBytes;

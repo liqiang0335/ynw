@@ -24,7 +24,18 @@ export const hexToRGB = hex => {
 /**
  * 随机颜色
  */
-const randomColor = () => {
+export const randomColor = () => {
   let n = (Math.random() * 0xfffff * 1000000).toString(16);
   return "#" + n.slice(0, 6);
 };
+
+/**
+ *
+ */
+export const extendHex = shortHex =>
+  "#" +
+  shortHex
+    .slice(shortHex.startsWith("#") ? 1 : 0)
+    .split("")
+    .map(x => x + x)
+    .join("");

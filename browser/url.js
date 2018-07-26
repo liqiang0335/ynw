@@ -11,8 +11,6 @@ export const getURLParams = url => {
   return res;
 };
 
-export const isAbsoluteURL = str => /^[a-z][a-z0-9+.-]*:/.test(str);
-
 export const URLJoin = (...args) =>
   args
     .join("/")

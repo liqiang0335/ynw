@@ -15,13 +15,17 @@ detectBrowser(ua); // MSIE-8
 
 ```js
 // 颜色转换
-import { hexToRGB, RGBToHex, randomColor } from "ynw/util/color";
+import { hexToRGB, RGBToHex, randomColor, extendHex } from "ynw/util/color";
 
 hexToRGB("#27ae60ff"); // 'rgba(39, 174, 96, 255)'
 RGBToHex(255, 165, 1); // 'ffa501'
 
 //随机颜色
 randomColor(); //"#e34155"
+
+//补全颜色格式
+extendHex("#03f"); // '#0033ff'
+extendHex("05a"); // '#0055aa'
 ```
 
 ## prettyBytes

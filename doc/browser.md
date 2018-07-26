@@ -6,7 +6,7 @@
 
 ```js
 /** 键盘事件处理
- * 
+ *
 - 辅助功能键为 Ctrl + Alt
 - 字母：KeyA, KeyB, KeyC...
 - 数字：Num1, Num2, Num3...
@@ -19,15 +19,22 @@ onPress({
 });
 ```
 
+## elementIsVisible
+
+```js
+// 元素是否完全出现在Viewport中
+import onPress from "ynw/browser/elementIsVisible";
+
+elementIsVisible(el); // false
+```
+
 ## ScrollPosition
 
 ```js
-/** 
- * 
-- 使用 new 实例化
-- getScrollTop(): 滚上去的距离
-- isToBottom(): 是否到达底部
-*/
+// 使用 new 实例化
+// getScrollTop(): 滚上去的距离
+// isToBottom(): 是否到达底部
+
 import ScrollPosition from "ynw/browser/scrollPosition";
 import debounce from "lodash/debounce";
 const scrollPosition = new ScrollPosition();
@@ -56,6 +63,30 @@ recorder.start(); //启动
 const recorder2 = runInRaf(cb, false);
 ```
 
+## runInwork
+
+```js
+//在work中执行函数
+import runInwork from "ynw/browser/runInwork";
+
+const longRunningFunction = () => {
+  let result = 0;
+  for (let i = 0; i < 1000; i++) {
+    for (let j = 0; j < 700; j++) {
+      for (let k = 0; k < 300; k++) {
+        result = result + i + j + k;
+      }
+    }
+  }
+  return result;
+};
+
+//注意
+//将函数转移到不同的环境执行, 不支持闭包(不能使用外部的变量和函数)
+//也就是说函数必须是无依赖的
+runInwork(longRunningFunction).then(console.log); // 209685000000
+```
+
 ## scrollToTop
 
 > 滚动到页面的顶部
@@ -74,10 +105,26 @@ uuid(); // '7982fcfe-5721-4632-bede-6000885be57d'
 import { getURLParams, URLJoin } from "ynw/browser/url";
 
 // 从 URL 中获取查询字符
-getURLParams("http://www.example.com?a=1&b=2");
-// {a:1, b:2}
+getURLParams("http://www.example.com?a=1&b=2"); //{a:1, b:2}
 
 // 拼接成 URL
-URLJoin("http://www.google.com", "a", "/b/cd", "?foo=123", "?bar=foo");
-// 'http://www.google.com/a/b/cd?foo=123&bar=foo'
+URLJoin("http://www.google.com", "a", "/b/cd", "?foo=123", "?bar=foo"); //'http://www.google.com/a/b/cd?foo=123&bar=foo'
+```
+
+## http
+
+```js
+// XMLHttpRequest发送请求
+import { httpGet, httpPost } from "ynw/browser/http";
+
+// httpGet(url, callback, err = console.err)
+httpGet("https://example.com/list", data => {
+  console.log(data);
+});
+
+// httpPost(url, data, callback, err = console.err)
+const data = JSON.stringify({ id: 100 });
+httpPost("https://example.com/add", data, back => {
+  console.log(back);
+});
 ```
