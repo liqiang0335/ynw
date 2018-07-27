@@ -28,6 +28,17 @@ import onPress from "ynw/browser/elementIsVisible";
 elementIsVisible(el); // false
 ```
 
+## element
+
+```js
+// 元素基本操作
+import { hasClass, removeClass, toggleClass } from "ynw/browser/element";
+
+hasClass(el, "active"); //true
+removeClass(el, "active"); //true
+toggleClass(el, "active"); //true
+```
+
 ## ScrollPosition
 
 ```js
@@ -127,4 +138,56 @@ const data = JSON.stringify({ id: 100 });
 httpPost("https://example.com/add", data, back => {
   console.log(back);
 });
+```
+
+## isBottom
+
+```js
+//滚动条是否到达底部
+isBottom(); //true
+```
+
+## event
+
+```js
+import { on, off, createEventHub, triggerEvent } from "ynw/browser/event";
+
+//使用 on 绑定事件
+const fn = () => console.log("!");
+on(document.body, "click", fn);
+on(document.body, "click", fn, { target: "p" }); // 事件委托
+on(document.body, "click", fn, { options: true }); //绑定在捕获阶段.
+
+//使用 off 解除绑定
+off(document.body, "click", fn);
+```
+
+EventHub
+
+```js
+// EventHub
+const handler = data => console.log(data);
+const hub = createEventHub();
+let increment = 0;
+
+// Subscribe: listen for different types of events
+hub.on("message", handler);
+hub.on("message", () => console.log("Message event fired"));
+hub.on("increment", () => increment++);
+
+// Publish: emit events to invoke all handlers subscribed to them, passing the data to them as an argument
+hub.emit("message", "hello world"); // logs 'hello world' and 'Message event fired'
+hub.emit("message", { hello: "world" }); // logs the object and 'Message event fired'
+hub.emit("increment"); // `increment` variable is now
+
+// Unsubscribe: stop a specific handler from listening to the 'message' event
+hub.off("message", handler);
+```
+
+triggerEvent
+
+```js
+// triggerEvent
+triggerEvent(document.getElementById("myId"), "click");
+triggerEvent(document.getElementById("myId"), "click", { username: "bob" });
 ```

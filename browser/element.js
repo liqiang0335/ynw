@@ -32,3 +32,6 @@ export const toggleClass = (el, className) => {
     el.className = classes.join(" ");
   }
 };
+
+export const insertAfter = (el, htmlString) =>
+  el.insertAdjacentHTML("afterend", htmlString);
