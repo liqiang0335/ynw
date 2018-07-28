@@ -12,6 +12,5 @@ module.exports = context => {
   const cmd = handler[platform];
   exec(cmd, err => {
     if (err) console.log(err);
-    opened = true;
   });
 };
