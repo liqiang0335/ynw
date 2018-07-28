@@ -6,6 +6,7 @@
 - `ynw build=index env=hot` : 开发环境构建 + 热替换
 - `ynw build=index env=pro` : 生产环境构建
 - `ynw brc=react` : 切换 babelrc 配置为 react/vue。
+- `ynw --cros` : 打开禁用跨域选项的 Chrome
 
 ### 使用方法
 
