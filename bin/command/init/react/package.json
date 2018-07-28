@@ -11,6 +11,8 @@
     "date-fns": "latest",
     "es6-promise": "latest",
     "lodash": "latest",
+    "localforage": "latest",
+    "localforage-getItems": "latest",
     "querystring": "latest",
     "rxjs": "latest",
     "prop-types": "latest",
@@ -27,6 +29,8 @@
     "ynw": "latest"
   },
   "devDependencies": {
+    "mocha": "latest",
+    "chai": "latest",
     "autoprefixer": "latest",
     "babel-core": "latest",
     "babel-loader": "latest",

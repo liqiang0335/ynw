@@ -12,6 +12,8 @@
     "element-ui": "latest",
     "es6-promise": "latest",
     "lodash": "latest",
+    "localforage": "latest",
+    "localforage-getItems": "latest",
     "querystring": "latest",
     "vue": "latest",
     "vuex": "latest",
@@ -21,7 +23,8 @@
     "ynw": "latest"
   },
   "devDependencies": {
-    "autoprefixer": "latest",
+    "mocha": "latest",
+    "chai": "latest",
     "babel-core": "latest",
     "babel-loader": "latest",
     "babel-runtime": "latest",
