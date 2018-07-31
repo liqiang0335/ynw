@@ -1,3 +1,4 @@
 const print = require("./print");
 const ftp = require("./ftp");
-module.exports = [print, ftp];
+const append = require("./append");
+module.exports = [print, ftp, append];

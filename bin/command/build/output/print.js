@@ -23,6 +23,7 @@ const log = (context, stats) => {
   const bg = ["bgGreen", "bgBlue", "bgMagenta", "bgCyan"];
   const index = counter % 4;
   const time = format(new Date(), "HH:mm:ss");
+  context.buildTime = time;
   console.log(
     ` ${envText} `[bg[index]],
     `--- ${time} --- (${browsers})`[colors[index]]
