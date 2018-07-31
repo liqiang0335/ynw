@@ -3,12 +3,12 @@ const createElement = function() {
   const style = {
     background: "#0baa23",
     color: "white",
-    padding: "4px 5px",
+    padding: "2px 4px",
     display: "inline-block",
     position: "fixed",
     right: "0",
     bottom: "0",
-    fontSize: "14px"
+    fontSize: "12px"
   };
   Object.assign(div.style, style);
   return div;
