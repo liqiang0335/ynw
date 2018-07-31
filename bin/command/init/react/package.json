@@ -70,6 +70,8 @@
     "vue-loader": "^15.2.4",
     "vue-style-loader": "latest",
     "vue-template-compiler": "latest",
+    "ynw-loader": "latest",
+    "uglify-template-string-loader": "latest",
     "webpack": "latest",
     "webpack-dev-server": "latest"
   }

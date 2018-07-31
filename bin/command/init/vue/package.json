@@ -64,6 +64,8 @@
     "vue-template-compiler": "latest",
     "webpack": "latest",
     "webpack-dev-server": "latest",
+    "ynw-loader": "latest",
+    "uglify-template-string-loader": "latest",
     "cssnano": "latest",
     "postcss-loader": "latest"
   }
