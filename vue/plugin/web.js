@@ -1,19 +1,10 @@
 import { Message, MessageBox } from "element-ui";
-
-const extend = function(source, target) {
-  if (!target) {
-    return source;
-  }
-  for (var key in source) {
-    if (target[key] !== undefined) {
-      source[key] = target[key];
-    }
-  }
-  return source;
-};
+import pick from "ynw/object/pick";
+import extend from "ynw/object/extend";
 
 export default {
   install(Vue, option) {
+    Vue.prototype.$pick = pick;
     Vue.prototype.$extend = extend;
     Vue.prototype.$error = message => Message({ type: "error", message });
     Vue.prototype.$fail = message => Message({ type: "error", message });

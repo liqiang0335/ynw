@@ -3,25 +3,34 @@ const MiniCssExtractPlugin = load("mini-css-extract-plugin");
 
 const createRule = context => {
   const { isDev, hot, extractCSS } = context;
-  const exclude = hot
-    ? /node_modules/
-    : file => {
-        if (/ynw/.test(file)) return false;
-        return /node_modules/.test(file);
-      };
 
   const styleLoader = extractCSS
     ? MiniCssExtractPlugin.loader
     : "vue-style-loader";
 
+  const jsloader = {
+    test: /\.js$/,
+    use: ["babel-loader"],
+    exclude: hot
+      ? /node_modules/
+      : file => {
+          if (/ynw/.test(file)) return false;
+          return /node_modules/.test(file);
+        }
+  };
+
+  if (!hot) {
+    jsloader.use.unshift("ynw-loader");
+  }
+
+  if (!isDev) {
+    jsloader.use.push("uglify-template-string-loader");
+  }
+
   return [
     { test: /\.css$/, use: [styleLoader, "css-loader"] },
     { test: /\.scss$/, use: [styleLoader, "css-loader", "sass-loader"] },
-    {
-      test: /\.js$/,
-      loader: "babel-loader",
-      exclude
-    },
+    jsloader,
     { test: /\.vue$/, loader: "vue-loader" },
     {
       test: /\.(png|jpg|jpeg|gif|eot|ttf|woff|woff2|svg)(\?.+)?$/,

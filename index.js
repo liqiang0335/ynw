@@ -1,9 +1,37 @@
-const { request, attach } = require("./lib/axios");
-const { setter, logger } = require("./lib/vuex");
-
-module.exports = {
-  request,
-  attach,
-  setter,
-  logger
+const createElement = function() {
+  const div = document.createElement("div");
+  const style = {
+    background: "#0baa23",
+    color: "white",
+    padding: "2px 4px",
+    display: "inline-block",
+    position: "fixed",
+    right: "0",
+    bottom: "0",
+    fontSize: "12px"
+  };
+  Object.assign(div.style, style);
+  return div;
 };
+
+const handler = {
+  development() {
+    document.addEventListener("DOMContentLoaded", e => {
+      const div = createElement();
+      const time = window.WEBPACK_BUILD_TIME;
+      div.textContent = time;
+      document.body.appendChild(div);
+    });
+  },
+  production() {
+    document.addEventListener("DOMContentLoaded", e => {
+      const time = window.WEBPACK_BUILD_TIME;
+      console.log(
+        `%c BUILD TIME : ${time}`,
+        "font-weight:bold;background:green;color:white;padding:2px 4px;"
+      );
+    });
+  }
+};
+
+handler[process.env.NODE_ENV]();

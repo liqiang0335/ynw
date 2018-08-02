@@ -13,7 +13,6 @@
     "es6-promise": "latest",
     "lodash": "latest",
     "localforage": "latest",
-    "localforage-getItems": "latest",
     "querystring": "latest",
     "vue": "latest",
     "vuex": "latest",
@@ -64,6 +63,8 @@
     "vue-template-compiler": "latest",
     "webpack": "latest",
     "webpack-dev-server": "latest",
+    "ynw-loader": "latest",
+    "uglify-template-string-loader": "latest",
     "cssnano": "latest",
     "postcss-loader": "latest"
   }
