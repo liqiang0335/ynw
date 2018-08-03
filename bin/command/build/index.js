@@ -22,11 +22,12 @@ module.exports = context => {
 };
 
 const parseInput = context => {
-  const { cwd, build, env } = context;
+  const { cwd, env, build } = context;
   const config = require(path.join(cwd, "ynw.config.js"));
-  const values = config["keys"][build];
   const { extra, common } = config;
-  const { entry } = values;
+  const values = config["keys"][build];
+
+  const entry = context.entry || values.entry;
 
   const hot = context.env === "hot" ? true : false;
   const isDev = env !== "pro" ? true : false;

@@ -12,6 +12,7 @@
     "es6-promise": "latest",
     "lodash": "latest",
     "localforage": "latest",
+    "localforage-getItems": "latest",
     "querystring": "latest",
     "rxjs": "latest",
     "prop-types": "latest",
