@@ -23,6 +23,7 @@
   },
   "devDependencies": {
     "mocha": "latest",
+    "autoprefixer": "latest",
     "chai": "latest",
     "babel-core": "latest",
     "babel-loader": "latest",
