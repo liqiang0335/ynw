@@ -63,3 +63,9 @@ Vue.use(plugin);
 ```html
 <loading :show="showLoading" min="200"/>
 ```
+
+## 弹窗
+
+```html
+<yn-layer title="弹窗标题" box="width:400px;height:240px;"></yn-layer>
+```
