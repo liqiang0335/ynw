@@ -26,7 +26,6 @@ export default {
   background: rgba(70, 70, 70, 0.445);
   .box {
     border-radius: 4px;
-    overflow: hidden;
     position: absolute;
     left: 0;
     right: 0;
