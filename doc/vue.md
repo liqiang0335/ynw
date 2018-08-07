@@ -69,3 +69,30 @@ Vue.use(plugin);
 ```html
 <yn-layer title="弹窗标题" box="width:400px;height:240px;"></yn-layer>
 ```
+
+## 聊天气泡
+
+```js
+/**
+ * 可定义的数据格式
+ * {
+    dir: "left",  // (左侧还是右侧)
+    avatar: "/yngpProduct/manage/common/images/avatar.jpg", //头像地址
+    style: {
+      background: "red", //气泡的背景色
+      color: "white" //文字的颜色
+    }
+  }
+*/
+```
+
+使用
+
+```html
+<yn-chat v-for="item in chats" :data="item" :key="item.id">
+  <div slot="top">{{item.name}}</div><!--上部-->
+  <div slot="content">{{item.content}}</div><!--中部-->
+  <div slot="bottom">{{item.time}}</div><!--底部-->
+  <div slot="action" @click="onReply(item)">回复</div><!--两边悬浮-->
+</yn-chat>
+```
