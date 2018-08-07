@@ -2,12 +2,14 @@
 
 ## createSocket
 
+> 创建 Socket 连接
+
 ```js
-// 创建 Socket连接
 createSocket({
-  key: "key",
+  host: path, //域名
+  key: "key", //key
   onmessage: pushData => {
-    //....推送的数据
+    //处理推送的数据...
   }
 });
 ```
