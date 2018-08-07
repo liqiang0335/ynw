@@ -7,7 +7,7 @@
 ```js
 createSocket({
   host: path, //域名
-  key: "key", //key
+  key: "0_0_0_0", //key
   onmessage: pushData => {
     //处理推送的数据...
   }
