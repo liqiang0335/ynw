@@ -4,6 +4,8 @@
 
 > 创建 Socket 连接 , 断线自动重连
 
+- 安装依赖 npm i --save reconnecting-websocket
+
 ```js
 import createSocket from "ynw/lib/createSocket";
 
