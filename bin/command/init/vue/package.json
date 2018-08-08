@@ -8,6 +8,7 @@
   "license": "ISC",
   "dependencies": {
     "axios": "latest",
+    "reconnecting-websocket": "latest",
     "date-fns": "latest",
     "element-ui": "latest",
     "es6-promise": "latest",
