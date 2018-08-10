@@ -5,9 +5,9 @@
       <div class="mychat-top">
         <slot name="top"></slot>
       </div>
-      <div class="mychat-center flex">
+      <div class="mychat-center">
         <div class="mychat-triangle" :style="triangle"></div>
-        <div class="mychat-wrod grow" :class="data.dir" :style="data.style">
+        <div class="mychat-wrod" :class="data.dir" :style="data.style">
           <slot name="content"></slot>
         </div>
         <div class="mychat-action" :class="data.dir">
@@ -128,6 +128,7 @@ export default {
         border-radius: 4px;
         background: rgb(230, 230, 230);
         padding: 15px;
+        flex-grow: 1;
       }
       .mychat-action {
         flex-shrink: 0;
