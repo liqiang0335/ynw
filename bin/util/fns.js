@@ -1,7 +1,8 @@
 const fs = require("fs");
+const path = require("path");
 const util = require("util");
 const cwd = process.cwd();
-const load = name => require(cwd, name);
+const load = name => require(path.join(cwd, "node_modules", name));
 
 /**
  * 获取命令行的参数
@@ -19,7 +20,6 @@ function getParams(arr) {
     acc[key] = value;
     return acc;
   }, {});
-  console.log(result);
   return result;
 }
 
@@ -57,6 +57,7 @@ const writeFile = util.promisify(fs.writeFile);
 const readdir = util.promisify(fs.readdir);
 
 module.exports = {
+  load,
   getParams,
   merge,
   extend,
