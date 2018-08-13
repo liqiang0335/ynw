@@ -8,7 +8,7 @@
 - `ynw --build entry=demo/index` : 命令行中直接指定 entry, 而无需配置 keys 字段
 - `ynw --version` 版本号
 - `ynw --cros` : 打开禁用跨域选项的 Chrome
-- `ynw template` 生成模板文件到项目目录: (会覆盖已有文件, 谨慎使用, 适用于项目初始化使用)
+- `ynw template` 生成模板文件到项目目录: (会覆盖已有文件)
 
 ### 使用方法
 
