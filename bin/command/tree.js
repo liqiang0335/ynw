@@ -1,16 +1,14 @@
 const fs = require("fs");
 const path = require("path");
-const util = require("util");
 
-const exists = util.promisify(fs.exists);
-const readFile = util.promisify(fs.readFile);
-const writeFile = util.promisify(fs.writeFile);
-const readdir = util.promisify(fs.readdir);
-const stat = util.promisify(fs.stat);
+module.exports = context => {
+  const { cwd, tree } = context;
+  if (!tree) return;
+  const result = getFiles(cwd);
+  const content = "module.exports = " + JSON.stringify(result);
+  fs.writeFileSync(cwd + "/__files__.js", content);
+};
 
-/**
- * 读取文件夹
- */
 function getFiles(root) {
   let result = [];
   read(root, { pid: 0 });
@@ -32,12 +30,3 @@ function getFiles(root) {
 
   return result;
 }
-
-module.exports = {
-  getFiles,
-  stat,
-  exists,
-  readFile,
-  writeFile,
-  readdir
-};

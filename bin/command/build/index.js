@@ -5,8 +5,9 @@ const fs = require("fs");
 const path = require("path");
 const load = require("./middleware/load");
 const webpack = load("webpack");
-load("colors");
+const colors = load("colors");
 const WebpackDevServer = load("webpack-dev-server");
+const VueLoaderPlugin = load("vue-loader/lib/plugin");
 
 const execMiddleware = require("./output");
 const optionMiddleware = require("./middleware");

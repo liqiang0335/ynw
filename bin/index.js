@@ -9,6 +9,7 @@ const context = { fns, cwd, env: "dev", ...commands };
 const short = {
   b: "build",
   v: "version",
+  i: "init",
   e: "env"
 };
 (async function() {
