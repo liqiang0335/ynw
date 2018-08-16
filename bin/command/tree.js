@@ -28,7 +28,7 @@ function getFiles(root) {
       //relative path
       const dirName = path
         .dirname(filePath)
-        .replace(reg, rootName)
+        .replace(reg, "")
         .replace(/\\+/, "/");
       const ext = path.extname(filePath);
       const baseName = path.basename(filePath, ".md");
