@@ -2,13 +2,15 @@ const fs = require("fs");
 const path = require("path");
 
 module.exports = context => {
-  const { cwd, tree, module } = context;
+  const { cwd, tree } = context;
   if (!tree) return;
   const result = getFiles(cwd);
-  const prefix = module ? "module.exports = " : "";
-  const content = prefix + JSON.stringify(result);
+  const content = JSON.stringify(result);
   fs.writeFileSync(cwd + "/__files__.js", content);
 };
+
+const ignores = new Set();
+ignores.add("__files__.js");
 
 function getFiles(root) {
   let result = [];
@@ -22,7 +24,9 @@ function getFiles(root) {
       const id = data.ino;
       const isDir = data.isDirectory();
       const type = isDir ? "dir" : "file";
-      result.push({ id, name, type, ...inject });
+      if (!ignores.has(name)) {
+        result.push({ id, name, type, ...inject });
+      }
       if (isDir) {
         read(filePath, { pid: id });
       }
