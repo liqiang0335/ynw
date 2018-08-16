@@ -35,7 +35,6 @@ const handler = {
         setTimeout(() => {
           navigator.serviceWorker
             .register("/sw.js")
-            .then(() => console.log(`serviceWorker registration success`))
             .catch(err =>
               console.log(`serviceWorker registration failed : ${err}`)
             );
