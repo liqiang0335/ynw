@@ -5,7 +5,7 @@ module.exports = context => {
   const { cwd, tree } = context;
   if (!tree) return;
   const result = getFiles(cwd);
-  const content = "module.exports = " + JSON.stringify(result);
+  const content = JSON.stringify(result);
   fs.writeFileSync(cwd + "/__files__.js", content);
 };
 
