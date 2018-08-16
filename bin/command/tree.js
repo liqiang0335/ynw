@@ -2,10 +2,11 @@ const fs = require("fs");
 const path = require("path");
 
 module.exports = context => {
-  const { cwd, tree } = context;
+  const { cwd, tree, module } = context;
   if (!tree) return;
   const result = getFiles(cwd);
-  const content = JSON.stringify(result);
+  const prefix = module ? "module.exports = " : "";
+  const content = prefix + JSON.stringify(result);
   fs.writeFileSync(cwd + "/__files__.js", content);
 };
 
