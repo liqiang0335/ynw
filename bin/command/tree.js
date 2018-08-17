@@ -29,7 +29,7 @@ function getFiles(root) {
       const dirName = path
         .dirname(filePath)
         .replace(reg, rootName)
-        .replace(/\\+/, "/");
+        .replace(/\\+/g, "/");
       const ext = path.extname(filePath);
       const baseName = path.basename(filePath, ".md");
       const id = data.ino;
