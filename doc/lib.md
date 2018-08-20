@@ -17,3 +17,27 @@ createSocket({
   }
 });
 ```
+
+## createEventHub
+
+> 订阅/发布
+
+```js
+import createEventHub from "ynw/lib/createEventHub";
+
+const handler = data => console.log(data);
+const hub = createEventHub();
+let increment = 0;
+
+// 订阅通知
+hub.on("message", handler);
+hub.on("message", () => console.log("Message event fired"));
+hub.on("increment", () => increment++);
+
+// 广播
+hub.emit("message", "hello world");
+hub.emit("increment");
+
+// 取消订阅
+hub.off("message", handler);
+```

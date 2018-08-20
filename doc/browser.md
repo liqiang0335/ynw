@@ -162,28 +162,6 @@ on(document.body, "click", fn, { options: true }); //绑定在捕获阶段.
 off(document.body, "click", fn);
 ```
 
-EventHub
-
-```js
-// EventHub
-const handler = data => console.log(data);
-const hub = createEventHub();
-let increment = 0;
-
-// Subscribe: listen for different types of events
-hub.on("message", handler);
-hub.on("message", () => console.log("Message event fired"));
-hub.on("increment", () => increment++);
-
-// Publish: emit events to invoke all handlers subscribed to them, passing the data to them as an argument
-hub.emit("message", "hello world"); // logs 'hello world' and 'Message event fired'
-hub.emit("message", { hello: "world" }); // logs the object and 'Message event fired'
-hub.emit("increment"); // `increment` variable is now
-
-// Unsubscribe: stop a specific handler from listening to the 'message' event
-hub.off("message", handler);
-```
-
 triggerEvent
 
 ```js
