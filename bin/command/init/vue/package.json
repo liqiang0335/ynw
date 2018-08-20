@@ -20,6 +20,7 @@
     "vue-router": "latest",
     "vue-rx": "latest",
     "rxjs": "latest",
+    "vant": "latest",
     "ynw": "latest"
   },
   "devDependencies": {
