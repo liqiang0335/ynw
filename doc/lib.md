@@ -18,15 +18,15 @@ createSocket({
 });
 ```
 
-## createEventHub
+## EventHub
 
 > 订阅/发布
 
 ```js
-import createEventHub from "ynw/lib/createEventHub";
+import EventHub from "ynw/lib/EventHub";
 
 const handler = data => console.log(data);
-const hub = createEventHub();
+const hub = new EventHub();
 let increment = 0;
 
 // 订阅通知
