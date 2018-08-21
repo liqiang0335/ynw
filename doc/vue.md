@@ -34,7 +34,17 @@ Vue.use(plugin);
 - getCode : 点击获取验证码时
 
 ```html
-<counter-down @getCode="getCodeEvent" />  
+<counter-down @getCode="getCodeEvent" ref="counter" />
+<script>
+  export default {
+    methods:{
+      async getCode(){
+        await getMessageCode()
+        this.$refs.counter.run()
+      }
+    }
+  }
+</script>
 ```
 
 ## 图片裁切
