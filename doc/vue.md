@@ -34,7 +34,7 @@ Vue.use(plugin);
 - getCode : 点击获取验证码时
 
 ```html
-<counter-down @getCode="getCodeEvent" ref="counter" />
+<counter-down @getCode="getCode" ref="counter" />
 <script>
   export default {
     methods:{
