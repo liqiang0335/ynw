@@ -35,7 +35,7 @@ export default {
 };
 </script>
 <style scoped>
-.counting {
+.counter-down.counting {
   background: gray;
 }
 </style>
