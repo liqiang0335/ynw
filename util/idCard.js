@@ -87,7 +87,7 @@ module.exports = function(code) {
     }
     //身份证18位时，次序为省（3位）市（3位）年（4位）月（2位）日（2位）校验位（4位），校验位末尾可能为X
     if (len == "18") {
-      var re_eighteen = /^(\d{6})(\d{4})(\d{2})(\d{2})(\d{3})([0-9]|X)$/;
+      var re_eighteen = /^(\d{6})(\d{4})(\d{2})(\d{2})(\d{3})([0-9]|X)$/i;
       var arr_data = code.match(re_eighteen);
       var year = arr_data[2];
       var month = arr_data[3];
