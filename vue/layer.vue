@@ -1,5 +1,5 @@
 <template>
-  <div class="layer">
+  <div class="layer" :style="bg">
     <div class="box" :style="box">
       <div class="title" v-show="title">{{title}}</div>
       <slot></slot>
