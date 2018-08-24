@@ -6,8 +6,8 @@ module.exports = {
     es6: true
   },
   globals: {
+    importName: true,
     log: true,
-    f: true,
     __dirname: true,
     importVueComps: true,
     process: true,

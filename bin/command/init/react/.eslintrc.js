@@ -7,7 +7,7 @@ module.exports = {
   },
   globals: {
     log: true,
-    f: true,
+    importName: true,
     __dirname: true,
     importVueComps: true,
     process: true,
