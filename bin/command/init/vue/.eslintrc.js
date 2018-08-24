@@ -6,6 +6,7 @@ module.exports = {
     es6: true
   },
   globals: {
+    log: true,
     f: true,
     __dirname: true,
     importVueComps: true,
@@ -21,6 +22,7 @@ module.exports = {
   },
   rules: {
     semi: 2,
+    "no-irregular-whitespace": "off",
     "no-console": "off"
   }
 };
