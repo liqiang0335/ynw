@@ -11,7 +11,7 @@
  * <yn-layer title="产品续费" box="width:400px;height:240px;"></yn-layer>
  */
 export default {
-  props: ["box", "title"]
+  props: ["box", "title", "bg"]
 };
 </script>
 
