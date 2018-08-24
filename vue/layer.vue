@@ -1,7 +1,7 @@
 <template>
   <div class="layer">
     <div class="box" :style="box">
-      <div class="title">{{title}}</div>
+      <div class="title" v-show="title">{{title}}</div>
       <slot></slot>
     </div>
   </div>
