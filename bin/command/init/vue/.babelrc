@@ -4,7 +4,7 @@
       "targets": {
         "browsers": ["ie >= 9"]
       },
-      "modules": false,
+      "modules": "commonjs",
       "debug": false,
       "useBuiltIns": true
     }],
