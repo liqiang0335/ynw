@@ -150,7 +150,7 @@ isBottom(); //true
 ## event
 
 ```js
-import { on, off, createEventHub, triggerEvent } from "ynw/browser/event";
+import { on, off, triggerEvent } from "ynw/browser/event";
 
 //使用 on 绑定事件
 const fn = () => console.log("!");
@@ -168,4 +168,13 @@ triggerEvent
 // triggerEvent
 triggerEvent(document.getElementById("myId"), "click");
 triggerEvent(document.getElementById("myId"), "click", { username: "bob" });
+```
+
+## imageResize
+
+> 使用 Canvas 缩放图片
+
+```js
+import imageResize from "ynw/browser/imageResize";
+const newSrc = imageResize(src, 600);
 ```
