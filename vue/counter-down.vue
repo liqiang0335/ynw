@@ -11,7 +11,7 @@ export default {
   },
   computed: {
     text() {
-      return this.counting ? `${this.time}后重新获取` : "获取验证码";
+      return this.counting ? `${this.time}s后重新获取` : "获取验证码";
     }
   },
   methods: {
