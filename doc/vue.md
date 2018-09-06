@@ -106,3 +106,12 @@ Vue.use(plugin);
   <div slot="action" @click="onReply(item)">回复</div><!--两边悬浮-->
 </yn-chat>
 ```
+
+## 虚拟键盘
+
+- submit: 点击字母时
+- remove: 点击删除时
+
+```html
+  <yn-keyboard @submit="onType" @remove="onRemove"></yn-keyboard>
+```
