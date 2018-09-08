@@ -10,10 +10,11 @@ const question = [
 
 module.exports = async context => {
   const { template, fns, cwd } = context;
-  if (template) {
-    const load = fns.load;
-    const inquirer = load("inquirer");
-    load("colors");
+  const load = fns.load;
+  const inquirer = load("inquirer");
+  load("colors");
+
+  if (template === "true") {
     inquirer.prompt(question).then(answers => {
       const { to } = answers;
       const target = path.join(cwd, to);
@@ -24,7 +25,9 @@ module.exports = async context => {
         console.log("目录不存在".red);
       }
     });
+    return;
   }
+  generator(load, template, process.cwd());
 };
 
 function generator(load, template, target) {
