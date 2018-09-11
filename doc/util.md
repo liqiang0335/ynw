@@ -42,3 +42,10 @@ prettyBytes(-27145424323.5821, 5); // "-27.145 GB"
 //第三个参数为单位之间是否有空格
 prettyBytes(123456789, 3, false); // "123MB"
 ```
+
+## 转换为中文大写数字
+
+```js
+import chineseNumber from "ynw/util/chineseNumber";
+chineseNumber(123); //壹佰贰拾叁
+```
