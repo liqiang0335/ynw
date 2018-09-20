@@ -5,7 +5,7 @@ const debounce = time => {
       const click = Date.now();
       if (click - flag < time) {
         if (typeof callback == "function") {
-          callback();
+          callback.call(this);
         }
         flag = click;
         return;
