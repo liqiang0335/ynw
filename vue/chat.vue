@@ -127,7 +127,7 @@ export default {
         color: rgb(60, 60, 60);
         border-radius: 4px;
         background: rgb(230, 230, 230);
-        padding: 15px;
+        padding: 10px;
         flex-grow: 1;
       }
       .mychat-action {
