@@ -9,15 +9,16 @@
 export default function binarySearch(arr, seek, callback) {
   let start = 0;
   let end = arr.length - 1;
+  const compare = callback || ((a, b) => a - b);
 
   while (start <= end) {
     const middle = start + Math.floor((end - start) / 2);
 
-    if (callback(arr[middle], seek) === 0) {
+    if (compare(arr[middle], seek) === 0) {
       return middle;
     }
 
-    if (callback(arr[middle], seek) < 0) {
+    if (compare(arr[middle], seek) < 0) {
       start = middle + 1;
     } else {
       end = middle - 1;
