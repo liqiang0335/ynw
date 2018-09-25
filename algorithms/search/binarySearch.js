@@ -1,5 +1,3 @@
-import Comparator from "../util/Comparator";
-
 /**
  * 二分查找
  *
@@ -9,18 +7,17 @@ import Comparator from "../util/Comparator";
  * @return {number}
  */
 export default function binarySearch(arr, seek, callback) {
-  const comparator = new Comparator(callback);
   let start = 0;
   let end = arr.length - 1;
 
   while (start <= end) {
     const middle = start + Math.floor((end - start) / 2);
 
-    if (comparator.equal(arr[middle], seek)) {
+    if (callback(arr[middle], seek) === 0) {
       return middle;
     }
 
-    if (comparator.lessThan(arr[middle], seek)) {
+    if (callback(arr[middle], seek) < 0) {
       start = middle + 1;
     } else {
       end = middle - 1;
