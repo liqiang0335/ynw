@@ -14,6 +14,9 @@ class linkedListNode {
 
 /**
  * 链表数据结构
+ * 优点: 高效的在序列中插入或删除元素(不会导致元素的移动)
+ * 缺点: 只能通过顺次指针访问，查询效率低: 链表的内存地址是分散的,
+ * 必须通过上一个节点信息找个下一个节点, 查询都是从头开始遍历查找
  */
 class LinkedList {
   constructor(comparatorFunction) {
