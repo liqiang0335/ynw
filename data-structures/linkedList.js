@@ -15,7 +15,7 @@ class linkedListNode {
 /**
  * 链表数据结构
  */
-export default class LinkedList {
+class LinkedList {
   constructor(comparatorFunction) {
     this.head = null;
     this.tail = null;
@@ -154,6 +154,7 @@ export default class LinkedList {
       nodes.push(cur);
       cur = cur.next;
     }
+    return nodes;
   }
 
   //
@@ -182,3 +183,5 @@ export default class LinkedList {
     return this;
   }
 }
+
+module.exports = LinkedList;

@@ -6,7 +6,8 @@
  * @param {function(a, b)} [callback] 比较函数
  * @return {number}
  */
-export default function binarySearch(arr, seek, callback) {
+
+function binarySearch(arr, seek, callback) {
   let start = 0;
   let end = arr.length - 1;
   const compare = callback || ((a, b) => a - b);
@@ -27,3 +28,5 @@ export default function binarySearch(arr, seek, callback) {
 
   return -1;
 }
+
+module.exports = binarySearch;

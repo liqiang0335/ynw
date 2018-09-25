@@ -1,18 +1,4 @@
-let i = 0;
-let j = 0;
-
-const loop = function() {
-  while (i < 100) {
-    if (i == 50) {
-      j = 99;
-      return;
-    }
-
-    i += 1;
-    j += 1;
-  }
-};
-
-loop();
-
-console.log(j);
+const LinkedList = require("./data-structures/linkedList");
+const list = new LinkedList();
+list.append(1);
+console.log(list);
