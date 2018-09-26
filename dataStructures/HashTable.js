@@ -3,6 +3,10 @@ const LinkedList = require("./LinkedList");
 // The bigger size the less collisions
 const defaultHashTableSize = 32;
 
+/**
+ * 哈希表
+ * 根据哈希值进行分组
+ */
 class HashTable {
   constructor(hashTableSize = defaultHashTableSize) {
     this.buckets = Array(hashTableSize)

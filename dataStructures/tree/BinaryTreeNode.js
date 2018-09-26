@@ -8,6 +8,7 @@ class BinaryTreeNode {
     this.value = null;
 
     this.meta = new HashTable();
+
     this.equal = function(a, b) {
       return a === b;
     };
