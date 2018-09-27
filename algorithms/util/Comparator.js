@@ -1,4 +1,4 @@
-export default class Comparator {
+class Comparator {
   /**
    * @param {function(a: *, b: *)} [compareFunction]
    */
@@ -44,3 +44,5 @@ export default class Comparator {
     this.compare = (a, b) => compareOriginal(b, a);
   }
 }
+
+module.exports = Comparator;

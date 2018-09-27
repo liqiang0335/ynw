@@ -1,22 +1,6 @@
-const nextChain = (...args) => fns => {
-  let cur = 0;
-  const lastIndex = fns.length - 1;
-  const next = () => {
-    const _next = cur == lastIndex ? f => f : next;
-    fns[cur++].apply(null, [...args, _next]);
-  };
-  next();
-};
+const CountingSort = require("./algorithms/sort/CountingSort");
+const countingSort = new CountingSort();
 
-const chain = nextChain();
-
-const f1 = next => {
-  console.log("f1");
-  next();
-};
-const f2 = next => {
-  console.log("f2");
-  next();
-};
-
-chain([f1, f2]);
+const source = [1, 4, 3, 2, 6, 4];
+const result = countingSort.sort(source);
+console.log(result);
