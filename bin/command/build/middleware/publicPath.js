@@ -1,5 +1,13 @@
 module.exports = context => option => {
-  const { publicPath, envPublicPath, distPath, env, test } = context;
+  const {
+    publicPath,
+    envPublicPath,
+    distPath,
+    dpath,
+    epath,
+    env,
+    test
+  } = context;
   const handler = {
     dev: () => envPublicPath || publicPath || distPath,
     pro: () => {
@@ -10,6 +18,14 @@ module.exports = context => option => {
     },
     hot: () => "/dist/"
   };
-  option.output.publicPath = handler[env]();
+
+  let target = handler[env]();
+  if (dpath) {
+    target = distPath;
+  }
+  if (epath) {
+    target = envPublicPath;
+  }
+  option.output.publicPath = target;
   return option;
 };
