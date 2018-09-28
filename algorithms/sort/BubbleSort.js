@@ -6,7 +6,6 @@ const Sort = require("./Sort");
 class BubbleSort extends Sort {
   sort(source) {
     let swapped = false;
-    // Clone original array to prevent its modification.
     const array = [...source];
 
     for (let i = 1; i < array.length; i++) {

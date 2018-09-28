@@ -47,6 +47,7 @@ class CountingSort extends Sort {
       //直接放到应该放的位置(小于当前项的数量)
       const position = buckets[index];
       sortedArray[position] = item;
+      //向右移动存放位置
       buckets[index] += 1;
     }
 
