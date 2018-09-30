@@ -30,16 +30,6 @@ const handler = {
         `%c BUILD TIME : ${time}`,
         "font-weight:bold;background:green;color:white;padding:2px 4px;"
       );
-      //enable pwa
-      if (window.WEBPACK_PWA && "serviceWorker" in navigator) {
-        setTimeout(() => {
-          navigator.serviceWorker
-            .register("/sw.js")
-            .catch(err =>
-              console.log(`serviceWorker registration failed : ${err}`)
-            );
-        }, 1000);
-      }
     });
   }
 };
