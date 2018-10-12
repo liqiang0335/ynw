@@ -1,6 +1,6 @@
 {
   "name": "ynw",
-  "version": "2.3.31",
+  "version": "2.4.0",
   "description": "tool for ynw",
   "main": "index.js",
   "scripts": {},
@@ -11,9 +11,6 @@
     "yncj"
   ],
   "author": "liqiang0335@qq.com",
-  "bin": {
-    "ynw": "./bin/index.js"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/liqiang0335/ynw.git"
