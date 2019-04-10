@@ -1,3 +1,7 @@
+console.log(
+  "%c ynw/vue/vuexHelper 不再推荐使用,请使用ynw的相应模板",
+  "color:red;font-weight:bold;"
+);
 import get from "lodash/get";
 import set from "lodash/set";
 import isFunction from "lodash/isFunction";

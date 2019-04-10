@@ -1,3 +1,8 @@
+console.log(
+  "%c ynw/vue/plugin 不再推荐使用,请使用ynw的相应模板",
+  "color:red;font-weight:bold;"
+);
+
 import { Message, MessageBox } from "element-ui";
 import pick from "ynw/object/pick";
 import extend from "ynw/object/extend";
