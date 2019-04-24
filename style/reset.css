@@ -2,7 +2,6 @@ html,
 body,
 div,
 span,
-applet,
 object,
 iframe,
 h1,
@@ -15,46 +14,22 @@ p,
 blockquote,
 pre,
 a,
-abbr,
-acronym,
 address,
-big,
-cite,
 code,
-del,
-dfn,
 em,
 img,
-ins,
-kbd,
-q,
-s,
-samp,
-small,
-strike,
 strong,
-sub,
-sup,
-tt,
-var,
-b,
-u,
 i,
 center,
-dl,
-dt,
-dd,
 ol,
 ul,
 li,
 fieldset,
 form,
 label,
-legend,
 table,
 caption,
 tbody,
-tfoot,
 thead,
 tr,
 th,
@@ -63,7 +38,6 @@ article,
 aside,
 canvas,
 details,
-embed,
 figure,
 figcaption,
 footer,
@@ -72,11 +46,8 @@ hgroup,
 menu,
 nav,
 output,
-ruby,
 section,
 summary,
-time,
-mark,
 audio,
 video {
   margin: 0;
@@ -124,11 +95,6 @@ a:-webkit-any-link {
   text-decoration: none
 }
 
-ol,
-ul {
-  list-style: none
-}
-
 blockquote,
 q {
   quotes: none
@@ -145,11 +111,6 @@ q:after {
 table {
   border-collapse: collapse;
   border-spacing: 0
-}
-
-html {
-  width: 100%;
-  height: 100%
 }
 
 
@@ -230,11 +191,11 @@ button:focus {
 }
 
 body {
-  font-family: "Helvetica Neue", Helvetica, Arial, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
   margin: 0;
   padding: 0;
   font-size: 13px;
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
 .flex {
