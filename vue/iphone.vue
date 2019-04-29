@@ -44,7 +44,7 @@ export default {
     box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.212);
     border-radius: 4px;
     overflow: auto;
-    background: white url("~./iphone.png") no-repeat;
+    background: white url("../assets/images/iphone.png") no-repeat;
     border-radius: 56px;
   }
 }

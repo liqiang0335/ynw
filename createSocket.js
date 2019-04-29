@@ -1,4 +1,5 @@
 import ReconnectingWebSocket from "reconnecting-websocket";
+
 const createSocket = function({ key, host, onmessage }) {
   try {
     const path = host.replace("http:", "");
@@ -20,7 +21,7 @@ const createSocket = function({ key, host, onmessage }) {
       onmessage(push);
     };
   } catch (e) {
-    //not support webSocket
+    console.log("Your Browser Not Support WebSocket");
   }
 };
 
