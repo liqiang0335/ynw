@@ -1,5 +1,5 @@
-import { format } from "date-fns";
-import { addMilliseconds } from "date-fns";
+import format from "date-fns/format";
+import addMilliseconds from "date-fns/add_milliseconds";
 
 /**
  * 剩余或过期时间

@@ -28,4 +28,4 @@ const detectBrowser = function(ua) {
   return M.join("-");
 };
 
-module.exports = detectBrowser;
+export default detectBrowser;

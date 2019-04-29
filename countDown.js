@@ -1,4 +1,4 @@
-function counterDown(callback) {
+export default function counterDown(callback) {
   return new Promise(resolve => {
     let timerId = null;
     let counter = 60;
@@ -15,5 +15,3 @@ function counterDown(callback) {
     }, 1000);
   });
 }
-
-module.exports = counterDown;

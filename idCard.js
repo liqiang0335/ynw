@@ -1,4 +1,4 @@
-module.exports = function(code) {
+export default function(code) {
   code = String(code);
 
   var vcity = {
@@ -219,4 +219,4 @@ module.exports = function(code) {
   };
 
   return checkcode(code);
-};
+}
