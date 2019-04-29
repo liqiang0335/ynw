@@ -1,4 +1,4 @@
-var extend = function extend(source, target) {
+const extend = function extend(source, target) {
   if (!target) {
     return source;
   }
@@ -12,4 +12,4 @@ var extend = function extend(source, target) {
   return source;
 };
 
-module.exports = extend;
+export default extend;
