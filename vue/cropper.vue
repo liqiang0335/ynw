@@ -3,6 +3,7 @@
   <div class="crop-bg" v-show="show" style="z-index:20000">
     <div class="crop-box" :style="boxStyle">
       <div class="crop-title">图片裁剪</div>
+      <div class="close" @click="close">X</div>
       <div class="crop-choose">
         <label for="crop-input">
           <input accept=".jpg, .jpeg, .png, .gif" id="crop-input" ref="input" type="file" @change="change" capture>
