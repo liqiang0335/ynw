@@ -1,14 +1,9 @@
-const composeLeft = (...fn) => {
-  return fn.reduce((a, b) => (...args) => a(b(...args)));
-};
-
-const composeRight = (...fn) => {
-  return fn.reduce((a, b) => (...args) => b(a(...args)));
-};
+import compose from "./compose";
+import composeRight from "./composeRight";
 
 const applyMiddleware = (api, middlewares, dir = "right") => {
   const chain = middlewares.map(item => item(api));
-  const fn = dir == "right" ? composeRight : composeLeft;
+  const fn = dir == "right" ? composeRight : compose;
   return fn(...chain);
 };
 

@@ -2,14 +2,16 @@ export default function array2Tree(nodes, option = {}) {
   const id = option.id || "id";
   const pid = option.pid || "pid";
   const children = option.children || "children";
-  const map = option.map || (f => f);
+  const map = option.map;
 
   const result = [];
   const byIds = {};
   const len = nodes.length;
 
   for (let i = 0; i < len; i++) {
-    nodes[i] = map(nodes[i]);
+    if (map) {
+      nodes[i] = map(nodes[i]);
+    }
     byIds[nodes[i][id]] = nodes[i];
   }
 
@@ -24,5 +26,6 @@ export default function array2Tree(nodes, option = {}) {
       parent[children].push(nodes[i]);
     }
   }
+
   return result;
 }
