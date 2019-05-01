@@ -1,9 +1,3 @@
-"use strict";
-
-/**
- * Expose compositor.
- */
-
 export default compose;
 
 /**

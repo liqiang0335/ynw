@@ -1,6 +1,10 @@
 {
   "name": "ynw",
+<<<<<<< HEAD
   "version": "3.2.1",
+=======
+  "version": "3.2.2",
+>>>>>>> fb520c40b73c8c4f080215755f0954a9b7042440
   "description": "tool for ynw",
   "main": "index.js",
   "scripts": {},

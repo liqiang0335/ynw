@@ -1,4 +1,4 @@
-export default function(n) {
+export default function chineseNumber(n) {
   var fraction = ["角", "分"];
   var digit = ["零", "壹", "贰", "叁", "肆", "伍", "陆", "柒", "捌", "玖"];
   var unit = [["元", "万", "亿"], ["", "拾", "佰", "仟"]];

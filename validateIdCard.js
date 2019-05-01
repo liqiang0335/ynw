@@ -1,4 +1,4 @@
-export default function(code) {
+export default function validateIdCard(code) {
   code = String(code);
 
   var vcity = {
