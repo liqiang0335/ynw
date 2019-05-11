@@ -12,4 +12,4 @@ const extend = function(source, target) {
   return source;
 };
 
-export default extend;
+module.exports = extend;

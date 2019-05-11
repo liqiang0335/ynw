@@ -1,5 +1,5 @@
-import compose from "./compose";
-import composeRight from "./composeRight";
+const compose = require("./compose");
+const composeRight = require("./composeRight");
 
 const applyMiddleware = (api, middlewares, dir = "right") => {
   const chain = middlewares.map(item => item(api));
@@ -7,4 +7,4 @@ const applyMiddleware = (api, middlewares, dir = "right") => {
   return fn(...chain);
 };
 
-export default applyMiddleware;
+module.exports = applyMiddleware;

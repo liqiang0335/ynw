@@ -1,4 +1,4 @@
-export default function tree2Array(nodes) {
+module.exports = function tree2Array(nodes) {
   const children = "children";
   var result = [];
 
@@ -15,4 +15,4 @@ export default function tree2Array(nodes) {
     result = result.concat(tree2Array(nodes[children]));
   }
   return result;
-}
+};

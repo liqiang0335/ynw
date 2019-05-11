@@ -1,4 +1,4 @@
-export default compose;
+module.exports = compose;
 
 /**
  * Compose `middleware` returning

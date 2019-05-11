@@ -1,4 +1,4 @@
-import LinkedList from "./LinkedList";
+const LinkedList = require("./LinkedList");
 
 // The bigger size the less collisions
 const defaultHashTableSize = 32;
