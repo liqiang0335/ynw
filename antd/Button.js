@@ -1,3 +1,5 @@
+import { Button } from "antd";
+
 /**
  * 红色的按钮
  * @param {String} text - 按钮的文字
