@@ -1,4 +1,4 @@
-import LinkedList from "./LinkedList";
+const LinkedList = require("./LinkedList");
 
 /**
  * 栈

@@ -3,4 +3,4 @@
  */
 const compose = (...fns) => fns.reduce((a, b) => (...args) => a(b(...args)));
 
-export default compose;
+module.exports = compose;
