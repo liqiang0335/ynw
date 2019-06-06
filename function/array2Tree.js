@@ -1,4 +1,4 @@
-module.exports = function array2Tree(nodes, option = {}) {
+export default function array2Tree(nodes, option = {}) {
   const id = option.id || "id";
   const pid = option.pid || "pid";
   const children = option.children || "children";
@@ -28,4 +28,4 @@ module.exports = function array2Tree(nodes, option = {}) {
   }
 
   return result;
-};
+}

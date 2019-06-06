@@ -9,4 +9,4 @@ const formatDuration = ms => {
   };
 };
 
-module.exports = formatDuration;
+export default formatDuration;

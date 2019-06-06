@@ -7,4 +7,4 @@ const applyMiddleware = (api, middlewares, dir = "right") => {
   return fn(...chain);
 };
 
-module.exports = applyMiddleware;
+export default applyMiddleware;

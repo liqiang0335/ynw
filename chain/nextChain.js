@@ -11,4 +11,4 @@ const nextChain = (...args) => fns => {
   next();
 };
 
-module.exports = nextChain;
+export default nextChain;
