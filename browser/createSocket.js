@@ -1,6 +1,5 @@
-import ReconnectingWebSocket from "reconnecting-websocket";
-
 const createSocket = function({ key, host, onmessage }) {
+  const ReconnectingWebSocket = require("reconnecting-websocket");
   try {
     const path = host.replace("http:", "");
     const webSocketPath = "ws:" + path + "websocket";
