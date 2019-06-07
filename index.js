@@ -30,15 +30,12 @@ export { default as tree2Array } from "./function/tree2Array";
 // React
 export { default as useCountdown } from "./react/useCountdown";
 export { default as useInterval } from "./react/useInterval";
-export { default as useKeyboardJs } from "./react/useKeyboardJs";
 export { default as useObservable } from "./react/useObservable";
-export { default as useService } from "./react/useService";
 export { default as useWindowSize } from "./react/useWindowSize";
 export { default as useScroll } from "./react/useScroll";
 
 // Time
 export { default as formatDuration } from "./time/formatDuration";
-export { default as overTime } from "./time/overTime";
 
 // Utils
 export { default as chineseNumber } from "./utils/chineseNumber";
