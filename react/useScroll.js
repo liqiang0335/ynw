@@ -8,7 +8,7 @@ const useScroll = ref => {
   }
 
   const frame = useRef(0);
-  const [state, setState] = useState({ x, y });
+  const [state, setState] = useState({ x: 0, y: 0 });
 
   useEffect(() => {
     const handler = () => {
