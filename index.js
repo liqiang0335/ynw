@@ -5,7 +5,6 @@ export { default as Stack } from "./algorithm/Stack";
 
 // Browser
 export { default as copyToClipboard } from "./browser/copyToClipboard";
-export { default as createSocket } from "./browser/createSocket";
 export { default as detectBrowser } from "./browser/detectBrowser";
 export { default as detectDeviceType } from "./browser/detectDeviceType";
 export { default as elementInViewport } from "./browser/elementInViewport";
@@ -35,6 +34,7 @@ export { default as useKeyboardJs } from "./react/useKeyboardJs";
 export { default as useObservable } from "./react/useObservable";
 export { default as useService } from "./react/useService";
 export { default as useWindowSize } from "./react/useWindowSize";
+export { default as useScroll } from "./react/useScroll";
 
 // Time
 export { default as formatDuration } from "./time/formatDuration";
@@ -42,5 +42,4 @@ export { default as overTime } from "./time/overTime";
 
 // Utils
 export { default as chineseNumber } from "./utils/chineseNumber";
-export { default as geetest } from "./utils/geetest";
 export { default as validateIdCard } from "./utils/validateIdCard";
