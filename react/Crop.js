@@ -45,7 +45,7 @@ export default function Crop({ file, cropper, onSubmit, width = 160 }) {
   };
 
   const submit = () => {
-    const canvas = crop.current.getCroppedCanvas({ width });
+    const canvas = crop.current.getCroppedCanvas({ width, minWidth: width });
     const dataURL = canvas.toDataURL("image/jpeg");
     onSubmit(dataURL);
     close();
