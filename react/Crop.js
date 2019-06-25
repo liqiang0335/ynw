@@ -133,8 +133,8 @@ const Right = styled.div`
 `;
 
 const Preview = styled.div`
-  width: 300px;
-  height: 300px;
+  width: 257px;
+  height: 257px;
   overflow: hidden;
 `;
 
