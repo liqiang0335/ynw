@@ -6,7 +6,7 @@
  *
  * @return {Promise(Array/Object)} selection - 返回数组或者对象(single=true)
  */
-const checkSelection = (selection, toast) => async (single = false) => {
+const checkSelectionCurry = (selection, toast) => async (single = false) => {
   if (Array.isArray(selection)) {
     throw new Error("selection param must be Array");
   }
@@ -23,4 +23,4 @@ const checkSelection = (selection, toast) => async (single = false) => {
   }
 };
 
-export default checkSelection;
+export default checkSelectionCurry;
