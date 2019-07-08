@@ -7,7 +7,7 @@
  * @return {Promise(Array/Object)} selection - 返回数组或者对象(single=true)
  */
 const checkSelectionCurry = (selection, toast) => async (single = false) => {
-  if (Array.isArray(selection)) {
+  if (!Array.isArray(selection)) {
     throw new Error("selection param must be Array");
   }
   const len = selection.length;
