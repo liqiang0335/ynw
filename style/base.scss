@@ -1,0 +1,14 @@
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin position-center($value: 0) {
+  top: $value;
+  right: $value;
+  bottom: $value;
+  left: $value;
+  position: absolute;
+  margin: auto;
+}
