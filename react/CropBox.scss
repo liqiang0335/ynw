@@ -1,0 +1,22 @@
+.container {
+  margin: 20px 0;
+}
+
+.label {
+  border: 1px solid #c7c7c7;
+  padding: 5px 0px;
+  border-radius: 2px;
+  cursor: pointer;
+  background: #ececec;
+  margin-bottom: 10px;
+  display: block;
+  width: 100px;
+  text-align: center;
+  &:hover {
+    background: rgb(220, 220, 220);
+  }
+  input {
+    width: 1px;
+    opacity: 0;
+  }
+}
