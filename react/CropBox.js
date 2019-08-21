@@ -40,7 +40,7 @@ function Cropper(props) {
       <div className={styles.input}>
         <label className={styles.label}>
           {name || "选择图片"}
-          <input type="file" onChange={onChange} />
+          <input type="file" onChange={onChange} style={{ display: "none" }} />
         </label>
       </div>
       <img src={src} className={styles.img} />
