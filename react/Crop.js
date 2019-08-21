@@ -33,7 +33,7 @@ export default function Crop({ file, cropper, onSubmit, width = 160 }) {
   const onImageLoad = e => {
     crop.current = new Cropper(img.current, {
       aspectRatio: 16 / 9,
-      viewMode: 2,
+      viewMode: 1,
       preview: preview.current,
       ...cropper
     });
