@@ -18,11 +18,11 @@ export const toWeb = url => {
 
 /**
  * 跳转到股票行情
- * @param {Number} code
- * @param {String} market
- * @param {String} name
+ * @param {Number} code - 股票代码
+ * @param {String} market - 市场代码: 上海=XSHG 深圳=XSHE
+ * @param {String} name - 股票名称
  */
-export const toStock = ({ code, market, name }) => {
+export const toStock = (code, market, name) => {
   const stockCode = `${code}.${market}`;
   const stockName = name;
   if (ios) {
