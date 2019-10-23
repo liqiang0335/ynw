@@ -6,7 +6,7 @@
 
 ## APP Bridge
 
-> 引用: import { getToken } from "ynw/yngp"
+> import { getToken } from "ynw/yngp"
 
 - getToken: 获取 token
 - webGetToken: 获取 webToken
