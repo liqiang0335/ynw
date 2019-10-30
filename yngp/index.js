@@ -203,17 +203,6 @@ export function getAndroidPhoto() {
 }
 
 /**
- * 比较版本号大小
- * @param {String} newVal - 新的版本号
- * @param {String} oldVal - 老的版本号
- *
- * @return {Boolean}
- */
-export function isNewVersion(newVal, oldVal) {
-  return true;
-}
-
-/**
  * 安卓返回状态栏高度
  */
 export function statusBarHeight() {
