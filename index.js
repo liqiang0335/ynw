@@ -8,7 +8,8 @@ var createElement = function() {
     position: "fixed",
     right: "0",
     bottom: "0",
-    fontSize: "12px"
+    fontSize: "12px",
+    zIndex: "10000"
   };
   for (var key in style) {
     div.style[key] = style[key];
