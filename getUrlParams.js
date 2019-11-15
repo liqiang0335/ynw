@@ -1,11 +1,8 @@
-/**
- * 通过函数获取参数
- */
 export default function getUrlParams(href = window.location.search) {
-  const params = {};
-  encodeURI(href).replace(
-    /([^?&=]+)=([^&]+)/g,
-    (_, k, v) => (params[k] = decodeURI(v))
-  );
-  return params;
+  return (encodeURI(href).match(/([\w_-]+)=([^&]+)/gi) || [])
+    .map(item => {
+      const arr = item.split("=");
+      return { [arr[0]]: decodeURI(arr[1]) };
+    })
+    .reduce((prev, cur) => ({ ...prev, ...cur }), {});
 }
