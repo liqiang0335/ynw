@@ -1,8 +1,5 @@
-import axios from "axios";
-
 const ios = /iphone/i.test(navigator.userAgent);
 const href = window.location.href;
-const isiOS = !!navigator.userAgent.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/);
 
 /**
  * 直播室
@@ -36,10 +33,6 @@ export const gotoStock = (code, market, name) => {
   }
 };
 
-/**
- * @param {String} key - 方法名称
- * @param {Any, Optional} defaultValue - 默认
- */
 function callApp(key, defaultValue) {
   try {
     OCObject[key]();
@@ -56,39 +49,7 @@ export function isBangScreen() {
 }
 
 /**
- * 获取token
- * @param {Number} phone
- * @param {String} password
- */
-export function getToken(params) {
-  const SIGN = "2FwzjCrYeXB,CkYbISJrtwO3WZPkeSbDbFLKEWURzRc9kwKeSVQETA__";
-  try {
-    return OCObject.getToken(SIGN);
-  } catch (e) {
-    return webGetToken(params);
-  }
-}
-
-/**
- * 接口获取token
- * @param {Number} phone
- * @param {String} password
- */
-export async function webGetToken(option) {
-  const YZT = getYZT();
-  const url = `${YZT}/app/appPasswordLogin.htm`;
-  const params = {
-    phoneNumber: option.phone,
-    password: option.password,
-    os: 1,
-    ...option
-  };
-  const res = await axios.get(url, params);
-  return res.data;
-}
-
-/**
- * 跳转app登录
+ * 打开 App 登录
  */
 export async function appLogin() {
   const token = await getToken();
@@ -98,14 +59,13 @@ export async function appLogin() {
 }
 
 /**
- * app的H5跳H5方法
- * @param {String} address - 完成的URL(不能带有#好,自己处理)
+ * app的 H5跳 H5 方法
+ * @param {String} address - 完成的 URL (不能带有#好,自己处理)
  * @param {Object} ops
+ *   @param {Number} arrow -  0=黑色返回键 1=白色返回键 2=没有返回键
+ *   @param {Number} arrowColor -  0=黑色返回键 1=白色返回键 2=没有返回键
  */
-export function pageToPage(address, ops) {
-  //&hiddenNav=1&isBlackNav=1
-  /**arrow 0黑色返回键,1白色返回键,2去掉返回键  */
-  // let arrowColor = ops.arrow ? "" : "&isBlackNav=1";
+export function openPage(address, ops) {
   let arrowColor;
   switch (ops.arrow) {
     case 0:
@@ -123,19 +83,11 @@ export function pageToPage(address, ops) {
   }
   let navBar = ops.navBar ? "" : "&hiddenNav=1";
   let jump = `yncj://WebUrl?url=\"${address}\"${navBar}${arrowColor}`;
-  console.log("=jump=", jump);
   window.location.href = jump;
 }
 
 /**
- * 获取极光推送id
- */
-export function getPushId() {
-  callApp("getPushId");
-}
-
-/**
- * 原生返回方法
+ * 返回
  */
 export function goBack() {
   callApp("goBack");
@@ -143,9 +95,10 @@ export function goBack() {
 
 /**
  * 分享
+ * @param {Object} ops: 参数
+ * @param {Number} type: 0=面板 1=微信 2=朋友圈
  */
-export function appShare(ops) {
-  // type 0 弹出面板 1微信 2朋友圈
+export function callAppShare(ops) {
   let params = {
     url: "",
     title: "",
@@ -156,7 +109,7 @@ export function appShare(ops) {
     ...ops
   };
   try {
-    if (isiOS) {
+    if (ios) {
       return OCObject.shareDict(params);
     } else {
       return OCObject.shareDict(JSON.stringify(params));
@@ -167,7 +120,7 @@ export function appShare(ops) {
 /**
  * 获取版本号
  */
-export function appVersion(init = "2.4.3") {
+export function getAppVersion(init = "2.4.3") {
   callApp("appVersion", init);
 }
 
@@ -176,7 +129,7 @@ export function appVersion(init = "2.4.3") {
  */
 export function zoomImg(src) {
   try {
-    isiOS ? OCObject.zoomImg(src) : OCObject.passValue(src);
+    ios ? OCObject.zoomImg(src) : OCObject.passValue(src);
   } catch (e) {
     //
   }
@@ -206,27 +159,5 @@ export function getAndroidPhoto() {
  * 安卓返回状态栏高度
  */
 export function statusBarHeight() {
-  return !isiOS ? callApp("statusBarHeight") : "";
-}
-
-/**
- * 获取渠道
- * 生成订单时使用
- */
-export function getChannel() {
-  callApp("getChannel", "ali");
-}
-
-function getYZT() {
-  if (/account.zx093.cn/.test(href)) {
-    return "http://account.zx093.cn/yncjsso_server/";
-  }
-
-  if (/41.116/.test(href)) {
-    return "http://101.201.41.116/";
-  }
-
-  if (/60.205.243.97/.test(href)) {
-    return "http://60.205.243.97:8088/yncjsso_server/";
-  }
+  return !ios ? callApp("statusBarHeight") : "";
 }
