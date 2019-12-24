@@ -1,0 +1,15 @@
+.ant-form-explain {
+  display: none !important;
+}
+.ant-form-item {
+  margin-bottom: 0 !important;
+}
+.ant-modal-header {
+  background: #f2f2f2 !important;
+}
+.ant-table-body {
+  margin: 0 !important;
+}
+.ant-table-thead th {
+  background: #f2f2f2 !important;
+}
