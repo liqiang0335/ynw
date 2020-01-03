@@ -4,7 +4,7 @@
   justify-content: center;
 }
 
-@mixin position-center($value: 0) {
+@mixin absolute-center($value: 0) {
   top: $value;
   right: $value;
   bottom: $value;
