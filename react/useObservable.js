@@ -1,12 +1,14 @@
 import { useEffect, useState } from "react";
 
-const useObservable = (observable$, initialValue) => {
+const useObservable = (source, initialValue) => {
   const [value, update] = useState(initialValue);
 
   useEffect(() => {
-    const s = observable$.subscribe(update);
+    const isFunction = typeof source == "function";
+    const source$ = isFunction ? source() : source;
+    const s = source$.subscribe(update);
     return () => s.unsubscribe();
-  }, [observable$]);
+  }, [source]);
 
   return value;
 };
