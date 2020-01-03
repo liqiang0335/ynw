@@ -1,3 +1,7 @@
+/**
+ * @param {Array/Object} nodes
+ * @return {Array}
+ */
 export default function tree2Array(nodes) {
   const children = "children";
   var result = [];

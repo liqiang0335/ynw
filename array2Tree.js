@@ -1,3 +1,8 @@
+/**
+ * @param {Array} nodes - data
+ * @param {Object} option - 三个字段的key值{id, pid, children}
+ * @return {Array}
+ */
 export default function array2Tree(nodes, option = {}) {
   const id = option.id || "id";
   const pid = option.pid || "pid";
