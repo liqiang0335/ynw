@@ -195,8 +195,8 @@ button:focus {
 
 body {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-  font-family: "Helvetica Neue", Helvetica, Arial, "Microsoft Yahei",
-    "Hiragino Sans GB", "HeitiSC", sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue",
+    Helvetica, Arial, "Microsoft Yahei", "Hiragino Sans GB", sans-serif;
   margin: 0;
   padding: 0;
   font-size: 13px;
@@ -219,10 +219,10 @@ body {
   align-items: center;
 }
 
-.flex .shrink {
+.shrink {
   flex-shrink: 0;
 }
 
-.flex .grow {
+.grow {
   flex-grow: 1;
 }
