@@ -11,6 +11,7 @@ export default function array2Tree(nodes, option = {}) {
   const byIds = {};
   const len = nodes.length;
   const datas = cloneDeep(nodes);
+  debugger;
 
   for (let i = 0; i < len; i++) {
     byIds[datas[i][id]] = datas[i];
