@@ -1,0 +1,23 @@
+@font-face {
+  font-family: "Roboto";
+  src: local("Roboto"), local("Roboto-Regular"),
+    url(//app.jsgaotie.com/fonts/Roboto-Regular.woff) format("woff");
+  font-weight: 400;
+  font-display: fallback;
+}
+
+@font-face {
+  font-family: "Roboto";
+  src: local("Roboto Medium"), local("Roboto-Medium"),
+    url(//app.jsgaotie.com/fonts/Roboto-Medium.woff) format("woff");
+  font-weight: 500;
+  font-display: fallback;
+}
+
+@font-face {
+  font-family: "Roboto";
+  src: local("Roboto Bold"), local("Roboto-Bold"),
+    url(/fonts/Roboto-Bold.woff) format("woff");
+  font-weight: 700;
+  font-display: fallback;
+}
