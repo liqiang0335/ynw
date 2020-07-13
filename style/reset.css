@@ -206,15 +206,15 @@ body {
   display: flex;
 }
 
-.flex-wrap {
+.wrap {
   flex-wrap: wrap;
 }
 
-.flex.column {
+.column {
   flex-direction: column;
 }
 
-.flex.center {
+.center {
   justify-content: center;
   align-items: center;
 }
