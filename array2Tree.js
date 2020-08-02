@@ -4,14 +4,13 @@ import cloneDeep from "lodash/cloneDeep";
  * @return {Array}
  */
 export default function array2Tree(nodes, option = {}) {
-  const id = option.id || "_id";
-  const pid = option.pid || "parent";
+  const id = option.id || "id";
+  const pid = option.pid || "pid";
   const children = option.children || "children";
   const result = [];
   const byIds = {};
   const len = nodes.length;
   const datas = cloneDeep(nodes);
-  debugger;
 
   for (let i = 0; i < len; i++) {
     byIds[datas[i][id]] = datas[i];
