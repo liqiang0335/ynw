@@ -1,4 +1,4 @@
-export default function getUrlParams(href = window.location.search) {
+export default function getUrlParams(href = window.location.href) {
   return (encodeURI(href).match(/([\w_-]+)=([^&]+)/gi) || [])
     .map(item => {
       const arr = item.split("=");

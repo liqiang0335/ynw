@@ -13,7 +13,13 @@ import createEventHub from "ynw/createEventHub";
 const byId = name => document.getElementById(name);
 const hub = createEventHub();
 const IS_BOTTOM = "IS_BOTTOM";
-
+/**
+ * ----------------------------------------
+ * @param {Element} el - 运动元素
+ * @param {Element} root - 元素容器
+ * @param {Boolean} start - 开始运行
+ * ----------------------------------------
+ */
 const move = ({ el, speed = 3, root, start = false, elHeight, rootHeight }) => {
   const bottom = rootHeight - elHeight;
   const maxTop = 0 - elHeight;
@@ -59,7 +65,7 @@ const move = ({ el, speed = 3, root, start = false, elHeight, rootHeight }) => {
 /**
  * ----------------------------------------
  * 垂直方向跑马灯
- * @param {Number} start - 开始滚动
+ * @param {Number} start - 开始滚动(依赖DOM元素的高度::数据渲染完成后再开始)
  * @param {Number} [speed=0.5] - 速度(px)
  * @param {Number} [height=150] - 样式 - 控制ROOT高度
  * ----------------------------------------
@@ -94,7 +100,8 @@ export default {
         const elHeight = e1.getBoundingClientRect().height;
         const rootHeight = root.getBoundingClientRect().height;
         const speed = this.speed;
-        // disable
+
+        // 小于容器的高度不滚动
         if (elHeight < rootHeight) {
           this.opacity = 1;
           return;
