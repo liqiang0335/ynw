@@ -1,4 +1,5 @@
-export default function getUrlParams(href = window.location.href) {
+export default function getUrlParams() {
+  const href = window.location.href;
   return (encodeURI(href).match(/([\w_-]+)=([^&]+)/gi) || [])
     .map(item => {
       const arr = item.split("=");
@@ -6,3 +7,5 @@ export default function getUrlParams(href = window.location.href) {
     })
     .reduce((prev, cur) => ({ ...prev, ...cur }), {});
 }
+
+export const UrlParams = getUrlParams();
