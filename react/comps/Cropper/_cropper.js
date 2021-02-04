@@ -2,7 +2,6 @@ import React, { useEffect, useState, useRef } from "react";
 import "cropperjs/dist/cropper.css";
 import Cropper from "cropperjs";
 import styled from "styled-components";
-
 /**
  * @param {File} file
  * @param {Object} cropper - cropperjs options
@@ -10,9 +9,6 @@ import styled from "styled-components";
  * @param {Number} width - 需要的图片宽度, 高度根据比例自动计算
  */
 export default function Crop({ file, cropper, onSubmit, width = 160 }) {
-  if (!file) {
-    return null;
-  }
   const [show, setShow] = useState(false);
   const [src, setsrc] = useState("");
   const img = useRef(null);
@@ -53,6 +49,8 @@ export default function Crop({ file, cropper, onSubmit, width = 160 }) {
 
   const display = { display: show ? "block" : "none" };
 
+  if (!file) return null;
+
   return (
     <Background style={display}>
       <Box>
@@ -76,7 +74,6 @@ export default function Crop({ file, cropper, onSubmit, width = 160 }) {
 }
 
 // Style
-
 const Background = styled.div`
   background: rgba(0, 0, 0, 0.75);
   width: 100%;
