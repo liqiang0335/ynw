@@ -1,4 +1,4 @@
-const extend = function(source, target) {
+const extend = function (source, target) {
   if (!target) {
     return source;
   }

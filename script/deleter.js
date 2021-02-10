@@ -4,7 +4,6 @@ import { ExclamationCircleOutlined } from "@ant-design/icons";
 
 /**
  * 删除确认: 用户确认后执行回调函数
- *
  * @param {Function} submiter
  */
 export default function deleter(submiter) {

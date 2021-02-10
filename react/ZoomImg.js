@@ -4,17 +4,17 @@ import posed from "react-pose";
 const Frame = posed.div({
   init: {
     applyAtEnd: { display: "none" },
-    opacity: 0
+    opacity: 0,
   },
   zoom: {
     applyAtStart: { display: "block" },
-    opacity: 1
-  }
+    opacity: 1,
+  },
 });
 
 const transition = {
   duration: 400,
-  ease: [0.08, 0.69, 0.2, 0.99]
+  ease: [0.08, 0.69, 0.2, 0.99],
 };
 
 const Image = posed.img({
@@ -23,7 +23,7 @@ const Image = posed.img({
     width: "auto",
     height: "auto",
     transition,
-    flip: true
+    flip: true,
   },
   zoom: {
     position: "fixed",
@@ -32,8 +32,8 @@ const Image = posed.img({
     right: 0,
     bottom: 0,
     transition,
-    flip: true
-  }
+    flip: true,
+  },
 });
 
 export default function ZoomImg(props) {
@@ -65,12 +65,12 @@ const frameStyle = {
   bottom: 0,
   display: "none",
   background: "white",
-  transform: "translateZ(0)"
+  transform: "translateZ(0)",
 };
 
 const imgStyle = {
   cursor: "zoom-in",
   display: "block",
   maxWidth: "100%",
-  margin: "auto"
+  margin: "auto",
 };

@@ -1,6 +1,10 @@
 import { message } from "antd";
 /**
+ * ----------------------------------------
  * 提交表单获取表单中的值
+ * @param {Ant.Form} form
+ * @param {Function} callback
+ * ----------------------------------------
  */
 export default function getFormValues(form, callback) {
   return form

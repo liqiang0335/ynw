@@ -18,7 +18,7 @@ const useScroll = ref => {
         if (ref.current) {
           setState({
             x: ref.current.scrollLeft,
-            y: ref.current.scrollTop
+            y: ref.current.scrollTop,
           });
         }
       });
@@ -27,7 +27,7 @@ const useScroll = ref => {
     if (ref.current) {
       ref.current.addEventListener("scroll", handler, {
         capture: false,
-        passive: true
+        passive: true,
       });
     }
 
