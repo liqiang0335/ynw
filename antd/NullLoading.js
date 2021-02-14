@@ -6,6 +6,7 @@ import { Empty } from "antd";
  * ----------------------------------------
  * 显示正在加载
  * @param {null} data - 如果data是null，则显示正在加载，否则显示children
+ * @param {Boolean} empty - 如果
  * ----------------------------------------
  */
 export default function NullLoading({ data, children, empty }) {
@@ -20,7 +21,7 @@ export default function NullLoading({ data, children, empty }) {
   }, [data]);
 
   if (v !== null) {
-    if (empty) {
+    if (empty && Array.isArray(v) && v.length === 0) {
       return <Empty image={Empty.PRESENTED_IMAGE_SIMPLE} />;
     }
     return children;
