@@ -15,7 +15,7 @@ export default function NullLoading({ data, children, empty }) {
   useEffect(() => {
     if (data) {
       setTimeout(() => {
-        set(true);
+        set(data);
       }, 200);
     }
   }, [data]);
