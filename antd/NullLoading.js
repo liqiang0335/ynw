@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-import loading2 from "../../assets/loading2.gif";
+import loading2 from "../assets/images/loading2.gif";
+import { Empty } from "antd";
 
 /**
  * ----------------------------------------
@@ -7,18 +8,21 @@ import loading2 from "../../assets/loading2.gif";
  * @param {null} data - 如果data是null，则显示正在加载，否则显示children
  * ----------------------------------------
  */
-export default function NullLoading({ data, children }) {
+export default function NullLoading({ data, children, empty }) {
   const [v, set] = useState(data);
 
   useEffect(() => {
-    if (data && !v) {
+    if (data) {
       setTimeout(() => {
         set(true);
       }, 200);
     }
   }, [data]);
 
-  if (v && data) {
+  if (v !== null) {
+    if (empty) {
+      return <Empty image={Empty.PRESENTED_IMAGE_SIMPLE} />;
+    }
     return children;
   }
 
