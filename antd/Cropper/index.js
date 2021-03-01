@@ -7,7 +7,7 @@ import Cropper from "./_cropper";
  * @param {String} value - 图片回显路径
  * @param {Function} onChange(base64) - 裁切完成回调, 参数中包含base64格式图片
  * @param {String,Optional} name - 按钮文字,默认为"选择图片"
- * @param {Number,Optional} width - 图片的宽度, 默认260
+ * @param {Number,Optional} width - 图片的宽度, 默认500
  * @param {Object,Optional} cropper - cropper选项, 默认值 { aspectRatio: 16/9, viewMode:2, ...}
  */
 export default function CropperBox(props) {
@@ -38,7 +38,7 @@ export default function CropperBox(props) {
         style={{ maxWidth: props.width + "px" }}
       />
       <Suspense fallback={null}>
-        <Cropper file={file} onSubmit={onChange} width={260} {...rest} />
+        <Cropper file={file} onSubmit={onChange} width={500} {...rest} />
       </Suspense>
     </div>
   );
