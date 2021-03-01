@@ -3,17 +3,25 @@ import { Popover } from "antd";
 import { Button } from "antd";
 /**
  * ----------------------------------------
- * 展示长文章
+ * 弹窗展示长文章详细内容
+ * 大于trunc(默认10)个字的时候
  * @param {String} content - 内容
+ * @param {String} [trunc = 10] - 截取
+ * @param {Boolean} [plain = false] - 显示富文本
  * ----------------------------------------
  */
-export default function PopArticle({ content, plain, ...props }) {
+export default function PopArticle({
+  content,
+  plain = false,
+  trunc = 10,
+  ...props
+}) {
   if (!content) {
     return null;
   }
-  const isLarge = content.length > 10;
+  const isLarge = content.length > trunc;
   const title = isLarge
-    ? content.replace(/<.+?>/g, "").substring(0, 10) + ".."
+    ? content.replace(/<.+?>/g, "").substring(0, trunc) + ".."
     : content;
 
   const Content = () => {
