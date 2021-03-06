@@ -14,3 +14,38 @@ export default function formatDuration(ms) {
     millisecond: Math.floor(ms) % 1000,
   };
 }
+
+export function formatDurationToMinute(ms) {
+  const result = [];
+  const o = formatDuration(ms);
+  const times = [
+    [o.day, "天"],
+    [o.hour, "小时"],
+    [o.minute, "分"],
+  ];
+  for (let item of times) {
+    const [value, label] = item;
+    if (value > 0) {
+      result.push(`${value}${label}`);
+    }
+  }
+  return result.join("");
+}
+
+export function formatDurationToSecond(ms) {
+  const result = [];
+  const o = formatDuration(ms);
+  const times = [
+    [o.day, "天"],
+    [o.hour, "小时"],
+    [o.minute, "分"],
+    [o.second, "秒"],
+  ];
+  for (let item of times) {
+    const [value, label] = item;
+    if (value > 0) {
+      result.push(`${value}${label}`);
+    }
+  }
+  return result.join("");
+}
