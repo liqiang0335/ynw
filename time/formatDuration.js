@@ -1,6 +1,6 @@
 /**
  * ----------------------------------------
- * 时间转换
+ * 时长转换
  * @param {Number} ms - 毫秒
  * ----------------------------------------
  */
@@ -14,7 +14,12 @@ export default function formatDuration(ms) {
     millisecond: Math.floor(ms) % 1000,
   };
 }
-
+/**
+ * ----------------------------------------
+ * 时长转换到分
+ * @param {Number} ms - 毫秒
+ * ----------------------------------------
+ */
 export function formatDurationToMinute(ms) {
   const result = [];
   const o = formatDuration(ms);
@@ -31,7 +36,12 @@ export function formatDurationToMinute(ms) {
   }
   return result.join("");
 }
-
+/**
+ * ----------------------------------------
+ * 时长转换到秒
+ * @param {Number} ms - 毫秒
+ * ----------------------------------------
+ */
 export function formatDurationToSecond(ms) {
   const result = [];
   const o = formatDuration(ms);
