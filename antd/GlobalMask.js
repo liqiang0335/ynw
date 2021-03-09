@@ -15,13 +15,14 @@ const reducer = (state, action) => {
 /**
  * ----------------------------------------
  * 全局蒙版
+ * @param {Number} [zIndex = 10000] 层级高度
  * @description
  * import { mask } from "@comps/GlobalMask";
  * mask.emit('show','正在上传')
  * mask.emit('hide')
  * ----------------------------------------
  */
-export default function GlobalMask() {
+export default function GlobalMask({ zIndex = 10000 }) {
   const [state, dispatch] = useReducer(reducer, initState);
 
   useEffect(() => {
@@ -36,7 +37,7 @@ export default function GlobalMask() {
   }, []);
 
   return state.visible ? (
-    <SBox>
+    <SBox style={{ zIndex }}>
       <Spin />
       <SMsg>{state.message}</SMsg>
     </SBox>
@@ -49,8 +50,7 @@ const SBox = styled.div`
   top: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(255, 255, 255, 0.897);
-  z-index: 10000;
+  background-color: rgba(255, 255, 255, 0.75);
   display: flex;
   align-items: center;
   justify-content: center;
