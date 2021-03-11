@@ -11,8 +11,14 @@ const createEventHub = () => ({
     const i = (this.hub[event] || []).findIndex(h => h === handler);
     if (i > -1) this.hub[event].splice(i, 1);
   },
-  clear() {
-    this.hub = Object.create(null);
+  clear(keys) {
+    if (keys) {
+      for (let key of [].concat(keys)) {
+        this.hub[key] = [];
+      }
+    } else {
+      this.hub = Object.create(null);
+    }
   },
 });
 
