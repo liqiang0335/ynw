@@ -1,8 +1,9 @@
 import Viewer from "viewerjs";
 import "viewerjs/dist/viewer.css";
-
 /**
+ * 预览图片
  * @param {String} src - 预览的图片
+ * @param {Object} [option] - viewerjs选项
  */
 export default function previewImage(src, option) {
   let img = new Image();
@@ -19,7 +20,7 @@ export default function previewImage(src, option) {
     fullscreen: true,
     viewed: () => viewer.zoomTo(1),
     hidden: () => viewer.destroy(),
-    ...option
+    ...option,
   });
 
   viewer.show();
