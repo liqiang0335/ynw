@@ -1,7 +1,6 @@
 import React from "react";
 import { Upload, message } from "antd";
 import { InboxOutlined } from "@ant-design/icons";
-import uuid from "@script/encrypt";
 const { Dragger } = Upload;
 const defaultLabel = "选择或拖动文件";
 /**
@@ -16,7 +15,7 @@ export default function Uploadbox({ label = defaultLabel, onChange }) {
     accept: ".rar,.zip",
     name: "file",
     multiple: false,
-    action: `/api/tjlab/com/upfile?id=${uuid()}`,
+    action: "/api/tjlab/com/upfile",
     headers: {
       token: window.token,
     },
