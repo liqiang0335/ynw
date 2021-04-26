@@ -10,7 +10,16 @@ const createEventHub = () => ({
   off(event, handler) {
     const i = (this.hub[event] || []).findIndex(h => h === handler);
     if (i > -1) this.hub[event].splice(i, 1);
-  }
+  },
+  clear(keys) {
+    if (keys) {
+      for (let key of [].concat(keys)) {
+        this.hub[key] = [];
+      }
+    } else {
+      this.hub = Object.create(null);
+    }
+  },
 });
 
 export default createEventHub;

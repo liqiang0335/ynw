@@ -1,6 +1,6 @@
 /**
  * ----------------------------------------
- * 时间转换
+ * 时长转换
  * @param {Number} ms - 毫秒
  * ----------------------------------------
  */
@@ -13,4 +13,49 @@ export default function formatDuration(ms) {
     second: Math.floor(ms / 1000) % 60,
     millisecond: Math.floor(ms) % 1000,
   };
+}
+/**
+ * ----------------------------------------
+ * 时长转换到分
+ * @param {Number} ms - 毫秒
+ * ----------------------------------------
+ */
+export function formatDurationToMinute(ms) {
+  const result = [];
+  const o = formatDuration(ms);
+  const times = [
+    [o.day, "天"],
+    [o.hour, "小时"],
+    [o.minute, "分"],
+  ];
+  for (let item of times) {
+    const [value, label] = item;
+    if (value > 0) {
+      result.push(`${value}${label}`);
+    }
+  }
+  return result.join("");
+}
+/**
+ * ----------------------------------------
+ * 时长转换到秒
+ * @param {Number} ms - 毫秒
+ * ----------------------------------------
+ */
+export function formatDurationToSecond(ms) {
+  const result = [];
+  const o = formatDuration(ms);
+  const times = [
+    [o.day, "天"],
+    [o.hour, "小时"],
+    [o.minute, "分"],
+    [o.second, "秒"],
+  ];
+  for (let item of times) {
+    const [value, label] = item;
+    if (value > 0) {
+      result.push(`${value}${label}`);
+    }
+  }
+  return result.join("");
 }
