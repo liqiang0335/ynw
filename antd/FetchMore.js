@@ -84,8 +84,8 @@ const LoadingText = ({ style, children, ...rest }) => {
     <div
       style={{
         textAlign: "center",
-        padding: "20px 0",
-        paddingTop: "40px",
+        padding: 0,
+        paddingTop: "25px",
         paddingBottom: "40px",
         letterSpacing: "1px",
         color: "gray",
