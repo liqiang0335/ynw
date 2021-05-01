@@ -5,9 +5,9 @@
  * @param {String} [key]
  * ----------------------------------------
  */
-export default function byId(datas, key = "value") {
+export default function byId(datas, key = "id") {
   return datas.reduce((p, c) => {
-    const k = c[key] || c.id;
+    const k = c[key] || c._id;
     p[k] = c;
     return p;
   }, {});
