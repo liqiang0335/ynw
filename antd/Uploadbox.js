@@ -14,7 +14,7 @@ export default function Uploadbox({ label = defaultLabel, onChange }) {
   const config = {
     accept: ".rar,.zip",
     name: "file",
-    multiple: false,
+    multiple: true,
     action: "/api/tjlab/com/upfile",
     headers: {
       token: window.token,
