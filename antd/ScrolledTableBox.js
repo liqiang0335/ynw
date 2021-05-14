@@ -14,14 +14,9 @@ export default function ScrolledTableBox({ children }) {
     setWidth(rect.width + "px");
   }, []);
 
-  const Content = () => {
-    if (width === "100%") return null;
-    return children;
-  };
-
   return (
-    <div ref={ref} style={{ width: width, minHeight: "10px", flex: 1 }}>
-      <Content />
+    <div ref={ref} style={{ width: width, minHeight: "10px" }}>
+      {width === "100%" ? null : children}
     </div>
   );
 }
