@@ -16,9 +16,16 @@ const reducer = (state, action) => {
  * @param {String} value - 文件路径
  * @param {Function} onChange
  * @param {String} [title] - 文字提示
+ * @param {Object} [headers]
  * ----------------------------------------
  */
-export default function UploadInput({ url, value = "", onChange, title }) {
+export default function UploadInput({
+  url,
+  value = "",
+  onChange,
+  title,
+  headers = {},
+}) {
   const [state, dispatch] = useReducer(reducer, initState);
   const loading = state.percent > 0 && state.percent <= 100;
   // eslint-disable-next-line no-useless-escape
@@ -32,7 +39,7 @@ export default function UploadInput({ url, value = "", onChange, title }) {
     const res = await axios.post(url, form, {
       headers: {
         "Content-Type": "multipart/form-data;charset=UTF-8",
-        token: window.token,
+        ...headers,
       },
       onUploadProgress: e => {
         const percent = ((e.loaded / e.total) * 100) | 0;
