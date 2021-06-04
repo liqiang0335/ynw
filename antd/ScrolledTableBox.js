@@ -15,7 +15,11 @@ export default function ScrolledTableBox({ children }) {
   }, []);
 
   return (
-    <div ref={ref} style={{ width: width, minHeight: "10px" }}>
+    <div
+      className="ScrolledTableBox"
+      ref={ref}
+      style={{ width: width, minHeight: "10px" }}
+    >
       {width === "100%" ? null : children}
     </div>
   );
