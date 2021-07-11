@@ -15,7 +15,7 @@ const reducer = (state, action) => {
  * @param {String} value - 文件路径
  * @param {Function} onChange
  * @param {String} [url] - 接口地址
- * @param {String} [headers] - 设置请求头
+ * @param {Object} [headers] - 设置请求头
  * @param {String} [accept=""] - 文件格式
  * @param {String} [title] - 文字提示
  * ----------------------------------------
