@@ -1,13 +1,12 @@
-/* eslint-disable react/jsx-no-target-blank */
 import React from "react";
 import { DownloadOutlined } from "@ant-design/icons";
 
 export default function Download({ src, children = "文件下载" }) {
-  if (!src) return <div>---</div>;
+  if (!src) return <div>--</div>;
   return (
     <a
       href={src}
-      download={src}
+      download={getFileName(src)}
       style={{
         color: "blue",
         cursor: "pointer",
@@ -18,3 +17,9 @@ export default function Download({ src, children = "文件下载" }) {
     </a>
   );
 }
+
+const getFileName = src => {
+  // eslint-disable-next-line no-useless-escape
+  const match = src.match(/[^\/]+$/);
+  return match ? match[0] : src;
+};
