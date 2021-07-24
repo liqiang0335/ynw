@@ -1,4 +1,5 @@
 # ynw
 
-- 如果报错,请尝试安装 `4.0.23` 版本
-- VSCode 中输入函数名称自动显示 Snippets
+- [文档](https://liqiang0335.github.io/ynw/#/)
+- 自用工具函数, 需要配合 ynw-cli 才能使用
+- 安装 vscode 插件 ynw 后中输入函数名称自动提示
