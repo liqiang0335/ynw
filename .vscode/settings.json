@@ -1,0 +1,11 @@
+{
+  "[markdown]": {
+    "editor.wordWrap": "on",
+    "editor.formatOnSave": true,
+    "editor.renderWhitespace": "all",
+    "editor.quickSuggestions": {
+      "other": true,
+      "comments": true,
+      "strings": true
+  }
+}

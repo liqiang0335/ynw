@@ -2,24 +2,14 @@ import React from "react";
 import wordicon from "./word.png";
 import pdficon from "./adobe-pdf-icon.svg";
 
-export function IconWrod({ onClick }) {
+export function IconWord(props) {
   return (
-    <img
-      src={wordicon}
-      width="25"
-      style={{ cursor: "pointer" }}
-      onClick={onClick}
-    />
+    <img src={wordicon} width="25" style={{ cursor: "pointer" }} {...props} />
   );
 }
 
-export function IconPdf({ onClick }) {
+export function IconPdf(props) {
   return (
-    <img
-      src={pdficon}
-      width="23"
-      style={{ cursor: "pointer" }}
-      onClick={onClick}
-    />
+    <img src={pdficon} width="23" style={{ cursor: "pointer" }} {...props} />
   );
 }

@@ -3,9 +3,7 @@
  * @return {String} Mobile/Desktop
  */
 const detectDeviceType = () =>
-  /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
-    navigator.userAgent
-  )
+  /Android|webOS|iPhone|iPad|iPod/i.test(navigator.userAgent)
     ? "Mobile"
     : "Desktop";
 

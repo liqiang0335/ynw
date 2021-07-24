@@ -15,7 +15,7 @@ export const Braft = BraftEditor;
  * 提交时 EditorState => String 转换: params.content = params.content.toHTML();
  * ----------------------------------------
  */
-export default function Editor({ style, ...props }) {
+export default function BraftEditor({ style, ...props }) {
   return (
     <div style={{ border: "1px solid #cac9c9", ...style }}>
       <BraftEditor
