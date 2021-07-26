@@ -1,24 +1,20 @@
+# getExpireHuman
+
+> 可读的剩余/过期时间
+
 ```js
-import dayjs from "dayjs";
-import formatDuration from "ynw/time/formatDuration";
 /**
  * ----------------------------------------
- * 计算剩余天数
- * @param {Number}  expireTimestamp - 过期时间戳
+ * @param {Number} timestamp - 时间戳
+ * @return {Object} {desc, isOut, dayStr}
  * ----------------------------------------
  */
-export function getExpireHuman(expireTimestamp) {
-  const off = expireTimestamp - Date.now();
-  const isOut = off < 0;
-  const title = isOut ? "过期" : "剩余";
-  const count = formatDuration(off).day;
-  const desc = `${title}${count}天`;
-  const dayStr = dayjs(expireTimestamp).format("YYYY-MM-DD");
+getExpireHuman(timestamp);
+```
 
-  return {
-    desc,
-    isOut,
-    dayStr,
-  };
-}
+## Usage
+
+```js
+import { getExpireHuman } from "ynw/script/getHumanTimes";
+getExpireHuman(1627285004383); // {desc: '过期2天', isOut:true, dayStr:"2021-07-26"}
 ```
