@@ -1,3 +1,4 @@
+```js
 import format from "date-fns/format";
 import addMilliseconds from "date-fns/add_milliseconds";
 
@@ -21,3 +22,4 @@ export default function overTime(target) {
   const out = milliCount < 0;
   return { year, month, date, hour, minute, second, out };
 }
+```

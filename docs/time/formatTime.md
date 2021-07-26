@@ -1,3 +1,4 @@
+```js
 import dayjs from "dayjs";
 const today = dayjs(new Date());
 
@@ -30,3 +31,4 @@ const DAY_CHINA = {
 export function getDayText() {
   return "星期" + DAY_CHINA[today.day()];
 }
+```
