@@ -10,7 +10,7 @@
   </div>
 </template>
 <script>
-const icon = "http://www.cim4r.com.cn/rfcdam/weixin/app/images/loading2.gif";
+import icon from "../assets/images/loading2.gif";
 import http from "@script/http";
 import getUrlParams from "ynw/getUrlParams";
 /**

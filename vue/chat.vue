@@ -49,15 +49,15 @@ export default {
       default: () => {
         return {
           dir: "left",
-          avatar: "@common/images/avatar.png"
+          avatar: "@common/images/avatar.png",
         };
-      }
-    }
+      },
+    },
   },
   computed: {
     avatarStyle() {
       return {
-        backgroundImage: `url('${this.data.avatar}')`
+        backgroundImage: `url('${this.data.avatar}')`,
       };
     },
     triangle() {
@@ -75,10 +75,10 @@ export default {
         position: "absolute",
         [dir]: "-13px",
         top: "7px",
-        transform: `rotate(${angle}deg)`
+        transform: `rotate(${angle}deg)`,
       };
-    }
-  }
+    },
+  },
 };
 </script>
 <style lang="scss" scoped>
