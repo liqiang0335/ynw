@@ -1,5 +1,4 @@
 import dayjs from "dayjs";
-const today = dayjs(new Date());
 
 /**
  * 时间转换
@@ -18,7 +17,7 @@ export function formatDay(value) {
  * 星期几
  * ----------------------------------------
  */
-const DAY_CHINA = {
+const Days = {
   1: "一",
   2: "二",
   3: "三",
@@ -27,6 +26,7 @@ const DAY_CHINA = {
   6: "六",
   7: "日",
 };
-export function getDayText() {
-  return "星期" + DAY_CHINA[today.day()];
+export function getDayText(time = new Date()) {
+  const value = dayjs(time).day();
+  return "星期" + Days[value];
 }

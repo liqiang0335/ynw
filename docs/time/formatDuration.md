@@ -2,7 +2,6 @@
 
 ```js
 import formatDuration from "ynw/time/formatDuration";
-formatDuration(3000);
 ```
 
 # formatDurationToMinute

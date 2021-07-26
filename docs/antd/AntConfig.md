@@ -1,23 +1,17 @@
 # AntConfig
 
-> antd 配置
+> antd 默认中文配置
 
 ```js
 import AntConfig from "ynw/antd/AntConfig";
-```
 
-## Source
-
-```js
-import React from "react";
-import { ConfigProvider } from "antd";
-import zhCN from "antd/es/locale/zh_CN";
-
-export default function AntConfig({ children }) {
+function Main() {
   return (
-    <ConfigProvider locale={zhCN} autoInsertSpaceInButton={false}>
-      {children}
-    </ConfigProvider>
+    <AntConfig>
+      <Provider store={store}>
+        <HashRouter></HashRouter>
+      </Provider>
+    </AntConfig>
   );
 }
 ```
