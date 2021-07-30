@@ -94,6 +94,7 @@
   - [formatTime](/time/formatTime.md)
   - [overTime](/time/overTime.md)
   - [getHumanTimes](/time/getHumanTimes.md)
+  - [fillDays](/time/fillDays.md)
 - [Vue 通用组件](/vue)
   - [chat](/vue/chat.md)
   - [cropper](/vue/cropper.md)
