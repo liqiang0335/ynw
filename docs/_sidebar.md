@@ -1,5 +1,6 @@
 - [首页](/)
 - [Antd 通用组件](/antd)
+  - [TabRangePicker](/antd/TabRangePicker.md)
   - [Cropper](/antd/Cropper.md)
   - [IconFiles](/antd/IconFiles.md)
   - [PayType](/antd/PayType.md)

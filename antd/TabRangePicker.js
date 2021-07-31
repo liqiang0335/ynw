@@ -9,32 +9,14 @@ TabRangePicker.propTypes = {
 };
 
 const f = "YYYY-MM-DD";
-const today = moment(new Date()).format(f);
-const thisWeekStart = moment()
-  .startOf("week")
-  .format(f);
-const lastWeekStart = moment()
-  .subtract("1", "week")
-  .startOf("week")
-  .format(f);
-const lastWeekEnd = moment()
-  .subtract("1", "week")
-  .endOf("week")
-  .format(f);
-const thisMonthStart = moment()
-  .startOf("month")
-  .format(f);
-const lastMonthStart = moment()
-  .subtract(1, "month")
-  .startOf("month")
-  .format(f);
-const lastMonthEnd = moment()
-  .subtract(1, "month")
-  .endOf("month")
-  .format(f);
-const thisYearStart = moment()
-  .startOf("year")
-  .format(f);
+const today = moment(new Date()).format(f); // prettier-ignore
+const thisWeekStart = moment().startOf("week").format(f); // prettier-ignore
+const lastWeekStart = moment().subtract("1", "week").startOf("week").format(f); // prettier-ignore
+const lastWeekEnd = moment().subtract("1", "week").endOf("week").format(f); // prettier-ignore
+const thisMonthStart = moment().startOf("month").format(f); // prettier-ignore
+const lastMonthStart = moment().subtract(1, "month").startOf("month").format(f); // prettier-ignore
+const lastMonthEnd = moment().subtract(1, "month").endOf("month").format(f); // prettier-ignore
+const thisYearStart = moment().startOf("year").format(f); // prettier-ignore
 
 const initState = {
   dates: [], // [moment, moment]
