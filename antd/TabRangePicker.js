@@ -9,14 +9,16 @@ TabRangePicker.propTypes = {
 };
 
 const f = "YYYY-MM-DD";
-const today = moment(new Date()).format(f); // prettier-ignore
 const thisWeekStart = moment().startOf("week").format(f); // prettier-ignore
+const thisWekEnd =  moment().endOf("week").format(f); // prettier-ignore
 const lastWeekStart = moment().subtract("1", "week").startOf("week").format(f); // prettier-ignore
 const lastWeekEnd = moment().subtract("1", "week").endOf("week").format(f); // prettier-ignore
 const thisMonthStart = moment().startOf("month").format(f); // prettier-ignore
+const thisMonthEnd = moment().endOf("month").format(f); // prettier-ignore
 const lastMonthStart = moment().subtract(1, "month").startOf("month").format(f); // prettier-ignore
 const lastMonthEnd = moment().subtract(1, "month").endOf("month").format(f); // prettier-ignore
 const thisYearStart = moment().startOf("year").format(f); // prettier-ignore
+const thisYearEnd = moment().endOf("year").format(f); // prettier-ignore
 
 const initState = {
   dates: [], // [moment, moment]
@@ -64,15 +66,21 @@ export default function TabRangePicker({ value, onChange }) {
         value={state.datesStr.join(":")}
         onChange={onRadioChange}
       >
-        <Radio.Button value={`${thisWeekStart}:${today}`}>本周</Radio.Button>
+        <Radio.Button value={`${thisWeekStart}:${thisWekEnd}`}>
+          本周
+        </Radio.Button>
         <Radio.Button value={`${lastWeekStart}:${lastWeekEnd}`}>
           上周
         </Radio.Button>
-        <Radio.Button value={`${thisMonthStart}:${today}`}>本月</Radio.Button>
+        <Radio.Button value={`${thisMonthStart}:${thisMonthEnd}`}>
+          本月
+        </Radio.Button>
         <Radio.Button value={`${lastMonthStart}:${lastMonthEnd}`}>
           上月
         </Radio.Button>
-        <Radio.Button value={`${thisYearStart}:${today}`}>本年</Radio.Button>
+        <Radio.Button value={`${thisYearStart}:${thisYearEnd}`}>
+          本年
+        </Radio.Button>
       </Radio.Group>
       <RangePicker value={state.dates} onChange={_onChange} />
     </div>
