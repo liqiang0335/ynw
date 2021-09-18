@@ -7,7 +7,8 @@
  * ----------------------------------------
  * 通用枚举数据, 带缓存
  * @param {String} url - 接口地址
- * @param {String} [id='id'] - ById的键
+ * @param {String} [cached] - 是否使用缓存
+ * @param {String} [id='id/_id'] - ById的键
  * ----------------------------------------
  */
 import useEnum from "@hook/useEnum";
