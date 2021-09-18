@@ -5,15 +5,17 @@ const cache = {};
  * ----------------------------------------
  * 通用枚举数据, 带缓存
  * @param {String} url - 接口地址
- * @param {Boolean} [cached=true] - 是否使用缓存: 如果是false,使用组件时会请求一次数据
- * @param {Function} [handler=null] - 如果不是数组时:需要处理返回数据
  * @param {String} [id='id/_id'] - ById的键
+ * @param {Function} [handler] - 处理返回数据的
+ * @param {Boolean} [cached] - 是否使用缓存
+ * @param {String} [method] - 是否使用缓存
  * ----------------------------------------
  */
 export default function useAssetsFirstType({
   url,
   id = "id",
   cached = true,
+  method = "get",
   handler,
 }) {
   const [datasById, setById] = useState(cache[url]?.datasById || {});
@@ -23,7 +25,7 @@ export default function useAssetsFirstType({
     if (cached && cache[url]) {
       return;
     }
-    http.get(url).then(res => {
+    http[method](url).then(res => {
       if (handler) {
         res = handler(res);
       }

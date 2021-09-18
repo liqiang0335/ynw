@@ -10,6 +10,7 @@
  * @param {Boolean} [cached=true] - 是否使用缓存: 如果是false,使用组件时会请求一次数据
  * @param {Function} [handler=null] - 如果不是数组时:需要处理返回数据
  * @param {String} [id='id/_id'] - ById的键
+ * @param {String} [method='get'] - 请求方法
  * ----------------------------------------
  */
 import useEnum from "@hook/useEnum";
