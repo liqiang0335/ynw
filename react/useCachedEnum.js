@@ -8,15 +8,16 @@ const cache = {};
  * @param {String} [id='id/_id'] - ById的键
  * @param {Function} [handler] - 处理返回数据的
  * @param {Boolean} [cached] - 是否使用缓存
- * @param {String} [method] - 是否使用缓存
+ * @param {Object} [config] - axios请求配置: method, data
+ * @return {Object} {datas, datasById}
  * ----------------------------------------
  */
 export default function useAssetsFirstType({
   url,
   id = "id",
   cached = true,
-  method = "get",
   handler,
+  config,
 }) {
   const [datasById, setById] = useState(cache[url]?.datasById || {});
   const [datas, setdatas] = useState(cache[url]?.datas || []);
@@ -25,7 +26,7 @@ export default function useAssetsFirstType({
     if (cached && cache[url]) {
       return;
     }
-    http[method](url).then(res => {
+    http({ url, method: "get", ...config }).then(res => {
       if (handler) {
         res = handler(res);
       }
