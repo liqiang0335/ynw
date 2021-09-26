@@ -130,7 +130,7 @@ button:focus {
 
 ::-webkit-scrollbar {
   height: 6px;
-  width: 6px;
+  width: 10px;
   overflow: visible;
 }
 
