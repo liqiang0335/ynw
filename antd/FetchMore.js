@@ -27,9 +27,14 @@ export default function FetchMore({
   ondata,
   deps,
   size = 10,
-  cached = "",
+  cached = false,
 }) {
   const [state, dispatch] = useReducer(reducer, initState);
+
+  // 如果设置了缓存, 使用url作为缓存的key
+  if (cached) {
+    cached = url;
+  }
 
   const { run } = useDebounceFn(() => fetcher(true), {
     wait: 500,

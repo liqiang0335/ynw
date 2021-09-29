@@ -1,7 +1,6 @@
 import React from "react";
 import { PictureOutlined } from "@ant-design/icons";
-import getSrcPrefix from "@script/getSrcPrefix";
-import showImage from "@script/showImage";
+import previewImage from "../script/previewImage";
 /**
  * ----------------------------------------
  * 图片占位符
@@ -9,12 +8,11 @@ import showImage from "@script/showImage";
  * @param {String} src - 图片地址
  * ----------------------------------------
  */
-export default function ImageHolder({ src }) {
+export default function PreviewImageHolder({ src }) {
   if (!src) return null;
-  const path = getSrcPrefix(src);
   return (
     <PictureOutlined
-      onClick={() => showImage(path)}
+      onClick={() => previewImage(src)}
       style={{
         marginLeft: "6px",
         color: "#08a1e8",

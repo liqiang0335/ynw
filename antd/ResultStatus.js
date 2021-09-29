@@ -1,7 +1,7 @@
 import React from "react";
 import { CheckCircleFilled, CloseCircleFilled } from "@ant-design/icons";
 
-export default function SendStatus({ value }) {
+export default function ResultStatus({ value }) {
   if (value) {
     return (
       <span style={{ color: "#07c420" }}>

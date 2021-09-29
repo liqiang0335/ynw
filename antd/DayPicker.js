@@ -8,7 +8,7 @@ const FORMAT = "YYYY-MM-DD";
  * @param {String} onChange(day:String)
  */
 export default function DatePickerBox({ value, onChange, ...rest }) {
-  function _onChange(value, dateString) {
+  function _onChange(_, dateString) {
     onChange(dateString);
   }
   return (

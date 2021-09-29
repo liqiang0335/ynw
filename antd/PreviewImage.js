@@ -3,7 +3,7 @@ import showImage from "../script/previewImage";
 const WIDTH = 270;
 const HEIGHT = 150;
 
-export default function CustomImage({ src, width, height }) {
+export default function PreviewImage({ src, width, height }) {
   const onClick = () => {
     showImage(src);
   };
