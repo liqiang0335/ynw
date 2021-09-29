@@ -23,9 +23,7 @@ export default function Software({ link, style }) {
   const Content = () => {
     return (
       <div className={styles.container}>
-        <Button onClick={() => (window.location.href = link)}>
-          下载Windows客户端
-        </Button>
+        <Button href={link}>下载Windows客户端</Button>
         <ul className={styles.info}>
           <Item>软件一键安装，自动更新升级</Item>
           <Item>双击桌面图标，快速进入使用</Item>
