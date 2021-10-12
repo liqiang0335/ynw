@@ -17,6 +17,11 @@ const debounceOption = {
   trailing: false,
 };
 
+/**
+ * ----------------------------------------
+ * 节流按钮
+ * ----------------------------------------
+ */
 export function DebounceBtn({ onClick, ...props }) {
   const { run } = useDebounceFn(() => onClick(), debounceOption);
   return <Base type="primary" {...props} onClick={run} />;
@@ -39,7 +44,7 @@ export function Button(props) {
 export function AddButton(props) {
   return (
     <Base {...props} type="primary" icon={<PlusOutlined />}>
-      添加
+      {props.children || "添加"}
     </Base>
   );
 }
@@ -47,7 +52,7 @@ export function AddButton(props) {
 export function EditButton(props) {
   return (
     <Base color="#11c962" icon={<EditOutlined />} {...props}>
-      修改
+      {props.children || "修改"}
     </Base>
   );
 }
@@ -55,7 +60,7 @@ export function EditButton(props) {
 export function DeleteButton(props) {
   return (
     <Base color="#ff4500" icon={<CloseOutlined />} {...props}>
-      删除
+      {props.children || "删除"}
     </Base>
   );
 }
@@ -63,7 +68,7 @@ export function DeleteButton(props) {
 export function SubmitButton(props) {
   return (
     <Base type="primary" icon={<SaveOutlined />} {...props}>
-      提交
+      {props.children || "提交"}
     </Base>
   );
 }
@@ -71,7 +76,7 @@ export function SubmitButton(props) {
 export function CancelButton(props) {
   return (
     <Base color="#a2a2a2" icon={<CloseOutlined />} {...props}>
-      取消
+      {props.children || "取消"}
     </Base>
   );
 }
@@ -79,7 +84,7 @@ export function CancelButton(props) {
 export function BackButton(props) {
   return (
     <Base color="#a2a2a2" icon={<CaretLeftOutlined />} {...props}>
-      返回
+      {props.children || "返回"}
     </Base>
   );
 }
@@ -117,7 +122,7 @@ export function DeleteCircle(props) {
 export function SearchButton(props) {
   return (
     <Base type="primary" icon={<SearchOutlined />} {...props}>
-      搜索
+      {props.children || "搜索"}
     </Base>
   );
 }
@@ -125,7 +130,7 @@ export function SearchButton(props) {
 export function ResetButton(props) {
   return (
     <Base icon={<RedoOutlined />} color="gray" {...props}>
-      重置
+      {props.children || "重置"}
     </Base>
   );
 }
