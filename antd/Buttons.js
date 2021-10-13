@@ -28,7 +28,7 @@ export function DebounceBtn({ onClick, ...props }) {
 }
 
 function Base({ color, ...rest }) {
-  const style = { margin: "0 5px" };
+  const style = { marginRight: "10px" };
   if (color) {
     style.background = color;
     style.borderColor = color;
