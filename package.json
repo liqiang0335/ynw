@@ -3,6 +3,7 @@
   "version": "5.1.0",
   "description": "tool for ynw",
   "main": "index.js",
+  "types": "index.d.ts",
   "scripts": {},
   "keywords": [
     "ynw"
