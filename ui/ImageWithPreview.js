@@ -1,11 +1,11 @@
 import React from "react";
-import showImage from "../script/previewImage";
+import previewImage from "../script/previewImage";
 const WIDTH = 270;
 const HEIGHT = 150;
 
-export default function PreviewImage({ src, width, height }) {
+export default function ImageWithPreview({ src, width, height }) {
   const onClick = () => {
-    showImage(src);
+    previewImage(src);
   };
   return (
     <img

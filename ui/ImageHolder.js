@@ -8,7 +8,7 @@ import previewImage from "../script/previewImage";
  * @param {String} src - 图片地址
  * ----------------------------------------
  */
-export default function PreviewImageHolder({ src }) {
+export default function ImageHolder({ src }) {
   if (!src) return null;
   return (
     <PictureOutlined
