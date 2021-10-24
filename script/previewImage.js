@@ -18,7 +18,7 @@ export default function previewImage(src, option) {
     navbar: false,
     keyboard: false,
     fullscreen: true,
-    viewed: () => viewer.zoomTo(1),
+    viewed: () => viewer.zoomTo(),
     hidden: () => viewer.destroy(),
     ...option,
   });
