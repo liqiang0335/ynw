@@ -10,7 +10,7 @@ import { compact } from "lodash";
  * @param {Function} onChange(dates) - dates: [String]
  * ----------------------------------------
  */
-export default function RangePickerWrap({ value, onChange }) {
+export default function RangePickerWrap({ value, onChange, ...rest }) {
   const _onChange = (_, dateString) => {
     onChange(dateString);
   };
@@ -18,6 +18,7 @@ export default function RangePickerWrap({ value, onChange }) {
     <RangePicker
       value={compact(value).map(v => moment(v))}
       onChange={_onChange}
+      {...rest}
     />
   );
 }
