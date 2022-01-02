@@ -1,5 +1,5 @@
 import React from "react";
-import { DebounceBtn, ResetButton } from "@comps/Buttons";
+import { DebounceBtn, ResetButton } from "./Buttons";
 import styles from "./SearchBar.scss";
 import { message } from "antd";
 let loading = false;
