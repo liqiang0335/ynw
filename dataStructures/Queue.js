@@ -1,4 +1,4 @@
-import LinkedList from "./LinkedList";
+const LinkedList = require("./LinkedList");
 
 /**
  * 队列(排队)
@@ -35,4 +35,4 @@ class Queue {
   }
 }
 
-export default Queue;
+module.exports = Queue;

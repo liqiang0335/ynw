@@ -21,7 +21,7 @@ class LinkedList {
     this.tail = null;
     this.equal =
       comparatorFunction ||
-      function(a, b) {
+      function (a, b) {
         return a === b;
       };
   }
@@ -184,4 +184,4 @@ class LinkedList {
   }
 }
 
-export default LinkedList;
+module.exports = LinkedList;
