@@ -24,8 +24,16 @@ export default {
   props: {
     url: String,
   },
+  watch: {
+    url() {
+      this.page = 1;
+      this.rows = [];
+      this.getdata();
+    },
+  },
   data() {
     return {
+      page: 1,
       icon,
       hasmore: true,
       loading: false,
@@ -42,16 +50,12 @@ export default {
   },
   methods: {
     async getdata() {
-      const len = this.rows.length;
-      // 自动添加 URL 参数到请求中
       const urlParams = getUrlParams(window.location.href);
-      const params = { ...urlParams };
-      if (len > 0) {
-        params.last = this.rows[len - 1]._id;
-      }
+      const params = { page: this.page, ...urlParams };
       this.loading = true;
       let res = await http.get(this.url, { params });
       this.loading = false;
+      this.page += 1;
       this.rows = this.rows.concat(res);
       this.hasmore = res.length === 10;
       this.$emit("data", this.rows);
