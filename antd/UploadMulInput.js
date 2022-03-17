@@ -28,10 +28,11 @@ export default function UploadInput(props) {
     value = [],
     accept = "",
     onChange,
-    title = "选择文件",
+    title = "选择一个或多个文件",
   } = props;
   const [state, dispatch] = useReducer(reducer, initState);
   const loading = state.percent > 0 && state.percent <= 100;
+  console.log("🍎 value", value);
 
   const _onChange = async e => {
     const file = e.target.files[0];
