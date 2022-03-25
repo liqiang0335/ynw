@@ -32,7 +32,6 @@ export default function UploadInput(props) {
   } = props;
   const [state, dispatch] = useReducer(reducer, initState);
   const loading = state.percent > 0 && state.percent <= 100;
-  console.log("🍎 value", value);
 
   const _onChange = async e => {
     const file = e.target.files[0];
