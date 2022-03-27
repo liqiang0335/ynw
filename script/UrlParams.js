@@ -1,4 +1,9 @@
-export default function getUrlParams() {
+/**
+ * ----------------------------------------
+ * 返回URL参数
+ * ----------------------------------------
+ */
+function getUrlParams() {
   const href = window.location.href;
   return (encodeURI(href).match(/([\w_-]+)=([^&#]+)/gi) || [])
     .map(item => {
@@ -8,4 +13,5 @@ export default function getUrlParams() {
     .reduce((prev, cur) => ({ ...prev, ...cur }), {});
 }
 
-export const UrlParams = getUrlParams();
+const UrlParams = getUrlParams();
+export default UrlParams;
