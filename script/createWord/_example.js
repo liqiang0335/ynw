@@ -1,4 +1,4 @@
-import { T1, T2, N, NC, Character } from "@script/createWord/wordStyles";
+import { T1, T2, N, NC, Character, ImagePara } from "@script/createWord/wordStyles";
 import createWord from "@script/createWord/createWord";
 import createTable from "@script/createWord/createTable";
 import { mask } from "ynw/antd/GlobalMask";

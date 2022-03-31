@@ -29,6 +29,29 @@ const getChildren = params => {
 
 /**
  * ----------------------------------------
+ * 插入图片
+ * @param {String} base64
+ * @returns {Number} width - 宽度
+ * @returns {Number} height - 高度
+ * ----------------------------------------
+ */
+export function ImagePara(base64, width, height) {
+  return new Paragraph({
+    alignment: AlignmentType.CENTER,
+    children: [
+      new ImageRun({
+        data: base64,
+        transformation: {
+          width: width,
+          height: height,
+        },
+      }),
+    ],
+  });
+}
+
+/**
+ * ----------------------------------------
  * 正文
  * ----------------------------------------
  */
