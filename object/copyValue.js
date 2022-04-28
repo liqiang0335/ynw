@@ -1,6 +1,7 @@
 /**
  * ----------------------------------------
- * 从另一个对象中复制已有的属性, 没有的不复制
+ * 遍历Source对象,从target中复制有效值
+ * (即不复制值为 undefined, null,'' 的属性)
  * @param {Object} source
  * @param {Object} target
  * @reutrn {Object} source
@@ -11,11 +12,10 @@ const copyValue = function (source, target) {
     return source;
   }
   for (var key in source) {
-    if (target[key] !== undefined) {
+    if (![undefined, null, ""].includes(target[key])) {
       source[key] = target[key];
     }
   }
-
   return source;
 };
 
