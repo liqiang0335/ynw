@@ -1,0 +1,18 @@
+.yy_marquee_box {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  word-break: keep-all;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+}
+
+.yy_marquee_box div {
+  display: inline-block;
+}
+
+.yy_marquee_box:hover div {
+  animation-play-state: paused;
+  cursor: default;
+}
