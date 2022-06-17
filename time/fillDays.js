@@ -5,13 +5,11 @@ import dayjs from "dayjs";
  * @param {Number} count - 数量
  * @param {String/Date} [end] - 截止日期, 默认今天
  * @param {Number} [format] - 日期格式
+ * @description
+ * fillDays(3,'2022-05-01')  =>  ['2022-05-01','2022-04-30','2022-04-29']
  * ----------------------------------------
  */
-export default function fillDays({
-  count,
-  end = new Date(),
-  format = "YYYY.MM.DD",
-}) {
+export default function fillDays({ count, end = new Date(), format = "YYYY.MM.DD" }) {
   const res = [];
   const _end = dayjs(end);
   const len = Array.from({ length: count }, (_, i) => i);
