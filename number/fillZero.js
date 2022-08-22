@@ -1,4 +1,4 @@
-import padEnd from "lodash/padEnd";
+import { padEnd } from "lodash-es";
 
 /**
  * 补全小数(用0填充)

@@ -1,4 +1,9 @@
 const ReconnectingWebSocket = require("reconnecting-websocket");
+/**
+ * ----------------------------------------
+ * 断线自动重连
+ * ----------------------------------------
+ */
 const createSocket = function ({ key, host, onmessage }) {
   try {
     const path = host.replace("http:", "");

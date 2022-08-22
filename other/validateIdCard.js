@@ -1,3 +1,10 @@
+/**
+ * ----------------------------------------
+ * 校验身份证号码是否正确
+ * @param {String} code
+ * @returns {Boolean}
+ * ----------------------------------------
+ */
 export default function validateIdCard(code) {
   code = String(code);
 
@@ -36,25 +43,19 @@ export default function validateIdCard(code) {
     71: "台湾",
     81: "香港",
     82: "澳门",
-    91: "国外"
+    91: "国外",
   };
 
-  var checkcode = function(code) {
+  var checkcode = function (code) {
     //是否为空
-    if (
-      !code ||
-      !iscodeNo(code) ||
-      !checkProvince(code) ||
-      !checkBirthday(code) ||
-      !checkParity(code)
-    ) {
+    if (!code || !iscodeNo(code) || !checkProvince(code) || !checkBirthday(code) || !checkParity(code)) {
       return false;
     }
     return true;
   };
 
   //检查号码是否符合规范，包括长度，类型
-  var iscodeNo = function(code) {
+  var iscodeNo = function (code) {
     //身份证号码为15位或者18位，15位时全为数字，18位前17位为数字，最后一位是校验位，可能为数字或字符X
     var reg = /(^\d{15}$)|(^\d{17}(\d|[xX])$)/;
     if (reg.test(code) === false) {
@@ -64,7 +65,7 @@ export default function validateIdCard(code) {
   };
 
   //取身份证前两位,校验省份
-  var checkProvince = function(code) {
+  var checkProvince = function (code) {
     var province = code.substr(0, 2);
     if (vcity[province] == undefined) {
       return false;
@@ -73,7 +74,7 @@ export default function validateIdCard(code) {
   };
 
   //检查生日是否正确
-  var checkBirthday = function(code) {
+  var checkBirthday = function (code) {
     var len = code.length;
     //身份证15位时，次序为省（3位）市（3位）年（2位）月（2位）日（2位）校验位（3位），皆为数字
     if (len == "15") {
@@ -99,15 +100,11 @@ export default function validateIdCard(code) {
   };
 
   //校验日期
-  var verifyBirthday = function(year, month, day, birthday) {
+  var verifyBirthday = function (year, month, day, birthday) {
     var now = new Date();
     var now_year = now.getFullYear();
     //年月日是否合理
-    if (
-      birthday.getFullYear() == year &&
-      birthday.getMonth() + 1 == month &&
-      birthday.getDate() == day
-    ) {
+    if (birthday.getFullYear() == year && birthday.getMonth() + 1 == month && birthday.getDate() == day) {
       //判断年份的范围（3岁到100岁之间)
       var time = now_year - year;
       if (time >= 3 && time <= 100) {
@@ -119,43 +116,13 @@ export default function validateIdCard(code) {
   };
 
   //校验位的检测
-  var checkParity = function(code) {
+  var checkParity = function (code) {
     //15位转18位
     code = changeFivteenToEighteen(code);
     var len = code.length;
     if (len == "18") {
-      var arrInt = new Array(
-        7,
-        9,
-        10,
-        5,
-        8,
-        4,
-        2,
-        1,
-        6,
-        3,
-        7,
-        9,
-        10,
-        5,
-        8,
-        4,
-        2
-      );
-      var arrCh = new Array(
-        "1",
-        "0",
-        "X",
-        "9",
-        "8",
-        "7",
-        "6",
-        "5",
-        "4",
-        "3",
-        "2"
-      );
+      var arrInt = new Array(7, 9, 10, 5, 8, 4, 2, 1, 6, 3, 7, 9, 10, 5, 8, 4, 2);
+      var arrCh = new Array("1", "0", "X", "9", "8", "7", "6", "5", "4", "3", "2");
       var codeTemp = 0,
         i,
         valnum;
@@ -172,40 +139,10 @@ export default function validateIdCard(code) {
   };
 
   //15位转18位身份证号
-  var changeFivteenToEighteen = function(code) {
+  var changeFivteenToEighteen = function (code) {
     if (code.length == "15") {
-      var arrInt = new Array(
-        7,
-        9,
-        10,
-        5,
-        8,
-        4,
-        2,
-        1,
-        6,
-        3,
-        7,
-        9,
-        10,
-        5,
-        8,
-        4,
-        2
-      );
-      var arrCh = new Array(
-        "1",
-        "0",
-        "X",
-        "9",
-        "8",
-        "7",
-        "6",
-        "5",
-        "4",
-        "3",
-        "2"
-      );
+      var arrInt = new Array(7, 9, 10, 5, 8, 4, 2, 1, 6, 3, 7, 9, 10, 5, 8, 4, 2);
+      var arrCh = new Array("1", "0", "X", "9", "8", "7", "6", "5", "4", "3", "2");
       var codeTemp = 0,
         i;
       code = code.substr(0, 6) + "19" + code.substr(6, code.length - 6);

@@ -11,6 +11,7 @@ import UUIDBrowser from "ynw/browser/UUIDBrowser";
  */
 export default function ChooseFile({ onChange, accept = "*", file }) {
   const [id] = useState(UUIDBrowser());
+
   const onInputChange = e => {
     const { target } = e.nativeEvent;
     const file = target.files[0];

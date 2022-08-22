@@ -1,7 +1,7 @@
 import React from "react";
 import moment from "moment";
 import { DatePicker } from "antd";
-import { compact } from "lodash";
+import { compact } from "lodash-es";
 const { RangePicker } = DatePicker;
 /**
  * ----------------------------------------

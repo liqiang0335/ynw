@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 import axios from "axios";
 import Qs from "querystring";
-import isFunction from "lodash/isFunction";
+import { isFunction } from "lodash-es";
 /**
  * 网络请求
  * @param {Number, Optional} baseURL - baseURL
@@ -27,8 +27,7 @@ export default function http(options) {
   const { contentType, onRequest, onSuccess, onTimeout, onError } = _options;
 
   if (contentType === "form") {
-    _options.headers["Content-Type"] =
-      "application/x-www-form-urlencoded; charset=UTF-8";
+    _options.headers["Content-Type"] = "application/x-www-form-urlencoded; charset=UTF-8";
     _options.transformRequest = params => Qs.stringify(params);
   }
 

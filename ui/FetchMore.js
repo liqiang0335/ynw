@@ -22,13 +22,7 @@ const reducer = (state, action) => {
  * @param {String} [cached = ''] - 是否缓存数据, 设置缓存数据的key, 并保证唯一性
  * ----------------------------------------
  */
-export default function FetchMore({
-  url,
-  ondata,
-  deps,
-  size = 10,
-  cached = false,
-}) {
+export default function FetchMore({ url, ondata, deps, size = 10, cached = false }) {
   const [state, dispatch] = useReducer(reducer, initState);
 
   // 如果设置了缓存, 使用url作为缓存的key
@@ -95,9 +89,7 @@ const Loading = ({ state, onClick }) => {
         </span>
       </LoadingText>
     );
-  return (
-    <LoadingText style={{ color: "#c1c1c1" }}>- 没有更多数据了 -</LoadingText>
-  );
+  return <LoadingText style={{ color: "#c1c1c1" }}>- 没有更多数据了 -</LoadingText>;
 };
 
 const LoadingText = ({ style, children, ...rest }) => {
