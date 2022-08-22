@@ -2,7 +2,6 @@
  * 比较版本号
  * @param {String} newVal - 格式: 1.0.1
  * @param {String} oldVal
- *
  * @return {Boolean}
  */
 export default function isNewVersion(newVal, oldVal) {
