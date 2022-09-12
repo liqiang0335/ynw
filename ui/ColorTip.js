@@ -41,7 +41,6 @@ const SBox = styled.div`
   padding-left: 35px;
   position: relative;
   border-radius: 4px;
-  margin: 10px auto;
 `;
 
 const SIcon = styled.div`
