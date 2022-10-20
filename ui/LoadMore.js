@@ -11,6 +11,8 @@ LoadMore.propTypes = {
  * @param {Boolean} loading - 是否正在加载
  * @param {Function} onClick
  * @param {Boolean} none - 是否含有更多
+ *
+ * <LoadMore onClick={() => dispatch({ page: state.page + 1 })} loading={state.loading} none={state.none} />
  * ----------------------------------------
  */
 export default function LoadMore({ loading, onClick, none }) {
