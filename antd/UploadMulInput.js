@@ -1,6 +1,5 @@
 import React, { useReducer } from "react";
 import axios from "axios";
-import uuid from "@script/uuid";
 import styles from "./UploadMulInput.scss";
 import { uniq } from "lodash-es";
 import { DeleteOutlined } from "@ant-design/icons";
@@ -20,6 +19,7 @@ const reducer = (state, action) => {
  * @param {String} [url] - 接口地址
  * @param {String} [accept=""] - 文件格式
  * @param {String} [title] - 文字提示
+ * @param {Object} [headers]
  * ----------------------------------------
  */
 export default function UploadInput(props) {
@@ -29,6 +29,7 @@ export default function UploadInput(props) {
     accept = "",
     onChange,
     title = "选择一个或多个文件",
+    headers,
   } = props;
   const [state, dispatch] = useReducer(reducer, initState);
   const loading = state.percent > 0 && state.percent <= 100;
@@ -38,7 +39,11 @@ export default function UploadInput(props) {
     const form = new FormData();
     form.append("file", file);
     const res = await axios.post(url, form, {
-      headers: getHeaders(),
+      headers: {
+        token: window.token,
+        "Content-Type": "multipart/form-data;charset=UTF-8",
+        ...headers,
+      },
       onUploadProgress: e => {
         const percent = ((e.loaded / e.total) * 100) | 0;
         dispatch({ percent });
@@ -91,14 +96,4 @@ export default function UploadInput(props) {
 function getFileName(path) {
   const match = path.match(/[^/\\]+$/);
   return match ? match[0] : path;
-}
-
-function getHeaders() {
-  return {
-    passport: "56b8cb51-6da6-509abc-w2",
-    "Content-Type": "multipart/form-data;charset=UTF-8",
-    token: window.token,
-    client: 1,
-    id: uuid(),
-  };
 }
