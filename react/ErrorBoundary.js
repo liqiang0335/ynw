@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import React from "react";
 import { AlertOutlined } from "@ant-design/icons";
 
@@ -14,7 +13,7 @@ export default class ErrorBoundary extends React.Component {
   }
 
   componentDidCatch(error, errorInfo) {
-    // 你同样可以将错误日志上报给服务器
+    // 可以将错误日志上报给服务器
   }
 
   render() {
