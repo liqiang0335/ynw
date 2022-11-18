@@ -8,6 +8,7 @@ export default function readXLSX(file) {
   return new Promise((resolve, reject) => {
     const reader = new FileReader();
     reader.readAsArrayBuffer(file);
+    reader.onerror = reject;
     reader.onload = e => {
       const data = e.target.result;
       const workbook = read(data, { type: "array" });
