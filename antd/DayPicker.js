@@ -1,6 +1,6 @@
 import React from "react";
 import { DatePicker } from "antd";
-import moment from "moment";
+import dayjs from "dayjs";
 const FORMAT = "YYYY-MM-DD";
 /**
  * 日期选择器
@@ -11,12 +11,5 @@ export default function DatePickerBox({ value, onChange, ...rest }) {
   function _onChange(_, dateString) {
     onChange(dateString);
   }
-  return (
-    <DatePicker
-      value={value ? moment(value) : ""}
-      onChange={_onChange}
-      format={FORMAT}
-      {...rest}
-    />
-  );
+  return <DatePicker value={value ? dayjs(value) : ""} onChange={_onChange} format={FORMAT} {...rest} />;
 }

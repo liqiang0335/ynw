@@ -1,6 +1,6 @@
 {
   "name": "ynw",
-  "version": "5.2.2",
+  "version": "5.2.3",
   "description": "tool for ynw",
   "main": "index.js",
   "types": "index.d.ts",

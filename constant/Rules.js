@@ -9,7 +9,7 @@ const rules = {
     { type: "string", min: 2, max: 30, message: "账号位数为2-30位" },
   ],
   password: [
-    { pattern: Regs.strong_password, message: "密码需要包含数字、大小写字母和特殊字符" },
+    { pattern: Regs.password_strong, message: "密码需要包含数字、大小写字母和特殊字符" },
     { type: "string", min: 6, max: 20, message: "密码位数为6-20位" },
   ],
   chineseName: [
