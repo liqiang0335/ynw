@@ -3,7 +3,7 @@ import UUIDBrowser from "ynw/browser/UUIDBrowser";
 /**
  * ----------------------------------------
  * 图表容器
- * @param {Object} [options] - echarts 图表配置
+ * @param {Object} [option] - echarts 图表配置
  * ----------------------------------------
  */
 export default function EchartsBox({ option, ...props }) {

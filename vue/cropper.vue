@@ -1,25 +1,32 @@
 <!-- 图片裁剪  -->
 <template>
-  <div class="crop-bg" v-show="show" style="z-index:20000">
+  <div class="crop-bg" v-show="show" style="z-index: 20000">
     <div class="crop-box" :style="boxStyle">
       <div class="crop-title">图片裁剪</div>
       <div class="close" @click="close">X</div>
       <div class="crop-choose">
         <label for="crop-input">
-          <input accept=".jpg, .jpeg, .png, .gif" id="crop-input" ref="input" type="file" @change="change" capture>
-          <span class="crop-btn">选择文件</span>
+          <input accept=".jpg, .jpeg, .png, .gif" id="crop-input" ref="input" type="file" @change="change" capture />
+          <span class="crop-btn">选择图片</span>
         </label>
-        <button v-show="ready" class="crop-btn crop-btn-crop" @click="crop">裁切图片</button>
+        <div v-show="ready" class="crop-btn crop-btn-crop" @click="crop">确定</div>
       </div>
       <div class="crop-content" :style="contentStyle">
-        <img :src="src" @load="start" ref="img" class="thumb">
+        <img :src="src" @load="start" ref="img" class="thumb" />
       </div>
     </div>
   </div>
 </template>
 <script>
 /**
- *<yn-crop :visible.sync="shwoCrop" @crop="onCrop" :layout="[700,500]" :size="[160,160]" />
+ * 图片裁剪
+ * @param {Boolean} visible 是否显示
+ * @param {Array} layout [width,height] 裁剪框大小
+ * @param {Array} size [width,height] 裁剪后图片大小
+ * @param {Function} crop(base64) 裁剪后回调
+ *
+ * @description
+ *<crop :visible.sync="shwoCrop" @crop="onCrop" :layout="[700,500]" :size="[160,160]" />
  */
 import Cropper from "cropperjs";
 import "cropperjs/dist/cropper.css";
@@ -27,30 +34,31 @@ export default {
   props: {
     visible: {
       type: Boolean,
-      default: false
+      default: false,
     },
     layout: {
       type: Array,
-      default: () => [800, 600] //[width,height]
+      default: () => [800, 600], //[width,height]
     },
     size: {
       type: Array,
-      default: () => [200, 200]
-    }
+      default: () => [200, 200],
+    },
   },
   data() {
     return {
       show: false,
       src: "",
+      file: null,
       cropper: null,
-      ready: false
+      ready: false,
     };
   },
 
   watch: {
     visible(val) {
       this.show = val;
-    }
+    },
   },
   computed: {
     ratio() {
@@ -59,21 +67,21 @@ export default {
     boxStyle() {
       return {
         width: this.layout[0] + "px",
-        height: this.layout[1] + "px"
+        height: this.layout[1] + "px",
       };
     },
     contentStyle() {
       return {
-        height: this.layout[1] - 40 + "px"
+        height: this.layout[1] - 40 + "px",
       };
     },
     previewStyle() {
       const width = this.layout[0] * 0.3 * 0.8;
       return {
         width: width + "px",
-        height: width * this.ratio + "px"
+        height: width * this.ratio + "px",
       };
-    }
+    },
   },
   methods: {
     prevent(e) {
@@ -86,7 +94,7 @@ export default {
         aspectRatio: this.ratio,
         minCropBoxWidth: this.size[0],
         minCropBoxHeight: this.size[1],
-        ready: () => (self.ready = true)
+        ready: () => (self.ready = true),
       });
     },
     read(files) {
@@ -99,6 +107,7 @@ export default {
           const reader = new FileReader();
           reader.onload = () => {
             this.src = reader.result;
+            this.file = file;
             resolve();
           };
           reader.onerror = reject;
@@ -113,7 +122,7 @@ export default {
     crop() {
       const canvas = this.cropper.getCroppedCanvas({
         width: this.size[0], //需要的尺寸
-        height: this.size[1]
+        height: this.size[1],
       });
       const base64 = canvas.toDataURL();
       this.$emit("crop", base64);
@@ -122,7 +131,7 @@ export default {
     change({ target }) {
       this.read(target.files)
         .then(() => (target.value = ""))
-        .catch(e => {
+        .catch((e) => {
           target.value = "";
           this.alert(e);
         });
@@ -141,11 +150,11 @@ export default {
         this.cropper = null;
         this.ready = false;
       }
-    }
-  }
+    },
+  },
 };
 </script>
-<style scoped lang="scss">
+<style scoped>
 .crop-bg {
   position: fixed;
   width: 100%;
@@ -205,6 +214,7 @@ export default {
 }
 .crop-btn-crop {
   background: red;
+  margin-left: 10px;
 }
 .thumb {
   max-width: 100%;

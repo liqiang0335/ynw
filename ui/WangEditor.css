@@ -1,0 +1,39 @@
+.w-e-scroll h1,
+.w-e-scroll h2,
+.w-e-scroll h3,
+.w-e-scroll h4,
+.w-e-scroll h5,
+.w-e-scroll h6 {
+  font-weight: bold !important;
+}
+
+.w-e-scroll h1 span {
+  font-size: 30px !important;
+}
+.w-e-scroll h2 span {
+  font-size: 25px !important;
+}
+.w-e-scroll h3 span {
+  font-size: 20px !important;
+}
+.w-e-scroll h4 span {
+  font-size: 18px !important;
+}
+.w-e-scroll h5 span {
+  font-size: 16px !important;
+}
+.w-e-scroll h6 span {
+  font-size: 14px !important;
+}
+.w-e-scroll {
+  overscroll-behavior: contain;
+  font-size: 16px;
+}
+.w-e-text-placeholder {
+  color: #979797 !important;
+  font-size: 16px;
+}
+
+strong{
+  font-weight: bold;
+}

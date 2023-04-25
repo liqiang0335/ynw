@@ -27,7 +27,7 @@ export default function UploadInput(props) {
   const [state, dispatch] = useReducer(reducer, initState);
   const loading = state.percent > 0 && state.percent <= 100;
 
-  const _onChange = async e => {
+  const _onChange = async (e) => {
     const file = e.target.files[0];
     const form = new FormData();
     form.append("file", file);
@@ -37,7 +37,7 @@ export default function UploadInput(props) {
         "Content-Type": "multipart/form-data;charset=UTF-8",
         ...headers,
       },
-      onUploadProgress: e => {
+      onUploadProgress: (e) => {
         const percent = ((e.loaded / e.total) * 100) | 0;
         dispatch({ percent });
       },
@@ -49,7 +49,7 @@ export default function UploadInput(props) {
     }, 300);
   };
 
-  const ShowUploading = () => {
+  const ChooseFile = () => {
     if (loading) {
       return <span style={{ color: "#ff0000" }}>正在上传({state.percent}%)...</span>;
     }
@@ -72,7 +72,7 @@ export default function UploadInput(props) {
   return (
     <div className={styles.container}>
       <div className={styles.box}>
-        <ShowUploading />
+        <ChooseFile />
       </div>
       <div className={styles.files}>
         <div className={styles.fileItem}>
