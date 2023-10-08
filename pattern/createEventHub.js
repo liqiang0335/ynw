@@ -16,7 +16,7 @@ const createEventHub = function () {
     },
     off(event, handler) {
       if (!this.hub[event]) return; // 不存在事件
-      // 不存在处理函数
+      // 不存在处理函数, 则删除事件
       if (!handler) {
         delete this.hub[event];
         return;
