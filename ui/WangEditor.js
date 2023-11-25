@@ -27,11 +27,11 @@ export const Event = { Content: "Content" };
  *
  *  @example 使用
  *  <WangEditor
- *    onChange={html => console.log(html)}
- *    headers={{ token: window.token }}
- *    imageServe="/api/manage/com/editor/image"
- *    videoServe="/api/manage/com/editor/video"
- * />
+     onChange={html => console.log(html)}
+     headers={{ token: window.token }}
+     imageServe="/api/manage/com/editor/image"
+     videoServe="/api/manage/com/editor/video"
+  />
  *
  * @example 设置内容
  * hub.emit("Content", "<strong>123</strong>");

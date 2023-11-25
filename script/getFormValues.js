@@ -13,7 +13,7 @@ export default function getFormValues(form, callback) {
       const values = form.getFieldsValue();
       callback(values);
     })
-    .catch(err => {
+    .catch((err) => {
       const error = err.errorFields[0].errors[0];
       message.error(error);
     });
