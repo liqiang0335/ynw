@@ -1,5 +1,5 @@
 import { useReducer } from "react";
-import reducer from "ynw/script/reducer";
+import reducer from "../script/reducer";
 
 export default function useReducerWrap(initialState = {}) {
   return useReducer(reducer, initialState);
